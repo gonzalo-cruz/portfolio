@@ -12,7 +12,7 @@ const Contact = () => {
 
     try {
       // REPLACE WITH YOUR ACTUAL FORMSPREE LINK
-      const response = await fetch("https://formspree.io/f/xyzkqwer", {
+      const response = await fetch("https://formspree.io/f/mblwkdzq", {
         method: "POST",
         body: formData,
         headers: {
