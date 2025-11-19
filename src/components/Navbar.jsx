@@ -18,7 +18,7 @@ const Navbar = ({ isDark, toggleTheme }) => (
       <div className="flex items-center gap-6">
         <Link to="/" className="hidden sm:block font-sans text-sm font-medium text-ink-light dark:text-warm-subtext transition-all duration-300 hover:text-rust hover:drop-shadow-[0_0_8px_rgba(217,119,87,0.8)]">Home</Link>
         <Link to="/about" className="hidden sm:block font-sans text-sm font-medium text-ink-light dark:text-warm-subtext transition-all duration-300 hover:text-rust hover:drop-shadow-[0_0_8px_rgba(217,119,87,0.8)]">About</Link>
-        
+        <Link to="/contact" className="hidden sm:block font-sans text-sm font-medium text-ink-light dark:text-warm-subtext transition-all duration-300 hover:text-rust hover:drop-shadow-[0_0_8px_rgba(217,119,87,0.8)]">Contact</Link>
         {/* NEW: Resume Button */}
         <a 
           href="/Resume.pdf" 

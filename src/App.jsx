@@ -7,6 +7,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import About from './pages/About';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop'; // <--- Import this
+import Contact from './pages/Contact'; // <--- Import this
 
 function App() {
   // Theme handling logic (keeping your existing logic if you have it)
@@ -38,6 +39,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/project/:id" element={<ProjectDetail />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} /> {/* This catches ANY unknown route */}
           </Routes>
         </main>

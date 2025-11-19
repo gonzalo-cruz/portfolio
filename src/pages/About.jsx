@@ -1,5 +1,6 @@
 import React from 'react';
 import { Mail, Linkedin, Github, FileText, PenTool } from 'lucide-react';
+import TechStack from '../components/TechStack'; // <--- Import this
 
 const About = () => {
   const LinkItem = ({ href, icon: Icon, label, isDownload = false }) => (
@@ -35,6 +36,7 @@ const About = () => {
         <LinkItem href="https://github.com/gonzalo-cruz" icon={Github} label="GitHub" />
         <LinkItem href="mailto:gonza.c.gomez03@gmail.com" icon={Mail} label="Email Me" />
       </div>
+      <TechStack />
     </div>
   );
 };
