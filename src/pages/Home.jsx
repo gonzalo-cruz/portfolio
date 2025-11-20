@@ -14,7 +14,7 @@ const Home = () => {
           Gonzalo Cruz.
         </h1>
         <h2 className="text-4xl md:text-6xl font-serif font-bold text-ink-light dark:text-warm-subtext mb-8 opacity-80">
-          I build data-driven solutions.
+          Making data speak.
         </h2>
         <p className="max-w-xl text-lg text-ink-light dark:text-warm-subtext leading-relaxed mb-12">
           I am a Data Scientist specializing in Machine Learning and AI. I transform complex data into clear, actionable insights and robust predictive models.
