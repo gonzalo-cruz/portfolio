@@ -1,10 +1,3 @@
----
-title: "Forest Fire Prediction: Generalized Additive Models (GAMs)"
-date: 2025-02-20
-description: "Modeling skewed environmental data using GAMs and smoothing splines to detect non-linear climatic dependencies."
-tags: ["Statistics", "R", "Regression", "GAMs"]
----
-
 ## The Challenge
 Environmental data is rarely "normal." The **Montesinho Forest Fire dataset** is notoriously difficult because it is:
 1.  **Zero-Inflated:** Most days have 0 hectares burned.
