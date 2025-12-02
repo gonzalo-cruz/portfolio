@@ -6,28 +6,28 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-  extend: {
-    colors: {
-      paper: '#000000',          // Pure Black
-      'paper-border': '#333333', 
-      rust: '#00ff41',           // Matrix/Neon Green
-      ink: '#ffffff',            // White
-      'ink-light': '#a3a3a3',    // Grey
-      parchment: '#111111',      // Very Dark Grey
-      warm: {
-        surface: '#1a1a1a',      // Dark Mode BG (slightly lighter)
-        border: '#333333',
-        text: '#00ff41',         // Green Text
-        subtext: '#cccccc',
-        black: '#000000'
-      }
-    },
-    fontFamily: {
-      sans: ['Space Grotesk', 'sans-serif'],
-      serif: ['Space Grotesk', 'sans-serif'], // Mono-vibe everywhere
-      mono: ['Space Grotesk', 'monospace'],
+    extend: {
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        serif: ['Lora', 'serif'],
+        mono: ['JetBrains Mono', 'monospace'],
+      },
+      colors: {
+        'warm-black': '#191714',
+        'warm-surface': '#262320',
+        'warm-border': '#3A3632',
+        'warm-text': '#F0EFEA',
+        'warm-subtext': '#B0AEA5',
+        'parchment': '#FDF9F3',
+        'paper': '#FFFFFF',
+        'paper-border': '#E0DCD4',
+        'ink': '#191714',
+        'ink-light': '#4A4540',
+        'rust': '#D97757',
+        'sage': '#788C5D',
+        'slate': '#6A9BCC',
+      },
     },
   },
-},
   plugins: [require('@tailwindcss/typography')],
 }
