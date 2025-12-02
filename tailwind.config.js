@@ -5,27 +5,27 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
-theme: {
+  theme: {
   extend: {
     colors: {
-      paper: '#f2f5f3',          // Light Sage
-      'paper-border': '#dde5e0', 
-      rust: '#2d6a4f',           // Forest Green (Replacing Rust)
-      ink: '#1b4332',            // Dark Green
-      'ink-light': '#52796f',    
-      parchment: '#e8ece9',      
+      paper: '#000000',          // Pure Black
+      'paper-border': '#333333', 
+      rust: '#00ff41',           // Matrix/Neon Green
+      ink: '#ffffff',            // White
+      'ink-light': '#a3a3a3',    // Grey
+      parchment: '#111111',      // Very Dark Grey
       warm: {
-        surface: '#1b4332',      // Dark Forest
-        border: '#2d6a4f',
-        text: '#d8f3dc',
-        subtext: '#95d5b2',
-        black: '#081c15'
+        surface: '#1a1a1a',      // Dark Mode BG (slightly lighter)
+        border: '#333333',
+        text: '#00ff41',         // Green Text
+        subtext: '#cccccc',
+        black: '#000000'
       }
     },
     fontFamily: {
-      sans: ['DM Sans', 'sans-serif'],
-      serif: ['Lora', 'serif'],
-      mono: ['Fira Code', 'monospace'],
+      sans: ['Space Grotesk', 'sans-serif'],
+      serif: ['Space Grotesk', 'sans-serif'], // Mono-vibe everywhere
+      mono: ['Space Grotesk', 'monospace'],
     },
   },
 },
