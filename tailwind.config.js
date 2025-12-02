@@ -8,23 +8,23 @@ export default {
 theme: {
   extend: {
     colors: {
-      paper: '#282a36',          // Dracula Background
-      'paper-border': '#44475a', 
-      rust: '#ff79c6',           // Dracula Pink
-      ink: '#f8f8f2',            // Off White
-      'ink-light': '#bd93f9',    // Dracula Purple
-      parchment: '#44475a',      // Selection Color
+      paper: '#f2f5f3',          // Light Sage
+      'paper-border': '#dde5e0', 
+      rust: '#2d6a4f',           // Forest Green (Replacing Rust)
+      ink: '#1b4332',            // Dark Green
+      'ink-light': '#52796f',    
+      parchment: '#e8ece9',      
       warm: {
-        surface: '#282a36',      
-        border: '#6272a4',
-        text: '#f8f8f2',
-        subtext: '#8be9fd',      // Cyan
-        black: '#21222c'
+        surface: '#1b4332',      // Dark Forest
+        border: '#2d6a4f',
+        text: '#d8f3dc',
+        subtext: '#95d5b2',
+        black: '#081c15'
       }
     },
     fontFamily: {
-      sans: ['Fira Sans', 'sans-serif'],
-      serif: ['Fira Sans', 'sans-serif'],
+      sans: ['DM Sans', 'sans-serif'],
+      serif: ['Lora', 'serif'],
       mono: ['Fira Code', 'monospace'],
     },
   },
