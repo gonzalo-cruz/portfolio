@@ -5,27 +5,27 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
-  theme: {
+theme: {
   extend: {
     colors: {
-      paper: '#fdf6e3',          // Solarized Base3
-      'paper-border': '#eee8d5', 
-      rust: '#cb4b16',           // Solarized Orange
-      ink: '#657b83',            // Solarized Base00
-      'ink-light': '#93a1a1',    
-      parchment: '#eee8d5',      
+      paper: '#282a36',          // Dracula Background
+      'paper-border': '#44475a', 
+      rust: '#ff79c6',           // Dracula Pink
+      ink: '#f8f8f2',            // Off White
+      'ink-light': '#bd93f9',    // Dracula Purple
+      parchment: '#44475a',      // Selection Color
       warm: {
-        surface: '#002b36',      // Solarized Base03
-        border: '#073642',
-        text: '#839496',
-        subtext: '#586e75',
-        black: '#002b36'
+        surface: '#282a36',      
+        border: '#6272a4',
+        text: '#f8f8f2',
+        subtext: '#8be9fd',      // Cyan
+        black: '#21222c'
       }
     },
     fontFamily: {
-      sans: ['Lato', 'sans-serif'],
-      serif: ['Lato', 'serif'],
-      mono: ['Inconsolata', 'monospace'],
+      sans: ['Fira Sans', 'sans-serif'],
+      serif: ['Fira Sans', 'sans-serif'],
+      mono: ['Fira Code', 'monospace'],
     },
   },
 },
