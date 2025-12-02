@@ -6,28 +6,28 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Poppins', 'sans-serif'],
-        serif: ['Lora', 'serif'],
-        mono: ['JetBrains Mono', 'monospace'],
-      },
-      colors: {
-        'warm-black': '#191714',
-        'warm-surface': '#262320',
-        'warm-border': '#3A3632',
-        'warm-text': '#F0EFEA',
-        'warm-subtext': '#B0AEA5',
-        'parchment': '#FDF9F3',
-        'paper': '#FFFFFF',
-        'paper-border': '#E0DCD4',
-        'ink': '#191714',
-        'ink-light': '#4A4540',
-        'rust': '#D97757',
-        'sage': '#788C5D',
-        'slate': '#6A9BCC',
-      },
+  extend: {
+    colors: {
+      paper: '#fdf6e3',          // Solarized Base3
+      'paper-border': '#eee8d5', 
+      rust: '#cb4b16',           // Solarized Orange
+      ink: '#657b83',            // Solarized Base00
+      'ink-light': '#93a1a1',    
+      parchment: '#eee8d5',      
+      warm: {
+        surface: '#002b36',      // Solarized Base03
+        border: '#073642',
+        text: '#839496',
+        subtext: '#586e75',
+        black: '#002b36'
+      }
+    },
+    fontFamily: {
+      sans: ['Lato', 'sans-serif'],
+      serif: ['Lato', 'serif'],
+      mono: ['Inconsolata', 'monospace'],
     },
   },
+},
   plugins: [require('@tailwindcss/typography')],
 }
