@@ -13,20 +13,20 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-        'warm-black': '#191714',
-        'warm-surface': '#262320',
-        'warm-border': '#3A3632',
-        'warm-text': '#F0EFEA',
-        'warm-subtext': '#B0AEA5',
-        'parchment': '#FDF9F3',
-        'paper': '#FFFFFF',
-        'paper-border': '#E0DCD4',
-        'ink': '#191714',
-        'ink-light': '#4A4540',
-        'rust': '#D97757',
-        'sage': '#788C5D',
-        'slate': '#6A9BCC',
-      },
+  paper: '#f2f0e9',          // Warm Alabaster (Not white)
+  'paper-border': '#e0ded5', // Darker stone
+  rust: '#c05621',           // Burnt Clay / Terra Cotta (Primary)
+  ink: '#2d2a26',            // Soft Charcoal (Not black)
+  'ink-light': '#5e5b56',    // Warm Grey
+  parchment: '#e6e4dc',      // Secondary bg
+  warm: {
+    surface: '#1c1b1a',      // Warm Off-Black (Dark Mode BG)
+    border: '#33302c',       // Warm Grey Border
+    text: '#e8e6e3',         // Bone White (Text)
+    subtext: '#a8a29e',      // Warm Grey Subtext
+    black: '#121110'         // Deepest Warm Tone
+  }
+},
     },
   },
   plugins: [require('@tailwindcss/typography')],
