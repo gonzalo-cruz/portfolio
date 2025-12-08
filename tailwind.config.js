@@ -12,19 +12,19 @@ export default {
         serif: ['Lora', 'serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
-      colors: {
-  paper: '#f4f7f2',          // Sage Cream (Not white)
-  'paper-border': '#e0e6dd', 
-  rust: '#5a8263',           // Muted Olive / Sage Green (Primary)
-  ink: '#2c332f',            // Deep Forest Charcoal
-  'ink-light': '#5f6e65',    // Muted Green-Grey
-  parchment: '#e9ede6',      
+     colors: {
+  paper: '#f9f8f4',          // Aged Ivory
+  'paper-border': '#e3e1da', 
+  rust: '#4e8087',           // Muted Retro Teal
+  ink: '#222f33',            // Deep Slate Ink
+  'ink-light': '#546a70',    // Slate Grey
+  parchment: '#f0efea',      
   warm: {
-    surface: '#1a1d1b',      // Warm Green-Black (Dark Mode BG)
-    border: '#2f3832',       
-    text: '#e8ece9',         // Off-white text
-    subtext: '#9ca8a1',      // Sage subtext
-    black: '#0f1210'         // Deepest tone
+    surface: '#161a1b',      // Deep Slate Off-Black (Dark Mode BG)
+    border: '#2a3438',       
+    text: '#e6eaea',         // Off-white slate text
+    subtext: '#8ca3a8',      // Muted blue-grey subtext
+    black: '#0b0d0e'         
   }
 },
     },
