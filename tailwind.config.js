@@ -13,18 +13,18 @@ export default {
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
-  paper: '#f3f4f6',          // Mist Grey
-  'paper-border': '#e5e7eb', 
-  rust: '#be123c',           // Faded Red (Primary)
-  ink: '#111827',            // Soft Navy Black
-  'ink-light': '#4b5563',    
-  parchment: '#e5e7eb',      
+  paper: '#f4f7f2',          // Sage Cream (Not white)
+  'paper-border': '#e0e6dd', 
+  rust: '#5a8263',           // Muted Olive / Sage Green (Primary)
+  ink: '#2c332f',            // Deep Forest Charcoal
+  'ink-light': '#5f6e65',    // Muted Green-Grey
+  parchment: '#e9ede6',      
   warm: {
-    surface: '#18181b',      // Zinc 900 (Soft Industrial Dark)
-    border: '#27272a',       
-    text: '#e4e4e7',         // Zinc 200
-    subtext: '#a1a1aa',      // Zinc 400
-    black: '#09090b'         
+    surface: '#1a1d1b',      // Warm Green-Black (Dark Mode BG)
+    border: '#2f3832',       
+    text: '#e8ece9',         // Off-white text
+    subtext: '#9ca8a1',      // Sage subtext
+    black: '#0f1210'         // Deepest tone
   }
 },
     },
