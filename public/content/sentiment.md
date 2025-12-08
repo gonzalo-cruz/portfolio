@@ -4,7 +4,7 @@ Social media generates massive amounts of unstructured data that is often noisy 
 
 This project addresses two specific hurdles:
 
-1. **Data Engineering:** Processing a massive dataset of tweets (`JSON Lines`) to filter out bots, non-English content, and incomplete metadata to extract genuine sentiment[cite: 6, 20, 32].
+1. **Data Engineering:** Processing a massive dataset of tweets (`JSON Lines`) to filter out bots, non-English content, and incomplete metadata to extract genuine sentiment
 2.  **Infrastructure Ops:** Deploying a legacy-compatible Hadoop 3.4.1 cluster on Docker, overcoming the **CentOS 7 End-of-Life (EOL)** repository failures that break standard builds.
 
 ## Methodology
@@ -31,8 +31,8 @@ The solution leverages a **MapReduce** architecture using Python's `mrjob` libra
 
 The pipeline successfully processed the dataset, turning unstructured noise into clear analytics.
 
-  * **Sentiment Geography:** **Hawaii (HI)** was identified as the state with the highest positive sentiment (Score: 3.5), while states like Louisiana showed negative averages due to the specific weighting of the AFINN lexicon[cite: 55].
-  * **Bot Detection:** The "Top Hashtags" analysis revealed a dominance of spam/bot tags (e.g., `#TeamFollowBack`, `#FF`), highlighting the importance of rigorous data cleaning in social media analysis[cite: 55].
-  * **Device Battle:** The analysis showed a tight race in mobile adoption, with **iPhone (24.5%)** slightly leading over Web Clients and Android[cite: 55].
+  * **Sentiment Geography:** **Hawaii (HI)** was identified as the state with the highest positive sentiment (Score: 3.5), while states like Louisiana showed negative averages due to the specific weighting of the AFINN lexicon
+  * **Bot Detection:** The "Top Hashtags" analysis revealed a dominance of spam/bot tags (e.g., `#TeamFollowBack`, `#FF`), highlighting the importance of rigorous data cleaning in social media analysis
+  * **Device Battle:** The analysis showed a tight race in mobile adoption, with **iPhone (24.5%)** slightly leading over Web Clients and Android
 
 This project demonstrates the ability to maintain legacy Big Data infrastructure (Hadoop/Docker) while implementing complex ETL logic (MapReduce) to derive business intelligence from unstructured sources.
