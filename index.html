@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gonzalo Cruz — Data Science & Engineering</title>
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content="Gonzalo Cruz — Data Science & Engineering">
+    <meta property="og:description" content="Building the pipelines that make machine learning actually work. Student of data science & engineering — from statistical modeling to distributed systems.">
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://gonzalo-cruz.github.io">
+    <meta name="twitter:card"       content="summary">
+    <meta name="twitter:title"      content="Gonzalo Cruz — Data Science & Engineering">
+    <meta name="twitter:description" content="Building the pipelines that make machine learning actually work.">
+    <meta name="description"        content="Portfolio of Gonzalo Cruz, data science & engineering student based in Madrid.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── TOKENS ── */
+        :root {
+            --bg:       #F5F2EC;
+            --bg-card:  #ECEAE3;
+            --text:     #111111;
+            --muted:    #888888;
+            --accent:   #D4451A;
+            --border:   #D8D4CC;
+            --dot:      rgba(0,0,0,0.055);
+            --mono:     'JetBrains Mono', monospace;
+            --sans:     'Space Grotesk', sans-serif;
+        }
+
+        [data-theme="dark"] {
+            --bg:       #0D0D0D;
+            --bg-card:  #181818;
+            --text:     #F0EDE6;
+            --muted:    #606060;
+            --border:   #242424;
+            --dot:      rgba(255,255,255,0.032);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            font-size: 16px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            inset: 0 0 auto 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.5rem;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .nav-name {
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--text);
+            flex-shrink: 0;
+        }
+
+        .nav-right { display: flex; align-items: center; gap: 2rem; }
+
+        .nav-links { display: flex; gap: 1.75rem; list-style: none; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { color: var(--text); }
+        .nav-links a.active { font-weight: 700; }
+
+        .theme-btn {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: 0.25rem 0.55rem;
+            cursor: pointer;
+            transition: color 0.15s, border-color 0.15s;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .theme-btn:hover { color: var(--text); border-color: var(--text); }
+
+        /* ── LAYOUT ── */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2.5rem; }
+
+        section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-num {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+
+        /* ── FADE-IN ANIMATION ── */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.08s; }
+        .fade-in-delay-2 { transition-delay: 0.16s; }
+        .fade-in-delay-3 { transition-delay: 0.24s; }
+        .fade-in-delay-4 { transition-delay: 0.32s; }
+
+        /* ── HERO ── */
+        #hero {
+            padding-top: 148px;
+            padding-bottom: 96px;
+            border-bottom: 1px solid var(--border);
+            background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .hero-eyebrow {
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: var(--muted);
+        }
+
+        .hero-name {
+            font-size: clamp(4rem, 9vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-name .accent { color: var(--accent); }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 0.82em;
+            background: var(--accent);
+            margin-left: 3px;
+            vertical-align: middle;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50%       { opacity: 0; }
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--muted);
+            max-width: 520px;
+            line-height: 1.65;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.25rem;
+            border-radius: 3px;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.15s;
+            border: 1px solid transparent;
+            cursor: pointer;
+        }
+
+        .btn-dark { background: var(--text); color: var(--bg); }
+        .btn-dark:hover { background: var(--accent); border-color: var(--accent); }
+
+        .btn-outline { background: transparent; color: var(--text); border-color: var(--border); }
+        .btn-outline:hover { border-color: var(--text); }
+
+        /* ── CURRENTLY ── */
+        #currently { padding: 0; border-bottom: 1px solid var(--border); }
+
+        .currently-bar { display: flex; flex-wrap: wrap; }
+
+        .currently-item {
+            display: flex;
+            flex-direction: column;
+            padding: 1.5rem 2rem;
+            border-right: 1px solid var(--border);
+            flex: 1;
+            min-width: 0;
+        }
+
+        .currently-item:last-child { border-right: none; }
+
+        .currently-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .currently-value { font-size: 0.9rem; font-weight: 600; line-height: 1.3; }
+
+        .dot-accent {
+            display: inline-block;
+            width: 7px; height: 7px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.4rem;
+            vertical-align: middle;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50%       { opacity: 0.5; transform: scale(0.85); }
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text);
+            opacity: 0.75;
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.1rem;
+        }
+
+        .about-text p:last-child { margin-bottom: 0; }
+
+        .about-sidebar { display: flex; flex-direction: column; gap: 1.75rem; }
+
+        .sidebar-block { padding-left: 1rem; border-left: 2px solid var(--accent); }
+
+        .sidebar-label {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+        .tag-pill {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            padding: 0.2rem 0.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            color: var(--text);
+        }
+
+        /* ── EXPERIENCE ── */
+        .experience-list { display: flex; flex-direction: column; gap: 0; }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2.5rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .exp-item:first-child { padding-top: 0; }
+
+        .exp-meta { display: flex; flex-direction: column; gap: 0.35rem; padding-top: 0.15rem; }
+
+        .exp-date {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .exp-type {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+        }
+
+        .exp-content { display: flex; flex-direction: column; gap: 0.4rem; }
+
+        .exp-role {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .exp-org {
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-desc {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            opacity: 0.75;
+        }
+
+        /* ── INTERESTS ── */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .interests-col {
+            background: var(--bg);
+            padding: 2rem 1.75rem;
+        }
+
+        .interests-col-title {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .interests-list { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+        .interests-list li {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+
+        .interests-list li::before {
+            content: '—';
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .learning-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .learning-item:last-child { border-bottom: none; }
+
+        .learning-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .learning-desc {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+        }
+
+        /* ── STACK ── */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+            margin-bottom: 1px;
+        }
+
+        .stack-col { background: var(--bg); padding: 2rem 1.75rem; }
+
+        .stack-col-title {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .stack-list { list-style: none; display: flex; flex-direction: column; gap: 0.85rem; }
+
+        .stack-item {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 1rem;
+            align-items: baseline;
+        }
+
+        .stack-name {
+            font-family: var(--mono);
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text);
+            white-space: nowrap;
+        }
+
+        .stack-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+
+        /* ── PROJECTS ── */
+        .filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            padding: 0.3rem 0.75rem;
+            border-radius: 2px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            letter-spacing: 0.04em;
+            transition: all 0.15s;
+        }
+
+        .filter-btn:hover { color: var(--text); border-color: var(--text); }
+        .filter-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+
+        .projects-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 1px solid var(--border);
+            gap: 1px;
+            background: var(--border);
+        }
+
+        .project-card {
+            background: var(--bg);
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            transition: background 0.15s;
+        }
+
+        .project-card:hover { background: var(--bg-card); }
+        .project-card[hidden] { display: none; }
+
+        .project-meta {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-desc {
+            font-size: 0.875rem;
+            color: var(--text);
+            opacity: 0.65;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .project-callout {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.25rem; }
+
+        .tag-dark {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            padding: 0.18rem 0.45rem;
+            background: var(--text);
+            color: var(--bg);
+            border-radius: 2px;
+        }
+
+        .project-link {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 1px;
+            align-self: flex-start;
+            transition: color 0.15s;
+        }
+
+        .project-link:hover { color: var(--accent); }
+
+        /* ── CONTACT ── */
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-heading {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-heading .accent { color: var(--accent); }
+
+        .contact-body { font-size: 0.95rem; line-height: 1.75; margin-bottom: 2rem; opacity: 0.7; }
+
+        .contact-links { display: flex; flex-direction: column; gap: 1.25rem; padding-top: 0.5rem; }
+
+        .contact-item { display: flex; flex-direction: column; gap: 0.15rem; }
+
+        .contact-item-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+        }
+
+        .contact-item-row { display: flex; align-items: center; gap: 0.75rem; }
+
+        .contact-item a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .contact-item a:hover { color: var(--accent); }
+
+        .copy-btn {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            padding: 0.15rem 0.45rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.15s;
+            letter-spacing: 0.03em;
+        }
+
+        .copy-btn:hover { color: var(--text); border-color: var(--text); }
+        .copy-btn.copied { color: var(--accent); border-color: var(--accent); }
+
+        /* ── FOOTER ── */
+        footer { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .footer-mono { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 820px) {
+            nav { padding: 0 1.25rem; }
+            .container { padding: 0 1.25rem; }
+            .nav-links { display: none; }
+            #hero { padding-top: 100px; padding-bottom: 64px; }
+            section { padding: 60px 0; }
+            .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+            .projects-wrap, .stack-grid, .interests-grid { grid-template-columns: 1fr; }
+            .currently-bar { flex-direction: column; }
+            .currently-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .currently-item:last-child { border-bottom: none; }
+            .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+            .stack-item { grid-template-columns: 130px 1fr; }
+            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="#" class="nav-name">Gonzalo Cruz</a>
+    <div class="nav-right">
+        <ul class="nav-links">
+            <li><a href="#about"      data-nav="about">About</a></li>
+            <li><a href="#experience" data-nav="experience">Experience</a></li>
+            <li><a href="#stack"      data-nav="stack">Stack</a></li>
+            <li><a href="#projects"   data-nav="projects">Projects</a></li>
+            <li><a href="#contact"    data-nav="contact">Contact</a></li>
+        </ul>
+        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">◐ dark</button>
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- ── HERO ── -->
+    <section id="hero">
+        <p class="hero-eyebrow">Data Science & Engineering — Madrid</p>
+        <h1 class="hero-name">
+            Gonzalo<br>
+            <span class="accent">Cruz.<span class="cursor"></span></span>
+        </h1>
+        <p class="hero-sub">
+            Building the pipelines that make machine learning actually work in production.
+            From statistical modeling to distributed systems — I care about the whole stack.
+        </p>
+        <div class="hero-cta">
+            <a href="cv.pdf" download class="btn btn-dark">Download CV ↓</a>
+            <a href="https://github.com/gonzalo-cruz" target="_blank" class="btn btn-outline">GitHub ↗</a>
+            <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+            <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-outline">Email</a>
+        </div>
+    </section>
+
+    <!-- ── CURRENTLY ── -->
+    <div id="currently">
+        <div class="currently-bar">
+            <div class="currently-item">
+                <span class="currently-label">Status</span>
+                <span class="currently-value"><span class="dot-accent"></span>Open to opportunities</span>
+            </div>
+            <div class="currently-item">
+                <span class="currently-label">Degree</span>
+                <span class="currently-value">Data Science & Engineering</span>
+            </div>
+            <div class="currently-item">
+                <span class="currently-label">University</span>
+                <span class="currently-value">URJC — Madrid</span>
+            </div>
+            <div class="currently-item">
+                <span class="currently-label">Graduation</span>
+                <span class="currently-value">June 2027</span>
+            </div>
+            <div class="currently-item">
+                <span class="currently-label">Languages</span>
+                <span class="currently-value">ES · EN · DE · 中文</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ABOUT ── -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-num">01</span>
+            <h2 class="section-title">About</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="fade-in">
+                    I'm a Data Science &amp; Engineering student at URJC in Madrid, and I find the most
+                    interesting problems in machine learning aren't the models — they're the systems around
+                    them. What happens when the data is too big to fit in RAM? How do you keep a pipeline
+                    running reliably at scale? How do you make a model actually useful after training?
+                    That's where I want to work.
+                </p>
+                <p class="fade-in fade-in-delay-1">
+                    I started out studying Telecommunications Engineering at UC3M, where I completed
+                    over 120 credits before transferring. That background gave me a stronger mathematical
+                    foundation than most data science programs — signal processing, linear algebra, probability
+                    theory — and I think it shows in how I approach modeling problems.
+                </p>
+                <p class="fade-in fade-in-delay-2">
+                    My projects span the full data stack: statistical modeling in R (GLMs, GAMs),
+                    applied ML in Python (scikit-learn, PyTorch, XGBoost), and data engineering with
+                    the tools people actually use in production — Airflow, Kafka, Spark, Hadoop.
+                    I like understanding things well enough to build them from scratch, then knowing
+                    when not to.
+                </p>
+            </div>
+            <div class="about-sidebar fade-in fade-in-delay-1">
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Data Engineering</p>
+                    <div class="tags">
+                        <span class="tag-pill">Apache Airflow</span>
+                        <span class="tag-pill">Apache Kafka</span>
+                        <span class="tag-pill">PySpark</span>
+                        <span class="tag-pill">Hadoop / HDFS</span>
+                        <span class="tag-pill">MapReduce</span>
+                        <span class="tag-pill">Docker</span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <p class="sidebar-label">ML / Modeling</p>
+                    <div class="tags">
+                        <span class="tag-pill">scikit-learn</span>
+                        <span class="tag-pill">PyTorch</span>
+                        <span class="tag-pill">XGBoost</span>
+                        <span class="tag-pill">CNN</span>
+                        <span class="tag-pill">LLM</span>
+                        <span class="tag-pill">Time Series</span>
+                        <span class="tag-pill">Incremental PCA</span>
+                        <span class="tag-pill">SMOTE</span>
+                        <span class="tag-pill">SVM / MLP</span>
+                        <span class="tag-pill">GAM / GLM</span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Languages & Tools</p>
+                    <div class="tags">
+                        <span class="tag-pill">Python</span>
+                        <span class="tag-pill">R</span>
+                        <span class="tag-pill">C</span>
+                        <span class="tag-pill">SQL</span>
+                        <span class="tag-pill">Bash</span>
+                        <span class="tag-pill">Excel</span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <p class="sidebar-label">HPC</p>
+                    <div class="tags">
+                        <span class="tag-pill">OpenMP</span>
+                        <span class="tag-pill">MPI</span>
+                        <span class="tag-pill">CUDA</span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Spoken languages</p>
+                    <div class="tags">
+                        <span class="tag-pill">Spanish — native</span>
+                        <span class="tag-pill">English — C2</span>
+                        <span class="tag-pill">German — B2</span>
+                        <span class="tag-pill">Chinese — HSK3</span>
+                    </div>
+                </div>
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Education</p>
+                    <div class="tags">
+                        <span class="tag-pill">URJC — DS&E (2024–)</span>
+                        <span class="tag-pill">UC3M — Telecom (2020–24, 120+ cr.)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience">
+        <div class="section-header fade-in">
+            <span class="section-num">02</span>
+            <h2 class="section-title">Experience</h2>
+        </div>
+        <div class="experience-list">
+
+            <div class="exp-item fade-in">
+                <div class="exp-meta">
+                    <span class="exp-date">2025 — Present</span>
+                    <span class="exp-type">Community</span>
+                </div>
+                <div class="exp-content">
+                    <h3 class="exp-role">Founder & President — Datalab</h3>
+                    <p class="exp-org">URJC · Madrid</p>
+                    <p class="exp-desc">
+                        Founded the data science student association at URJC to build a community around ML,
+                        data engineering, and applied research beyond the curriculum. Running the organization,
+                        coordinating members, and building towards the first collaborative projects and workshops.
+                        The goal: make it easier for students to work on real problems together.
+                    </p>
+                </div>
+            </div>
+
+            <div class="exp-item fade-in fade-in-delay-1">
+                <div class="exp-meta">
+                    <span class="exp-date">2020 — Present</span>
+                    <span class="exp-type">Teaching · 5 years</span>
+                </div>
+                <div class="exp-content">
+                    <h3 class="exp-role">Math & Physics Tutor</h3>
+                    <p class="exp-org">Self-employed · Madrid</p>
+                    <p class="exp-desc">
+                        Five years tutoring high school students in mathematics and physics — calculus,
+                        linear algebra, mechanics, electromagnetism. Prepared students for university
+                        entrance exams (Selectividad). Teaching this long forces you to explain things
+                        clearly and find multiple ways into a problem, which turns out to be useful
+                        in data science too.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── INTERESTS & CURRENTLY LEARNING ── -->
+    <section id="interests">
+        <div class="section-header fade-in">
+            <span class="section-num">03</span>
+            <h2 class="section-title">Interests & Currently Learning</h2>
+        </div>
+        <div class="interests-grid">
+            <div class="interests-col fade-in">
+                <p class="interests-col-title">What I find interesting</p>
+                <ul class="interests-list">
+                    <li>Data engineering and pipeline architecture — making ML actually work at scale</li>
+                    <li>Distributed systems and streaming — Kafka, Spark, the real-time side of data</li>
+                    <li>High-performance computing — writing code that uses hardware properly</li>
+                    <li>The statistics behind ML models — not just using them, understanding them</li>
+                    <li>Languages — currently working towards HSK4 in Chinese</li>
+                    <li>Teaching — explaining hard things clearly is a skill I keep developing</li>
+                </ul>
+            </div>
+            <div class="interests-col fade-in fade-in-delay-1">
+                <p class="interests-col-title">Currently learning</p>
+                <div class="learning-item">
+                    <span class="learning-name">OpenMP · MPI · CUDA</span>
+                    <span class="learning-desc">High Performance Computing course — shared memory, distributed memory, GPU programming</span>
+                </div>
+                <div class="learning-item">
+                    <span class="learning-name">Chinese — HSK3 → HSK4</span>
+                    <span class="learning-desc">Working towards the next proficiency level</span>
+                </div>
+                <div class="learning-item">
+                    <span class="learning-name">LLM fine-tuning & deployment</span>
+                    <span class="learning-desc">PyTorch, transformer architectures, practical fine-tuning workflows</span>
+                </div>
+                <div class="learning-item">
+                    <span class="learning-name">Building Datalab</span>
+                    <span class="learning-desc">Organization, community building, running collaborative technical projects</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── STACK ── -->
+    <section id="stack">
+        <div class="section-header fade-in">
+            <span class="section-num">04</span>
+            <h2 class="section-title">Stack</h2>
+        </div>
+        <div class="stack-grid fade-in">
+            <div class="stack-col">
+                <p class="stack-col-title">Engineering</p>
+                <ul class="stack-list">
+                    <li class="stack-item">
+                        <span class="stack-name">Apache Airflow</span>
+                        <span class="stack-desc">DAG orchestration across 2 pipeline projects; TaskFlow API</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">Apache Kafka</span>
+                        <span class="stack-desc">Event streaming, acks=all producers, sub-batch delivery</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">PySpark</span>
+                        <span class="stack-desc">DStreams real-time windowed aggregation with inverse reduction</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">Hadoop / HDFS</span>
+                        <span class="stack-desc">MapReduce batch jobs on 314MB+ datasets; YARN job submission</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">Docker / Compose</span>
+                        <span class="stack-desc">Containerized Hadoop clusters and Kafka brokers from scratch</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">pandas / NumPy</span>
+                        <span class="stack-desc">Chunked processing of 1M+ row datasets without OOM</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="stack-col">
+                <p class="stack-col-title">ML & Statistics</p>
+                <ul class="stack-list">
+                    <li class="stack-item">
+                        <span class="stack-name">scikit-learn</span>
+                        <span class="stack-desc">Classification pipelines, StandardScaler, OHE, RFECV, PCA</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">PyTorch</span>
+                        <span class="stack-desc">CNNs, LLM fine-tuning, custom training loops</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">XGBoost</span>
+                        <span class="stack-desc">Gradient boosting for churn and risk prediction</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">Time Series</span>
+                        <span class="stack-desc">Forecasting, decomposition, stationarity testing</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">imbalanced-learn</span>
+                        <span class="stack-desc">SMOTE for class imbalance on medical datasets</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">R / mgcv</span>
+                        <span class="stack-desc">GAMs, GLMs, Gamma/Inverse Gaussian regression, statistical inference</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">From scratch</span>
+                        <span class="stack-desc">Naive Bayes, AdaBoost, K-NN implemented by hand and benchmarked</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="stack-grid fade-in fade-in-delay-1">
+            <div class="stack-col">
+                <p class="stack-col-title">High Performance Computing</p>
+                <ul class="stack-list">
+                    <li class="stack-item">
+                        <span class="stack-name">OpenMP</span>
+                        <span class="stack-desc">Shared-memory parallelism, thread management, loop parallelization</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">MPI</span>
+                        <span class="stack-desc">Distributed-memory communication, collective operations</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">CUDA</span>
+                        <span class="stack-desc">GPU kernel programming, memory hierarchy, parallel reduction</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="stack-col">
+                <p class="stack-col-title">Other</p>
+                <ul class="stack-list">
+                    <li class="stack-item">
+                        <span class="stack-name">C</span>
+                        <span class="stack-desc">Systems programming, memory management, HPC coursework</span>
+                    </li>
+                    <li class="stack-item">
+                        <span class="stack-name">Excel</span>
+                        <span class="stack-desc">Data analysis, pivot tables, advanced formulas</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
+        <div class="section-header fade-in">
+            <span class="section-num">05</span>
+            <h2 class="section-title">Projects</h2>
+        </div>
+
+        <div class="filter-bar fade-in">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="engineering">Engineering</button>
+            <button class="filter-btn" data-filter="ml">ML</button>
+            <button class="filter-btn" data-filter="statistics">Statistics</button>
+        </div>
+
+        <div class="projects-wrap">
+
+            <div class="project-card fade-in" data-cat="engineering">
+                <p class="project-meta">01 — Data Engineering / MLOps</p>
+                <h3 class="project-title">TripAdvisor Restaurants Pipeline</h3>
+                <p class="project-desc">
+                    End-to-end data pipeline processing ~1.08M rows of European restaurant data.
+                    Five-stage DAG orchestrated with Apache Airflow: extract, clean, EDA, preprocessing,
+                    and streaming to Kafka. Every stage processes data in 50k-row chunks to avoid memory
+                    overload. Incremental PCA and StandardScaler fitted batch by batch using
+                    <code>partial_fit</code>. All parameters centralized in a single <code>config.toml</code>.
+                </p>
+                <p class="project-callout">→ Incremental PCA + StandardScaler, acks=all Kafka producer, chunked throughout</p>
+                <div class="project-tags">
+                    <span class="tag-dark">Airflow</span>
+                    <span class="tag-dark">Kafka</span>
+                    <span class="tag-dark">Docker</span>
+                    <span class="tag-dark">scikit-learn</span>
+                    <span class="tag-dark">Incremental PCA</span>
+                    <span class="tag-dark">Python</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in fade-in-delay-1" data-cat="engineering">
+                <p class="project-meta">02 — Streaming / Distributed</p>
+                <h3 class="project-title">Real-Time Hashtag Trending</h3>
+                <p class="project-desc">
+                    Distributed real-time trending analysis using PySpark DStreams. Connects to a TCP
+                    tweet feed, filters for US-only content, and uses a 5-minute sliding window with
+                    10-second slide intervals to rank hashtags. Uses inverse reduction functions for
+                    incremental window recalculation — only processes new arrivals and expired tweets
+                    instead of recomputing the full window each slide.
+                </p>
+                <p class="project-callout">→ Sliding window with invFunc — O(slide interval), not O(window size)</p>
+                <div class="project-tags">
+                    <span class="tag-dark">PySpark</span>
+                    <span class="tag-dark">DStreams</span>
+                    <span class="tag-dark">Windowing</span>
+                    <span class="tag-dark">Python</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in" data-cat="engineering">
+                <p class="project-meta">03 — Data Engineering</p>
+                <h3 class="project-title">Hadoop Sentiment Analysis</h3>
+                <p class="project-desc">
+                    AFINN-111 lexicon sentiment scoring on a 314MB Twitter JSON dataset using MapReduce
+                    on a fully Dockerized Hadoop cluster. Set up HDFS, YARN, and custom Docker images
+                    from scratch. Shell-scripted HDFS file upload and job submission — the kind of
+                    deployment automation that matters when working with distributed infrastructure.
+                </p>
+                <p class="project-callout">→ 314MB dataset, full Hadoop cluster in Docker Compose, automated deploy script</p>
+                <div class="project-tags">
+                    <span class="tag-dark">Hadoop</span>
+                    <span class="tag-dark">MapReduce</span>
+                    <span class="tag-dark">HDFS / YARN</span>
+                    <span class="tag-dark">Docker Compose</span>
+                    <span class="tag-dark">Python</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in fade-in-delay-1" data-cat="ml">
+                <p class="project-meta">04 — Applied ML</p>
+                <h3 class="project-title">Stroke Risk Prediction</h3>
+                <p class="project-desc">
+                    Binary classification of stroke risk on a heavily imbalanced medical dataset. Made
+                    a deliberate decision to optimize for Recall over Accuracy — in clinical settings,
+                    a missed positive costs far more than a false alarm. SMOTE for class imbalance,
+                    RFECV to reduce features from 20+ down to 12. Compared Logistic Regression, MLP,
+                    LinearSVC, and RBF-SVM; correctly diagnosed RBF-SVM's failure mode (overfitting
+                    to the majority class despite high accuracy).
+                </p>
+                <p class="project-callout">→ Logistic Regression: 0.88 Recall, 0.84 AUC on validation set</p>
+                <div class="project-tags">
+                    <span class="tag-dark">scikit-learn</span>
+                    <span class="tag-dark">SMOTE</span>
+                    <span class="tag-dark">RFECV</span>
+                    <span class="tag-dark">SVM</span>
+                    <span class="tag-dark">MLP</span>
+                    <span class="tag-dark">Python</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in" data-cat="ml">
+                <p class="project-meta">05 — ML from Scratch</p>
+                <h3 class="project-title">Bank Customer Churn</h3>
+                <p class="project-desc">
+                    Churn prediction with XGBoost plus a research component: Naive Bayes, AdaBoost,
+                    and K-NN implemented from mathematical first principles in base R, then benchmarked
+                    against library versions. The hand-rolled Naive Bayes outperformed the library on
+                    Recall — 34.55% vs 23.24% — because understanding the math let me tune it directly.
+                    XGBoost won overall after PCA for dimensionality reduction and K-Means for customer
+                    segmentation.
+                </p>
+                <p class="project-callout">→ Manual NB: 34.55% Recall vs library 23.24% — the math matters</p>
+                <div class="project-tags">
+                    <span class="tag-dark">R</span>
+                    <span class="tag-dark">XGBoost</span>
+                    <span class="tag-dark">PCA</span>
+                    <span class="tag-dark">K-Means</span>
+                    <span class="tag-dark">AdaBoost</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in fade-in-delay-1" data-cat="statistics">
+                <p class="project-meta">06 — Statistical Modeling</p>
+                <h3 class="project-title">Forest Fire Prediction</h3>
+                <p class="project-desc">
+                    Regression study predicting burned area in Montesinho Natural Park. Moved beyond OLS
+                    to address heteroscedasticity and zero-inflation with Gamma GLMs, Inverse Gaussian
+                    GLMs, and GAMs with smoothing splines via <code>mgcv</code>. The GAMs revealed
+                    non-linear threshold effects for temperature and Drought Code that OLS and GLMs
+                    missed entirely — a reminder that model choice is a scientific decision, not a default.
+                </p>
+                <p class="project-callout">→ GAMs uncovered non-linearities invisible to OLS and GLMs</p>
+                <div class="project-tags">
+                    <span class="tag-dark">R</span>
+                    <span class="tag-dark">GAM</span>
+                    <span class="tag-dark">GLM</span>
+                    <span class="tag-dark">mgcv</span>
+                    <span class="tag-dark">tidyverse</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+        <div class="contact-layout">
+            <div class="fade-in">
+                <h2 class="contact-heading">Let's<br><span class="accent">talk.</span></h2>
+                <p class="contact-body">
+                    Looking for internships, junior roles, or just interesting conversations about
+                    data engineering and ML systems. Based in Madrid, open to remote.
+                </p>
+                <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-dark">Send an email</a>
+            </div>
+            <div class="contact-links fade-in fade-in-delay-1">
+                <div class="contact-item">
+                    <span class="contact-item-label">Email</span>
+                    <div class="contact-item-row">
+                        <a href="mailto:gonza.c.gomez03@gmail.com">gonza.c.gomez03@gmail.com</a>
+                        <button class="copy-btn" id="copyEmailBtn" data-email="gonza.c.gomez03@gmail.com">copy</button>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-label">LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank">gonzalo-cruz-gomez</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-item-label">GitHub</span>
+                    <a href="https://github.com/gonzalo-cruz" target="_blank">gonzalo-cruz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="footer-mono">Gonzalo Cruz Gómez — 2026</span>
+        <span class="footer-mono">Built with HTML &amp; CSS</span>
+    </footer>
+
+</div>
+
+<script>
+    // ── DARK MODE ──
+    const themeBtn = document.getElementById('themeBtn');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('theme') || 'light';
+    html.dataset.theme = saved;
+    themeBtn.textContent = saved === 'dark' ? '◑ light' : '◐ dark';
+
+    themeBtn.addEventListener('click', () => {
+        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
+        html.dataset.theme = next;
+        localStorage.setItem('theme', next);
+        themeBtn.textContent = next === 'dark' ? '◑ light' : '◐ dark';
+    });
+
+    // ── ACTIVE NAV ──
+    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navLinks.forEach(a => a.classList.remove('active'));
+                const active = document.querySelector(`.nav-links a[data-nav="${entry.target.id}"]`);
+                if (active) active.classList.add('active');
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
+
+    // ── SCROLL FADE-IN ──
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.08 });
+
+    fadeEls.forEach(el => fadeObserver.observe(el));
+
+    // ── PROJECT FILTER ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            cards.forEach(card => {
+                card.hidden = filter !== 'all' && card.dataset.cat !== filter;
+            });
+        });
+    });
+
+    // ── COPY EMAIL ──
+    const copyBtn = document.getElementById('copyEmailBtn');
+    copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(copyBtn.dataset.email).then(() => {
+            copyBtn.textContent = 'copied!';
+            copyBtn.classList.add('copied');
+            setTimeout(() => {
+                copyBtn.textContent = 'copy';
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        });
+    });
+</script>
+
+</body>
+</html>
