@@ -763,58 +763,6 @@
             cursor: pointer;
         }
 
-        /* ── WRITING ── */
-        .writing-list {
-            display: flex;
-            flex-direction: column;
-            border: 1px solid var(--border);
-        }
-
-        .writing-item {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 2rem;
-            align-items: center;
-            padding: 1.5rem 1.75rem;
-            border-bottom: 1px solid var(--border);
-            transition: background 0.15s;
-            cursor: pointer;
-        }
-        .writing-item:last-child { border-bottom: none; }
-        .writing-item:hover { background: var(--bg-card); }
-        .writing-item:hover .writing-arrow { color: var(--accent); }
-
-        .writing-title {
-            font-size: 1.05rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-        }
-
-        .writing-meta {
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            color: var(--muted);
-            margin-top: 0.3rem;
-        }
-
-        .writing-status {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            padding: 0.2rem 0.55rem;
-            border: 1px solid var(--border);
-            border-radius: 2px;
-            color: var(--muted);
-            white-space: nowrap;
-        }
-
-        .writing-arrow {
-            font-family: var(--mono);
-            font-size: 0.85rem;
-            color: var(--muted);
-            transition: color 0.15s;
-        }
-
         /* ── RESPONSIVE ── */
         @media (max-width: 820px) {
             nav { padding: 0 1.25rem; }
@@ -843,8 +791,7 @@
             <li><a href="#experience" data-nav="experience">Experience</a></li>
             <li><a href="#stack"      data-nav="stack">Stack</a></li>
             <li><a href="#projects"   data-nav="projects">Projects</a></li>
-            <li><a href="#writing"    data-nav="writing">Writing</a></li>
-            <li><a href="#contact"    data-nav="contact">Contact</a></li>
+<li><a href="#contact"    data-nav="contact">Contact</a></li>
         </ul>
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">◐ dark</button>
     </div>
@@ -1460,38 +1407,6 @@
         </div>
     </section>
 
-    <!-- ── WRITING ── -->
-    <section id="writing">
-        <div class="section-header fade-in">
-            <span class="section-num">06</span>
-            <h2 class="section-title">Writing</h2>
-        </div>
-        <p style="font-size:0.9rem; opacity:0.6; margin-bottom:2rem; max-width:520px;" class="fade-in">Essays on technology, mathematics, and ideas. Written slowly.</p>
-        <div class="writing-list fade-in">
-            <div class="writing-item" onclick="openModal('essay-1')">
-                <div>
-                    <p class="writing-title">GenAI and art, the algorithmic mirror</p>
-                    <p class="writing-meta">Technology &amp; Culture</p>
-                </div>
-                <span class="writing-arrow">→</span>
-            </div>
-            <div class="writing-item" onclick="openModal('essay-2')">
-                <div>
-                    <p class="writing-title">The death of aesthetics</p>
-                    <p class="writing-meta">Philosophy</p>
-                </div>
-                <span class="writing-arrow">→</span>
-            </div>
-            <div class="writing-item" onclick="openModal('essay-3')">
-                <div>
-                    <p class="writing-title">Economic plannification and AI</p>
-                    <p class="writing-meta">Economics &amp; Technology</p>
-                </div>
-                <span class="writing-arrow">→</span>
-            </div>
-        </div>
-    </section>
-
     <!-- ── CONTACT ── -->
     <section id="contact">
         <div class="contact-layout">
@@ -1722,46 +1637,6 @@
                 <p>Fully interrupt-driven: TIM2 captures ultrasonic echo pulses, TIM3 generates PWM for motor speed, USART2 handles async Bluetooth commands, GPIO manages direction. Soft braking — progressive PWM duty cycle reduction rather than abrupt stop — protects the drivetrain from mechanical stress.</p>
             </div>
             <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank">View on GitHub ↗</a></div>
-        </div>
-    </div>
-
-    <!-- ── ESSAY MODALS ── -->
-    <div class="modal-backdrop" id="essay-1">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('essay-1')">close ×</button>
-            <div class="modal-header">
-                <p class="modal-meta">Technology &amp; Culture</p>
-                <h2 class="modal-title">GenAI and art, the algorithmic mirror</h2>
-            </div>
-            <div class="modal-section">
-                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-backdrop" id="essay-2">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('essay-2')">close ×</button>
-            <div class="modal-header">
-                <p class="modal-meta">Philosophy</p>
-                <h2 class="modal-title">The death of aesthetics</h2>
-            </div>
-            <div class="modal-section">
-                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-backdrop" id="essay-3">
-        <div class="modal">
-            <button class="modal-close" onclick="closeModal('essay-3')">close ×</button>
-            <div class="modal-header">
-                <p class="modal-meta">Economics &amp; Technology</p>
-                <h2 class="modal-title">Economic plannification and AI</h2>
-            </div>
-            <div class="modal-section">
-                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
-            </div>
         </div>
     </div>
 
