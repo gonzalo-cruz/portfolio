@@ -642,6 +642,170 @@
         footer { padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
         .footer-mono { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); }
 
+        /* ── PROJECT VISUAL ── */
+        .project-visual {
+            width: 100%;
+            height: 56px;
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+            opacity: 0.55;
+        }
+        .project-visual svg { width: 100%; height: 100%; }
+
+        /* ── MODAL ── */
+        .modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .modal-backdrop.open { display: flex; }
+
+        .modal {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            max-width: 640px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.25rem;
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: all 0.15s;
+        }
+        .modal-close:hover { color: var(--text); border-color: var(--text); }
+
+        .modal-header { margin-bottom: 1.5rem; }
+
+        .modal-meta {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+        }
+
+        .modal-section { margin-bottom: 1.25rem; }
+
+        .modal-section-label {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.6rem;
+        }
+
+        .modal-section p { font-size: 0.9rem; line-height: 1.75; opacity: 0.8; }
+
+        .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+
+        .modal-section ul li {
+            font-size: 0.875rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+        }
+        .modal-section ul li::before {
+            content: '→';
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .modal-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
+
+        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border); }
+        .modal-footer a {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 1px;
+            transition: color 0.15s;
+        }
+        .modal-footer a:hover { color: var(--accent); }
+
+        .project-detail-btn {
+            margin-top: 0.5rem;
+            background: none;
+            border: none;
+            padding: 0;
+            font-family: var(--sans);
+            cursor: pointer;
+        }
+
+        /* ── WRITING ── */
+        .writing-list {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border);
+        }
+
+        .writing-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            padding: 1.5rem 1.75rem;
+            border-bottom: 1px solid var(--border);
+            transition: background 0.15s;
+        }
+        .writing-item:last-child { border-bottom: none; }
+        .writing-item:hover { background: var(--bg-card); }
+
+        .writing-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .writing-meta {
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
+        }
+
+        .writing-status {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            padding: 0.2rem 0.55rem;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 820px) {
             nav { padding: 0 1.25rem; }
@@ -670,6 +834,7 @@
             <li><a href="#experience" data-nav="experience">Experience</a></li>
             <li><a href="#stack"      data-nav="stack">Stack</a></li>
             <li><a href="#projects"   data-nav="projects">Projects</a></li>
+            <li><a href="#writing"    data-nav="writing">Writing</a></li>
             <li><a href="#contact"    data-nav="contact">Contact</a></li>
         </ul>
         <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">◐ dark</button>
@@ -690,7 +855,7 @@
             From statistical modeling to distributed systems — I care about the whole stack.
         </p>
         <div class="hero-cta">
-            <a href="cv.pdf" download class="btn btn-dark">Download CV ↓</a>
+            <a href="CV.pdf" download class="btn btn-dark">Download CV ↓</a>
             <a href="https://github.com/gonzalo-cruz" target="_blank" class="btn btn-outline">GitHub ↗</a>
             <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
             <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-outline">Email</a>
@@ -1025,6 +1190,19 @@
         <div class="projects-wrap">
 
             <div class="project-card fade-in" data-cat="engineering">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="24" r="6" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="26" y1="24" x2="50" y2="24" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <circle cx="56" cy="24" r="6" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="62" y1="24" x2="86" y2="24" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <circle cx="92" cy="24" r="6" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="98" y1="24" x2="122" y2="24" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <circle cx="128" cy="24" r="6" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="134" y1="24" x2="158" y2="24" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <circle cx="164" cy="24" r="6" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent)" fill-opacity="0.12"/>
+                    </svg>
+                </div>
                 <p class="project-meta">01 — Data Engineering / MLOps</p>
                 <h3 class="project-title">TripAdvisor Restaurants Pipeline</h3>
                 <p class="project-desc">
@@ -1044,9 +1222,17 @@
                     <span class="tag-dark">Python</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-1')">Details +</button>
             </div>
 
             <div class="project-card fade-in fade-in-delay-1" data-cat="engineering">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="10,24 30,12 50,36 70,12 90,36 110,12 130,36 150,12 170,36 190,24" stroke="var(--border)" stroke-width="1.5" fill="none"/>
+                        <polyline points="90,36 110,12 130,36" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                        <circle cx="110" cy="12" r="3" fill="var(--accent)" fill-opacity="0.4"/>
+                    </svg>
+                </div>
                 <p class="project-meta">02 — Streaming / Distributed</p>
                 <h3 class="project-title">Real-Time Hashtag Trending</h3>
                 <p class="project-desc">
@@ -1064,9 +1250,23 @@
                     <span class="tag-dark">Python</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-2')">Details +</button>
             </div>
 
             <div class="project-card fade-in" data-cat="engineering">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="28" cy="12" r="5" stroke="var(--border)" stroke-width="1.5"/>
+                        <circle cx="28" cy="24" r="5" stroke="var(--border)" stroke-width="1.5"/>
+                        <circle cx="28" cy="36" r="5" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="33" y1="12" x2="90" y2="24" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="33" y1="24" x2="90" y2="24" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="33" y1="36" x2="90" y2="24" stroke="var(--border)" stroke-width="1"/>
+                        <circle cx="96" cy="24" r="8" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent)" fill-opacity="0.1"/>
+                        <line x1="104" y1="24" x2="138" y2="24" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <rect x="138" y="16" width="22" height="16" rx="2" stroke="var(--border)" stroke-width="1.5"/>
+                    </svg>
+                </div>
                 <p class="project-meta">03 — Data Engineering</p>
                 <h3 class="project-title">Hadoop Sentiment Analysis</h3>
                 <p class="project-desc">
@@ -1084,9 +1284,19 @@
                     <span class="tag-dark">Python</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-3')">Details +</button>
             </div>
 
             <div class="project-card fade-in fade-in-delay-1" data-cat="ml">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line x1="18" y1="42" x2="18" y2="8" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="18" y1="42" x2="188" y2="42" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="18" y1="42" x2="188" y2="8" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <path d="M 18 42 Q 18 10, 188 8" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                        <circle cx="140" cy="16" r="3" fill="var(--accent)" fill-opacity="0.5"/>
+                    </svg>
+                </div>
                 <p class="project-meta">04 — Applied ML</p>
                 <h3 class="project-title">Stroke Risk Prediction</h3>
                 <p class="project-desc">
@@ -1107,9 +1317,23 @@
                     <span class="tag-dark">Python</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-4')">Details +</button>
             </div>
 
             <div class="project-card fade-in" data-cat="ml">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="8" r="5" stroke="var(--border)" stroke-width="1.5"/>
+                        <line x1="97" y1="13" x2="62" y2="28" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="103" y1="13" x2="138" y2="28" stroke="var(--border)" stroke-width="1"/>
+                        <circle cx="56" cy="32" r="5" stroke="var(--border)" stroke-width="1.5"/>
+                        <circle cx="144" cy="32" r="5" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent)" fill-opacity="0.12"/>
+                        <line x1="53" y1="37" x2="38" y2="44" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="59" y1="37" x2="74" y2="44" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="141" y1="37" x2="126" y2="44" stroke="var(--border)" stroke-width="1"/>
+                        <line x1="147" y1="37" x2="162" y2="44" stroke="var(--border)" stroke-width="1"/>
+                    </svg>
+                </div>
                 <p class="project-meta">05 — ML from Scratch</p>
                 <h3 class="project-title">Bank Customer Churn</h3>
                 <p class="project-desc">
@@ -1129,9 +1353,20 @@
                     <span class="tag-dark">AdaBoost</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-5')">Details +</button>
             </div>
 
             <div class="project-card fade-in fade-in-delay-1" data-cat="ml statistics">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="38" r="2" fill="var(--muted)"/><circle cx="48" cy="32" r="2" fill="var(--muted)"/>
+                        <circle cx="62" cy="30" r="2" fill="var(--muted)"/><circle cx="78" cy="24" r="2" fill="var(--muted)"/>
+                        <circle cx="94" cy="22" r="2" fill="var(--muted)"/><circle cx="108" cy="28" r="2" fill="var(--muted)"/>
+                        <circle cx="124" cy="16" r="2" fill="var(--muted)"/><circle cx="140" cy="14" r="2" fill="var(--muted)"/>
+                        <circle cx="156" cy="20" r="2" fill="var(--muted)"/><circle cx="170" cy="10" r="2" fill="var(--muted)"/>
+                        <path d="M 28 40 Q 80 30, 105 22 Q 135 10, 175 8" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                    </svg>
+                </div>
                 <p class="project-meta">06 — Statistical Modeling / ML</p>
                 <h3 class="project-title">Forest Fire Prediction</h3>
                 <p class="project-desc">
@@ -1150,9 +1385,18 @@
                     <span class="tag-dark">tidyverse</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-6')">Details +</button>
             </div>
 
             <div class="project-card fade-in" data-cat="engineering">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="20" cy="24" r="6" stroke="var(--border)" stroke-width="1.5"/>
+                        <path d="M 26 24 L 60 24 Q 70 24, 75 14 L 95 14 Q 100 14, 105 24 L 180 24" stroke="var(--border)" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+                        <rect x="68" y="18" width="34" height="20" rx="2" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent)" fill-opacity="0.08"/>
+                        <circle cx="186" cy="24" r="6" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent)" fill-opacity="0.12"/>
+                    </svg>
+                </div>
                 <p class="project-meta">07 — Embedded Systems / Robotics</p>
                 <h3 class="project-title">Dual-Mode RC Robot</h3>
                 <p class="project-desc">
@@ -1172,8 +1416,41 @@
                     <span class="tag-dark">Embedded</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-7')">Details +</button>
             </div>
 
+        </div>
+    </section>
+
+    <!-- ── WRITING ── -->
+    <section id="writing">
+        <div class="section-header fade-in">
+            <span class="section-num">06</span>
+            <h2 class="section-title">Writing</h2>
+        </div>
+        <p style="font-size:0.9rem; opacity:0.6; margin-bottom:2rem; max-width:520px;" class="fade-in">Essays on technology, mathematics, and ideas. Written slowly.</p>
+        <div class="writing-list fade-in">
+            <div class="writing-item">
+                <div>
+                    <p class="writing-title">GenAI and art, the algorithmic mirror</p>
+                    <p class="writing-meta">Technology &amp; Culture</p>
+                </div>
+                <span class="writing-status">in progress</span>
+            </div>
+            <div class="writing-item">
+                <div>
+                    <p class="writing-title">The death of aesthetics</p>
+                    <p class="writing-meta">Philosophy</p>
+                </div>
+                <span class="writing-status">in progress</span>
+            </div>
+            <div class="writing-item">
+                <div>
+                    <p class="writing-title">Economic plannification and AI</p>
+                    <p class="writing-meta">Economics &amp; Technology</p>
+                </div>
+                <span class="writing-status">in progress</span>
+            </div>
         </div>
     </section>
 
@@ -1208,9 +1485,211 @@
         </div>
     </section>
 
+    <!-- ── MODALS ── -->
+    <div class="modal-backdrop" id="modal-1">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-1')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">01 — Data Engineering / MLOps</p>
+                <h2 class="modal-title">TripAdvisor Restaurants Pipeline</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">Airflow</span><span class="tag-dark">Kafka</span><span class="tag-dark">Docker</span><span class="tag-dark">scikit-learn</span><span class="tag-dark">Incremental PCA</span><span class="tag-dark">Python</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>End-to-end data pipeline processing ~1.08M rows of European TripAdvisor restaurant data. The core constraint was memory: the dataset can't fit in RAM, so every stage processes data in 50k-row chunks from first to last.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Architecture</p>
+                <ul>
+                    <li>5-stage Airflow DAG using TaskFlow API: Extract → Clean → EDA → Preprocess → Stream</li>
+                    <li>IncrementalPCA and StandardScaler fitted via <code>partial_fit</code> — online learning, no full dataset in memory</li>
+                    <li>OHE vs label encoding chosen per column based on cardinality thresholds</li>
+                    <li>Kafka producer with <code>acks=all</code> and sub-batch delivery for fault tolerance</li>
+                    <li>All parameters (chunk size, thresholds, Kafka config) centralized in a single <code>config.toml</code></li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Key challenge</p>
+                <p>Making scikit-learn transformers work incrementally. The standard <code>fit/transform</code> API requires the full dataset. Switching to <code>partial_fit</code> required careful state management — the fitted transformers had to persist across chunk iterations and be reused for the transform pass.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-2">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-2')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">02 — Streaming / Distributed</p>
+                <h2 class="modal-title">Real-Time Hashtag Trending</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">PySpark</span><span class="tag-dark">DStreams</span><span class="tag-dark">Windowing</span><span class="tag-dark">Python</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Distributed real-time trending analysis using PySpark DStreams. Connects to a live TCP tweet feed, filters for US-only content, and maintains a 5-minute sliding window with 10-second slide intervals to rank hashtags continuously.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">The interesting part</p>
+                <p>The naive approach — recomputing the full window on each slide — is O(window size). Instead, the pipeline uses inverse reduction functions (<code>invFunc</code>): on each slide, only new arrivals are added and expired tweets are subtracted. This makes each update O(slide interval), not O(window size). A 5-minute window with 10-second slides is 30x cheaper per update.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Stack decisions</p>
+                <ul>
+                    <li>DStreams over Structured Streaming — lower-level, but invFunc is not available in the Structured API</li>
+                    <li>TCP socket source simulates a real-time feed for local testing</li>
+                </ul>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-3">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-3')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">03 — Data Engineering</p>
+                <h2 class="modal-title">Hadoop Sentiment Analysis</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">Hadoop</span><span class="tag-dark">MapReduce</span><span class="tag-dark">HDFS / YARN</span><span class="tag-dark">Docker Compose</span><span class="tag-dark">Python</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>AFINN-111 lexicon sentiment scoring on a 314MB Twitter JSON dataset using MapReduce on a fully Dockerized Hadoop cluster. The goal was to build and operate the infrastructure from scratch, not just run a managed service.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Infrastructure</p>
+                <ul>
+                    <li>Multi-node Hadoop cluster (NameNode + DataNodes) set up with Docker Compose and custom images</li>
+                    <li>HDFS for distributed storage, YARN for resource management and job scheduling</li>
+                    <li>Shell-scripted HDFS file upload and MapReduce job submission — fully automated deploy</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">MapReduce design</p>
+                <p>Mapper tokenizes tweet text and scores each token against the AFINN lexicon. Reducer aggregates per-tweet scores. The Dockerized setup means the entire cluster can be reproduced with a single <code>docker compose up</code>.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-4">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-4')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">04 — Applied ML</p>
+                <h2 class="modal-title">Stroke Risk Prediction</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">scikit-learn</span><span class="tag-dark">SMOTE</span><span class="tag-dark">RFECV</span><span class="tag-dark">SVM</span><span class="tag-dark">MLP</span><span class="tag-dark">Python</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Binary classification of stroke risk on a heavily imbalanced medical dataset (5110 patients, ~5% positive). The core decision was to optimize for Recall over Accuracy — in a clinical setting, a missed stroke costs far more than a false alarm.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Pipeline</p>
+                <ul>
+                    <li>SMOTE for class imbalance — synthetic oversampling of the minority class</li>
+                    <li>RFECV for feature selection: 20+ features reduced to 12 most predictive</li>
+                    <li>Decision threshold tuned post-training to maximize Recall on validation</li>
+                    <li>Models compared: Logistic Regression, MLP, LinearSVC, RBF-SVM</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Results</p>
+                <p>Logistic Regression won with <strong>0.88 Recall</strong> and <strong>0.84 AUC</strong> on the validation set. RBF-SVM achieved high accuracy but failed on Recall — it was predicting the majority class almost exclusively. Diagnosing that failure mode was the most instructive part of the project.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-5">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-5')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">05 — ML from Scratch</p>
+                <h2 class="modal-title">Bank Customer Churn</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">XGBoost</span><span class="tag-dark">PCA</span><span class="tag-dark">K-Means</span><span class="tag-dark">AdaBoost</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Churn prediction on 10,000 bank customers with a research component: Naive Bayes, AdaBoost, and K-NN implemented from mathematical first principles in base R, then benchmarked against library implementations.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">The from-scratch experiment</p>
+                <p>The hand-rolled Naive Bayes outperformed the library version on Recall — <strong>34.55% vs 23.24%</strong>. The reason: the library applies Laplace smoothing by default, which dampens probabilities for rare classes. Implementing it from scratch meant I could tune this directly for the imbalanced dataset.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Full pipeline</p>
+                <ul>
+                    <li>PCA for dimensionality reduction before boosted models</li>
+                    <li>K-Means for customer segmentation — reveals behavioral clusters before classification</li>
+                    <li>XGBoost as final model, best overall performance after segmentation</li>
+                </ul>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-6">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-6')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">06 — Statistical Modeling / ML</p>
+                <h2 class="modal-title">Forest Fire Prediction</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">GAM</span><span class="tag-dark">GLM</span><span class="tag-dark">mgcv</span><span class="tag-dark">tidyverse</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Regression study predicting burned area in Montesinho Natural Park from meteorological and fire index covariates. The dataset has severe zero-inflation (many fires burn near-zero area) and extreme right skew — OLS is the wrong tool from the start.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Model progression</p>
+                <ul>
+                    <li>OLS baseline — exposed heteroscedasticity and zero-inflation problems</li>
+                    <li>Gamma GLM — handles positive skew and non-constant variance</li>
+                    <li>Inverse Gaussian GLM — heavier tail, better fit for extreme values</li>
+                    <li>GAM with smoothing splines via <code>mgcv</code> — final model, best fit</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Key finding</p>
+                <p>GAMs revealed non-linear threshold effects for temperature and Drought Code that were invisible to OLS and GLMs — above certain thresholds, burned area increases sharply. This is a physical phenomenon the parametric models couldn't capture. Model choice here is a scientific decision, not a default.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="modal-7">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-7')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">07 — Embedded Systems / Robotics</p>
+                <h2 class="modal-title">Dual-Mode RC Robot</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">C</span><span class="tag-dark">STM32</span><span class="tag-dark">HAL</span><span class="tag-dark">PWM</span><span class="tag-dark">Bluetooth</span><span class="tag-dark">Embedded</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Dual-mode robotic vehicle built on an STM32 Nucleo-L152RE. Operates autonomously using ultrasonic obstacle detection, or manually via Bluetooth commands from an Android app. Firmware written in C using STM32 HAL.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Hardware</p>
+                <ul>
+                    <li>STM32 Nucleo-L152RE microcontroller</li>
+                    <li>HC-SR04 ultrasonic sensor — three distance thresholds: forward (&gt;20cm), decelerate (10–20cm), hard stop (&lt;10cm)</li>
+                    <li>L298N H-Bridge driver + two DC motors</li>
+                    <li>HC-05 Bluetooth module for RC mode (Forward, Backward, Left, Right, Stop)</li>
+                    <li>Piezoelectric buzzer for audio warning on hard stop</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Firmware architecture</p>
+                <p>Fully interrupt-driven: TIM2 captures ultrasonic echo pulses, TIM3 generates PWM for motor speed, USART2 handles async Bluetooth commands, GPIO manages direction. Soft braking — progressive PWM duty cycle reduction rather than abrupt stop — protects the drivetrain from mechanical stress.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
     <footer>
         <span class="footer-mono">Gonzalo Cruz Gómez — 2026</span>
-        <span class="footer-mono">Built with HTML &amp; CSS</span>
+        <span class="footer-mono">Built with HTML, CSS &amp; JS</span>
     </footer>
 
 </div>
@@ -1273,6 +1752,24 @@
                 card.hidden = filter !== 'all' && !card.dataset.cat.split(' ').includes(filter);
             });
         });
+    });
+
+    // ── MODALS ──
+    function openModal(id) {
+        document.getElementById(id).classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+        document.getElementById(id).classList.remove('open');
+        document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
+        backdrop.addEventListener('click', e => {
+            if (e.target === backdrop) closeModal(backdrop.id);
+        });
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') document.querySelectorAll('.modal-backdrop.open').forEach(m => closeModal(m.id));
     });
 
     // ── COPY EMAIL ──
