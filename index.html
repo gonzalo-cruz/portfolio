@@ -778,9 +778,11 @@
             padding: 1.5rem 1.75rem;
             border-bottom: 1px solid var(--border);
             transition: background 0.15s;
+            cursor: pointer;
         }
         .writing-item:last-child { border-bottom: none; }
         .writing-item:hover { background: var(--bg-card); }
+        .writing-item:hover .writing-arrow { color: var(--accent); }
 
         .writing-title {
             font-size: 1.05rem;
@@ -804,6 +806,13 @@
             border-radius: 2px;
             color: var(--muted);
             white-space: nowrap;
+        }
+
+        .writing-arrow {
+            font-family: var(--mono);
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: color 0.15s;
         }
 
         /* ── RESPONSIVE ── */
@@ -1419,6 +1428,35 @@
                 <button class="project-link project-detail-btn" onclick="openModal('modal-7')">Details +</button>
             </div>
 
+            <div class="project-card fade-in fade-in-delay-1" data-cat="statistics">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10 40 Q 40 40, 60 38 Q 80 36, 100 10 Q 120 36, 140 38 Q 160 40, 190 40" stroke="var(--accent)" stroke-width="1.5" fill="none"/>
+                        <line x1="100" y1="40" x2="100" y2="10" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 2"/>
+                        <line x1="10" y1="40" x2="190" y2="40" stroke="var(--border)" stroke-width="1"/>
+                    </svg>
+                </div>
+                <p class="project-meta">08 — Statistical Inference</p>
+                <h3 class="project-title">Whitehead Sample Size Analysis</h3>
+                <p class="project-desc">
+                    Implementation of Whitehead's (1983) unified theory for optimal sample sizing in clinical trials.
+                    Starting from the mathematical derivation of Fisher Information and Score Statistics for binomial
+                    distributions, the project determines the sample size needed to detect a deviation from a baseline
+                    probability of p₀ = 0.003 with 80% power. Monte Carlo simulations validate theoretical error rates
+                    against empirical ones.
+                </p>
+                <p class="project-callout">→ Score Test vs Exact Binomial vs Wilcoxon — asymptotic limits at p = 0.003</p>
+                <div class="project-tags">
+                    <span class="tag-dark">R</span>
+                    <span class="tag-dark">MLE</span>
+                    <span class="tag-dark">Score Test</span>
+                    <span class="tag-dark">Monte Carlo</span>
+                    <span class="tag-dark">R Markdown</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-8')">Details +</button>
+            </div>
+
         </div>
     </section>
 
@@ -1430,26 +1468,26 @@
         </div>
         <p style="font-size:0.9rem; opacity:0.6; margin-bottom:2rem; max-width:520px;" class="fade-in">Essays on technology, mathematics, and ideas. Written slowly.</p>
         <div class="writing-list fade-in">
-            <div class="writing-item">
+            <div class="writing-item" onclick="openModal('essay-1')">
                 <div>
                     <p class="writing-title">GenAI and art, the algorithmic mirror</p>
                     <p class="writing-meta">Technology &amp; Culture</p>
                 </div>
-                <span class="writing-status">in progress</span>
+                <span class="writing-arrow">→</span>
             </div>
-            <div class="writing-item">
+            <div class="writing-item" onclick="openModal('essay-2')">
                 <div>
                     <p class="writing-title">The death of aesthetics</p>
                     <p class="writing-meta">Philosophy</p>
                 </div>
-                <span class="writing-status">in progress</span>
+                <span class="writing-arrow">→</span>
             </div>
-            <div class="writing-item">
+            <div class="writing-item" onclick="openModal('essay-3')">
                 <div>
                     <p class="writing-title">Economic plannification and AI</p>
                     <p class="writing-meta">Economics &amp; Technology</p>
                 </div>
-                <span class="writing-status">in progress</span>
+                <span class="writing-arrow">→</span>
             </div>
         </div>
     </section>
@@ -1684,6 +1722,77 @@
                 <p>Fully interrupt-driven: TIM2 captures ultrasonic echo pulses, TIM3 generates PWM for motor speed, USART2 handles async Bluetooth commands, GPIO manages direction. Soft braking — progressive PWM duty cycle reduction rather than abrupt stop — protects the drivetrain from mechanical stress.</p>
             </div>
             <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <!-- ── ESSAY MODALS ── -->
+    <div class="modal-backdrop" id="essay-1">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('essay-1')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">Technology &amp; Culture</p>
+                <h2 class="modal-title">GenAI and art, the algorithmic mirror</h2>
+            </div>
+            <div class="modal-section">
+                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="essay-2">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('essay-2')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">Philosophy</p>
+                <h2 class="modal-title">The death of aesthetics</h2>
+            </div>
+            <div class="modal-section">
+                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-backdrop" id="essay-3">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('essay-3')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">Economics &amp; Technology</p>
+                <h2 class="modal-title">Economic plannification and AI</h2>
+            </div>
+            <div class="modal-section">
+                <p style="font-family:var(--mono); font-size:0.72rem; color:var(--muted); font-style:italic;">This essay is in progress. Check back later.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── WHITEHEAD MODAL ── -->
+    <div class="modal-backdrop" id="modal-8">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-8')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">08 — Statistical Inference</p>
+                <h2 class="modal-title">Whitehead Sample Size Analysis</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">MLE</span><span class="tag-dark">Score Test</span><span class="tag-dark">Monte Carlo</span><span class="tag-dark">R Markdown</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Implementation of Whitehead's (1983) unified theory for sample size determination in clinical trials. The goal: find the minimum sample size to detect a deviation from a baseline event probability of p₀ = 0.003 with Type I error α = 0.025 and 80% power.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Methods</p>
+                <ul>
+                    <li>Mathematical derivation of Fisher Information and Score Statistics for binomial distributions</li>
+                    <li>Whitehead's formula applied to get the theoretical sample size</li>
+                    <li>Parametric tests: Chi-Square and Exact Binomial for validation</li>
+                    <li>Wilcoxon Rank-Sum Test as a non-parametric alternative when normality assumptions break down</li>
+                    <li>Monte Carlo simulation: binomial draws used to compare theoretical vs empirical Type I error rates</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Key finding</p>
+                <p>At p = 0.003, asymptotic approximations (Score Test) are computationally efficient but require sufficiently large n to be valid — small probabilities push the asymptotics hard. The Exact Binomial test provides a ground truth check, and the Wilcoxon confirms robustness when the normality assumption is questionable.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank">View on GitHub ↗</a></div>
         </div>
     </div>
 
