@@ -1131,8 +1131,8 @@
                 <a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" class="project-link">View on GitHub ↗</a>
             </div>
 
-            <div class="project-card fade-in fade-in-delay-1" data-cat="statistics">
-                <p class="project-meta">06 — Statistical Modeling</p>
+            <div class="project-card fade-in fade-in-delay-1" data-cat="ml statistics">
+                <p class="project-meta">06 — Statistical Modeling / ML</p>
                 <h3 class="project-title">Forest Fire Prediction</h3>
                 <p class="project-desc">
                     Regression study predicting burned area in Montesinho Natural Park. Moved beyond OLS
@@ -1150,6 +1150,28 @@
                     <span class="tag-dark">tidyverse</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" class="project-link">View on GitHub ↗</a>
+            </div>
+
+            <div class="project-card fade-in" data-cat="engineering">
+                <p class="project-meta">07 — Embedded Systems / Robotics</p>
+                <h3 class="project-title">Dual-Mode RC Robot</h3>
+                <p class="project-desc">
+                    Autonomous obstacle-avoiding vehicle built on an STM32 Nucleo-L152RE. Two operating
+                    modes: autonomous navigation using HC-SR04 ultrasonic ranging (three distance
+                    thresholds — forward, decelerate, hard stop), and manual RC control via Bluetooth
+                    commands from an Android app. Firmware written in C using STM32 HAL; motor speed
+                    controlled via PWM, with soft braking to protect the drivetrain.
+                </p>
+                <p class="project-callout">→ Interrupt-driven: TIM2 capture, TIM3 PWM, USART2 async Bluetooth</p>
+                <div class="project-tags">
+                    <span class="tag-dark">C</span>
+                    <span class="tag-dark">STM32</span>
+                    <span class="tag-dark">HAL</span>
+                    <span class="tag-dark">PWM</span>
+                    <span class="tag-dark">Bluetooth</span>
+                    <span class="tag-dark">Embedded</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank" class="project-link">View on GitHub ↗</a>
             </div>
 
         </div>
@@ -1248,7 +1270,7 @@
             btn.classList.add('active');
             const filter = btn.dataset.filter;
             cards.forEach(card => {
-                card.hidden = filter !== 'all' && card.dataset.cat !== filter;
+                card.hidden = filter !== 'all' && !card.dataset.cat.split(' ').includes(filter);
             });
         });
     });
