@@ -17,22 +17,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         /* ── TOKENS ── */
         :root {
-            --bg:       #F5F2EC;
-            --bg-card:  #ECEAE3;
+            --bg:       #E8E4DA;
+            --bg-card:  #DEDAD0;
             --text:     #111111;
             --muted:    #888888;
-            --accent:   #D4451A;
-            --border:   #D8D4CC;
-            --dot:      rgba(0,0,0,0.055);
+            --accent:   #7C3AED;
+            --border:   #C8C4BA;
+            --dot:      rgba(0,0,0,0.06);
             --mono:     'JetBrains Mono', monospace;
             --sans:     'Space Grotesk', sans-serif;
+            --display:  'Barlow Condensed', 'Space Grotesk', sans-serif;
         }
 
         [data-theme="dark"] {
@@ -102,7 +103,7 @@
             color: var(--muted);
             background: none;
             border: 1px solid var(--border);
-            border-radius: 3px;
+            border-radius: 0;
             padding: 0.25rem 0.55rem;
             cursor: pointer;
             transition: color 0.15s, border-color 0.15s;
@@ -154,6 +155,28 @@
         .fade-in-delay-3 { transition-delay: 0.24s; }
         .fade-in-delay-4 { transition-delay: 0.32s; }
 
+        /* ── HERO STATUS BAR ── */
+        .hero-statusbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--muted);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding-bottom: 1.75rem;
+            margin-bottom: 1.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .hero-statusbar .status-live {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+        }
+
         /* ── HERO ── */
         #hero {
             padding-top: 148px;
@@ -163,31 +186,13 @@
             background-size: 20px 20px;
         }
 
-        .hero-eyebrow {
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: var(--muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1.75rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            display: block;
-            width: 32px;
-            height: 1px;
-            background: var(--muted);
-        }
-
-        .hero-name {
-            font-size: clamp(4rem, 9vw, 8rem);
+.hero-name {
+            font-family: var(--display);
+            font-size: clamp(5.5rem, 12vw, 10rem);
             font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -0.04em;
+            line-height: 0.88;
+            letter-spacing: 0.01em;
+            text-transform: uppercase;
             margin-bottom: 2rem;
         }
 
@@ -223,7 +228,7 @@
             align-items: center;
             gap: 0.4rem;
             padding: 0.6rem 1.25rem;
-            border-radius: 3px;
+            border-radius: 0;
             font-family: var(--sans);
             font-size: 0.85rem;
             font-weight: 600;
@@ -318,10 +323,10 @@
             font-family: var(--mono);
             font-size: 0.72rem;
             padding: 0.2rem 0.5rem;
-            background: var(--bg-card);
+            background: transparent;
             border: 1px solid var(--border);
-            border-radius: 2px;
-            color: var(--text);
+            border-radius: 0;
+            color: var(--muted);
         }
 
         /* ── EXPERIENCE ── */
@@ -490,7 +495,7 @@
             font-family: var(--mono);
             font-size: 0.72rem;
             padding: 0.3rem 0.75rem;
-            border-radius: 2px;
+            border-radius: 0;
             border: 1px solid var(--border);
             background: transparent;
             color: var(--muted);
@@ -562,7 +567,7 @@
             padding: 0.18rem 0.45rem;
             background: var(--text);
             color: var(--bg);
-            border-radius: 2px;
+            border-radius: 0;
         }
 
         .project-link {
@@ -627,7 +632,7 @@
             font-size: 0.65rem;
             padding: 0.15rem 0.45rem;
             border: 1px solid var(--border);
-            border-radius: 2px;
+            border-radius: 0;
             background: transparent;
             color: var(--muted);
             cursor: pointer;
@@ -682,7 +687,7 @@
             right: 1.25rem;
             background: none;
             border: 1px solid var(--border);
-            border-radius: 2px;
+            border-radius: 0;
             font-family: var(--mono);
             font-size: 0.7rem;
             color: var(--muted);
@@ -801,7 +806,10 @@
 
     <!-- ── HERO ── -->
     <section id="hero">
-        <p class="hero-eyebrow">Data Science & Engineering — Madrid</p>
+        <div class="hero-statusbar">
+            <span>GCG_001 — Data Science &amp; Engineering</span>
+            <span class="status-live"><span class="dot-accent"></span>Open to work</span>
+        </div>
         <h1 class="hero-name">
             Gonzalo<br>
             <span class="accent">Cruz.<span class="cursor"></span></span>
@@ -821,11 +829,7 @@
     <!-- ── CURRENTLY ── -->
     <div id="currently">
         <div class="currently-bar">
-            <div class="currently-item">
-                <span class="currently-label">Status</span>
-                <span class="currently-value"><span class="dot-accent"></span>Open to opportunities</span>
-            </div>
-            <div class="currently-item">
+<div class="currently-item">
                 <span class="currently-label">Degree</span>
                 <span class="currently-value">Data Science & Engineering</span>
             </div>
