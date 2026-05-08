@@ -1,0 +1,133 @@
+%----------------------------------------------------------------------------------------
+%    DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+\documentclass[a4paper,10pt]{article}
+
+%----------------------------------------------------------------------------------------
+%    PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[left=1.0cm,top=1.0cm,right=1.0cm,bottom=1.0cm]{geometry}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{titlesec}
+
+% No hyperref — define \href to emit only the display text
+\newcommand{\href}[2]{#2}
+
+%----------------------------------------------------------------------------------------
+%    CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+
+% Custom \section formatting
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{14pt}{10pt}
+
+% SHORT job entry: Title | Date
+\newenvironment{jobshort}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill & \small #2 \\[3pt]
+    \end{tabularx}
+    }
+    {}
+
+% LONG job entry: Title | Tech Stack | Bullets
+\newenvironment{joblong}[2]
+    {
+    \begin{tabularx}{\linewidth}{@{}l X r@{}}
+    \textbf{#1} & \hfill & \textit{\small #2} \\[3pt]
+    \end{tabularx}
+    \begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut,leftmargin=1em,itemsep=3pt,label=\textbullet]
+    }
+    {
+    \end{itemize}
+    \end{minipage}\vspace{8pt}
+    }
+
+%----------------------------------------------------------------------------------------
+%    BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+\pagestyle{empty}
+
+%----------------------------------------------------------------------------------------
+%    HEADER
+%----------------------------------------------------------------------------------------
+\begin{center}
+    {\LARGE \scshape Gonzalo Cruz Gómez} \\ \vspace{3pt}
+    \small
+    gonza.c.gomez03@gmail.com $|$
+    github.com/gonzalo-cruz $|$
+    gonzalo-cruz.github.io/portfolio/
+\end{center}
+
+\vspace{6pt}
+{\small Data Science \& Engineering undergraduate (3rd year, URJC) with a background in Telecommunications Engineering. Builds production-ready data systems: end-to-end ML pipelines, distributed computing, and deep learning. Founder of Asociación Datalab. Seeking an internship in data science or data engineering.}
+
+%----------------------------------------------------------------------------------------
+%    EDUCATION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X r@{}}
+\textbf{B.S. Data Science \& Engineering} & \textbf{URJC} & \textit{2024 -- Present} \\
+\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ Completed two academic years in one (2024--2025). Coursework: ML, Distributed Systems, Deep Learning.} \\[5pt]
+\textbf{B.S. Telecommunications Engineering} & \textbf{UC3M} & \textit{2019 -- 2023} \\
+\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ 120+ credits in Networking, Physics and Signal Processing. Transferred to specialize in Data Science.} \\[5pt]
+\textbf{Certificate of Advanced English (C2)} & Cambridge Assessment & \textit{2019}
+\end{tabularx}
+
+%----------------------------------------------------------------------------------------
+%    PROJECTS
+%----------------------------------------------------------------------------------------
+\section{Projects}
+
+\begin{joblong}{TripAdvisor Restaurants Data Pipeline}{Python, Apache Airflow, Kafka, Scikit-learn, Pandas}
+\item Orchestrated a 5-task ETL pipeline with Apache Airflow, processing \textbf{1M+ rows} in 50k-row chunks to stay memory-safe throughout — extract, clean, EDA, preprocessing, and load.
+\item Fitted \texttt{IncrementalPCA} and \texttt{StandardScaler} via \texttt{partial\_fit} on batches; applied OHE or label encoding per column based on cardinality.
+\item Streamed the processed dataset to Kafka using a fault-tolerant producer (\texttt{acks=all}, sub-batch delivery) ready for downstream consumption.
+\item Centralised all pipeline parameters (chunk size, thresholds, Kafka config) in a single \texttt{config.toml}; all tasks read from it at runtime.
+\end{joblong}
+
+\begin{joblong}{Forest Fire Spread Prediction}{R, GLMs, GAMs, Statistical Modeling}
+\item Built GLM and GAM regression models to predict fire-burned area from meteorological covariates; GAMs outperformed GLMs on held-out data with lower residual variance.
+\item Resolved severe data quality issues (high skew, missing values, near-zero-variance predictors) via log transformation, imputation, and feature selection.
+\item Applied cross-validation to compare model fits; selected GAMs as the final model based on lower RMSE and better capture of non-linear covariate effects.
+\end{joblong}
+
+\begin{joblong}{Stroke Risk Classification}{Python, Scikit-learn, TensorFlow, ANN}
+\item Trained an MLP on an imbalanced medical dataset, applying SMOTE and optimizing the decision threshold to minimize false negatives given the clinical cost of missed strokes.
+\item Selected AUC-ROC and F1 as evaluation metrics over accuracy; tuned architecture and hyperparameters accordingly.
+\item Benchmarked the MLP against a logistic regression baseline; the non-linear model improved recall on the stroke class while maintaining acceptable precision.
+\end{joblong}
+
+%----------------------------------------------------------------------------------------
+%    EXPERIENCE
+%----------------------------------------------------------------------------------------
+\section{Experience}
+
+\begin{jobshort}{Founder \& President --- Asociación Datalab}{May 2025 -- Present}
+\small Established the university's first Data Science student association: defined the strategic roadmap, handled legal registration, and organized technical workshops.
+\end{jobshort}
+
+\vspace{10pt}
+\begin{jobshort}{Private Tutor --- Mathematics \& Physics}{Sep 2021 -- Present}
+\small Mentored high-school students over 5 years, achieving a \textbf{100\% pass rate} and helping 90\% of students improve by at least 3 grade points through personalized plans.
+\end{jobshort}
+
+%----------------------------------------------------------------------------------------
+%    SKILLS
+%----------------------------------------------------------------------------------------
+\section{Technical Skills}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+\textbf{Programming:}  & Python (Advanced), R, SQL, C \\
+\textbf{Data Science:} & Scikit-learn, PyTorch, TensorFlow, Pandas, NumPy, Hadoop, Spark, Matplotlib \\
+\textbf{Engineering:}  & Apache Airflow, Kafka, Docker, Git/GitHub, Linux (Bash) \\
+\textbf{Languages:}    & Spanish (Native), English (C2), German (B1), Chinese (HSK3) \\
+\end{tabularx}
+
+\end{document}
