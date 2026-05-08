@@ -14,6 +14,7 @@
     <meta name="twitter:title"      content="Gonzalo Cruz — Data Science & Engineering">
     <meta name="twitter:description" content="Building the pipelines that make machine learning actually work.">
     <meta name="description"        content="Portfolio of Gonzalo Cruz, data science & engineering student based in Madrid.">
+    <meta name="theme-color"        content="#7C3AED">
 
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -806,7 +807,47 @@
 
         .modal-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
 
-        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border); }
+        /* ── LANG TABLE ── */
+        .lang-table {
+            border: 1px solid var(--border);
+        }
+
+        .lang-item {
+            display: grid;
+            grid-template-columns: 2rem 1fr auto;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .lang-item:last-child { border-bottom: none; }
+
+        .lang-code {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.04em;
+        }
+
+        .lang-name { font-size: 0.82rem; font-weight: 500; }
+
+        .lang-level {
+            font-family: var(--mono);
+            font-size: 0.6rem;
+            color: var(--muted);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .modal-footer {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .modal-footer a {
             font-size: 0.8rem;
             font-weight: 600;
@@ -817,6 +858,23 @@
             transition: color 0.15s;
         }
         .modal-footer a:hover { color: var(--accent); }
+
+        .modal-footer-nav { display: flex; gap: 0.4rem; }
+
+        .modal-nav-btn {
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.08em;
+            color: var(--muted);
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.2rem 0.5rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .modal-nav-btn:hover:not(:disabled) { color: var(--text); border-color: var(--text); }
+        .modal-nav-btn:disabled { opacity: 0.25; cursor: default; }
 
         .project-detail-btn {
             margin-top: 0.5rem;
@@ -950,24 +1008,16 @@
         <div class="about-grid">
             <div class="about-text">
                 <p class="fade-in">
-                    I'm a Data Science &amp; Engineering student at URJC in Madrid, and I find the most
-                    interesting problems in machine learning aren't the models — they're the systems around
-                    them. What happens when the data is too big to fit in RAM? How do you keep a pipeline
-                    running reliably at scale? How do you make a model actually useful after training?
-                    That's where I want to work.
+                    The most interesting problems in machine learning aren't the models — they're the
+                    systems around them. What happens when the data is too big to fit in RAM? How do
+                    you keep a pipeline running reliably at scale? How do you make a model actually
+                    useful after training? Those are the questions I want to work on.
                 </p>
                 <p class="fade-in fade-in-delay-1">
-                    I started out studying Telecommunications Engineering at UC3M, where I completed
-                    over 120 credits before transferring. That background gave me a stronger mathematical
-                    foundation than most data science programs — signal processing, linear algebra, probability
-                    theory — and I think it shows in how I approach modeling problems.
-                </p>
-                <p class="fade-in fade-in-delay-2">
-                    My projects span the full data stack: statistical modeling in R (GLMs, GAMs),
-                    applied ML in Python (scikit-learn, PyTorch, XGBoost), and data engineering with
-                    the tools people actually use in production — Airflow, Kafka, Spark, Hadoop.
-                    I like understanding things well enough to build them from scratch, then knowing
-                    when not to.
+                    My background in Telecommunications gave me a mathematical foundation most data
+                    science students don't get — linear algebra, probability theory, signal processing
+                    as first principles, not just tools. I try to bring that same rigour to engineering:
+                    understand something well enough to build it from scratch, then know when not to.
                 </p>
             </div>
             <div class="about-sidebar fade-in fade-in-delay-1">
@@ -1018,11 +1068,27 @@
                 </div>
                 <div class="sidebar-block">
                     <p class="sidebar-label">Spoken languages</p>
-                    <div class="tags">
-                        <span class="tag-pill">Spanish — native</span>
-                        <span class="tag-pill">English — C2</span>
-                        <span class="tag-pill">German — B2</span>
-                        <span class="tag-pill">Chinese — HSK3</span>
+                    <div class="lang-table">
+                        <div class="lang-item">
+                            <span class="lang-code">ES</span>
+                            <span class="lang-name">Spanish</span>
+                            <span class="lang-level">Native</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-code">EN</span>
+                            <span class="lang-name">English</span>
+                            <span class="lang-level">C2</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-code">DE</span>
+                            <span class="lang-name">German</span>
+                            <span class="lang-level">B2</span>
+                        </div>
+                        <div class="lang-item">
+                            <span class="lang-code">ZH</span>
+                            <span class="lang-name">Chinese</span>
+                            <span class="lang-level">HSK3</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1946,21 +2012,71 @@
     });
 
     // ── MODALS ──
+    const modalOrder = ['modal-1','modal-2','modal-3','modal-4','modal-5','modal-6','modal-7','modal-8','modal-9'];
+    let currentModalId = null;
+
+    // Inject prev/next nav into each modal footer
+    modalOrder.forEach(id => {
+        const footer = document.querySelector(`#${id} .modal-footer`);
+        if (!footer) return;
+        const nav = document.createElement('div');
+        nav.className = 'modal-footer-nav';
+        nav.innerHTML = '<button class="modal-nav-btn" data-dir="prev">← prev</button><button class="modal-nav-btn" data-dir="next">next →</button>';
+        footer.appendChild(nav);
+    });
+
+    function updateModalNav(id) {
+        const idx = modalOrder.indexOf(id);
+        const footer = document.querySelector(`#${id} .modal-footer`);
+        if (!footer) return;
+        const prevBtn = footer.querySelector('[data-dir="prev"]');
+        const nextBtn = footer.querySelector('[data-dir="next"]');
+        if (prevBtn) {
+            prevBtn.disabled = idx <= 0;
+            prevBtn.onclick = idx > 0 ? () => switchModal(id, modalOrder[idx - 1]) : null;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = idx >= modalOrder.length - 1;
+            nextBtn.onclick = idx < modalOrder.length - 1 ? () => switchModal(id, modalOrder[idx + 1]) : null;
+        }
+    }
+
+    function switchModal(fromId, toId) {
+        document.getElementById(fromId).classList.remove('open');
+        document.getElementById(toId).classList.add('open');
+        currentModalId = toId;
+        updateModalNav(toId);
+        const modal = document.querySelector(`#${toId} .modal`);
+        if (modal) modal.scrollTop = 0;
+    }
+
     function openModal(id) {
+        currentModalId = id;
         document.getElementById(id).classList.add('open');
         document.body.style.overflow = 'hidden';
+        updateModalNav(id);
     }
+
     function closeModal(id) {
         document.getElementById(id).classList.remove('open');
         document.body.style.overflow = '';
+        currentModalId = null;
     }
+
     document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
         backdrop.addEventListener('click', e => {
             if (e.target === backdrop) closeModal(backdrop.id);
         });
     });
+
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') document.querySelectorAll('.modal-backdrop.open').forEach(m => closeModal(m.id));
+        if (e.key === 'Escape') {
+            document.querySelectorAll('.modal-backdrop.open').forEach(m => closeModal(m.id));
+        }
+        if (!currentModalId) return;
+        const idx = modalOrder.indexOf(currentModalId);
+        if (e.key === 'ArrowLeft' && idx > 0) switchModal(currentModalId, modalOrder[idx - 1]);
+        if (e.key === 'ArrowRight' && idx < modalOrder.length - 1) switchModal(currentModalId, modalOrder[idx + 1]);
     });
 
     // ── COPY EMAIL ──
