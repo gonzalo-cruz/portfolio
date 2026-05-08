@@ -1404,6 +1404,37 @@
                 <button class="project-link project-detail-btn" onclick="openModal('modal-8')">Details +</button>
             </div>
 
+            <div class="project-card fade-in" data-cat="statistics">
+                <div class="project-visual">
+                    <svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline points="8,36 22,22 36,34 50,18 64,30 78,16 92,28 106,14 120,26" stroke="var(--border)" stroke-width="1.5" fill="none"/>
+                        <line x1="120" y1="8" x2="120" y2="44" stroke="var(--border)" stroke-width="1" stroke-dasharray="2 2"/>
+                        <polyline points="120,26 134,12 148,24 162,10 176,20 190,8" stroke="var(--accent)" stroke-width="1.5" fill="none" stroke-dasharray="4 2"/>
+                        <circle cx="190" cy="8" r="2.5" fill="var(--accent)" fill-opacity="0.5"/>
+                    </svg>
+                </div>
+                <p class="project-meta">09 — Time Series / Forecasting</p>
+                <h3 class="project-title">Time Series Analysis with SARIMA</h3>
+                <p class="project-desc">
+                    Analysis and forecasting of four different time series using SARIMA models.
+                    Each series goes through stationarity testing (ADF, KPSS), decomposition into
+                    trend, seasonality, and residuals, ACF/PACF inspection for order identification,
+                    and model selection via AIC/BIC. The seasonal component is modeled explicitly
+                    through the SARIMA(p,d,q)(P,D,Q)s structure, with diagnostic checks on residuals
+                    to validate each fit.
+                </p>
+                <p class="project-callout">→ Kaggle competition · awarded · grid search + Fourier terms + temporal windowing</p>
+                <div class="project-tags">
+                    <span class="tag-dark">Python</span>
+                    <span class="tag-dark">SARIMA</span>
+                    <span class="tag-dark">statsmodels</span>
+                    <span class="tag-dark">pandas</span>
+                    <span class="tag-dark">Kaggle</span>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/time-series-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
+                <button class="project-link project-detail-btn" onclick="openModal('modal-9')">Details +</button>
+            </div>
+
         </div>
     </section>
 
@@ -1668,6 +1699,37 @@
                 <p>At p = 0.003, asymptotic approximations (Score Test) are computationally efficient but require sufficiently large n to be valid — small probabilities push the asymptotics hard. The Exact Binomial test provides a ground truth check, and the Wilcoxon confirms robustness when the normality assumption is questionable.</p>
             </div>
             <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank">View on GitHub ↗</a></div>
+        </div>
+    </div>
+
+    <!-- ── TIME SERIES MODAL ── -->
+    <div class="modal-backdrop" id="modal-9">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-9')">close ×</button>
+            <div class="modal-header">
+                <p class="modal-meta">09 — Time Series / Forecasting</p>
+                <h2 class="modal-title">Time Series Analysis with SARIMA</h2>
+            </div>
+            <div class="modal-tags"><span class="tag-dark">Python</span><span class="tag-dark">SARIMA</span><span class="tag-dark">statsmodels</span><span class="tag-dark">pandas</span><span class="tag-dark">Kaggle</span></div>
+            <div class="modal-section">
+                <p class="modal-section-label">Overview</p>
+                <p>Analysis and forecasting of four different time series using SARIMA models. The workflow for each series follows the Box-Jenkins methodology: identify, estimate, and diagnose — repeated until the residuals behave like white noise.</p>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">Methodology</p>
+                <ul>
+                    <li>Stationarity testing with ADF and KPSS — both tests used together since they have opposite null hypotheses</li>
+                    <li>Time series decomposition into trend, seasonal, and remainder components</li>
+                    <li>ACF and PACF plots to determine candidate AR, MA, and seasonal orders</li>
+                    <li>Model selection via AIC and BIC across a grid of SARIMA(p,d,q)(P,D,Q)s candidates</li>
+                    <li>Residual diagnostics: Ljung-Box test, ACF of residuals, Q-Q plots to validate white noise assumption</li>
+                </ul>
+            </div>
+            <div class="modal-section">
+                <p class="modal-section-label">What makes it interesting</p>
+                <p>Working with four structurally different series forces you to make different modeling decisions for each one — different differencing orders, different seasonal periods, different levels of heteroscedasticity. The project is as much about diagnosing what's wrong with a model as it is about fitting one.</p>
+            </div>
+            <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/time-series-analysis" target="_blank">View on GitHub ↗</a></div>
         </div>
     </div>
 
