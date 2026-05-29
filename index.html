@@ -580,6 +580,34 @@
         .project-detail-btn { margin-top: 0.35rem; }
         .project-visual { display: none; }
 
+        /* ── FEATURED BADGE ── */
+        .project-featured-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-family: var(--mono);
+            font-size: 0.56rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 0.1rem 0.4rem;
+            margin-bottom: 0.6rem;
+            align-self: flex-start;
+        }
+
+        /* ── SCROLL PROGRESS ── */
+        #scroll-progress {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 101;
+            transition: width 0.08s linear;
+        }
+
         /* ── NOW ── */
         .now-grid {
             display: grid;
@@ -840,6 +868,7 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
 <nav>
     <a href="#" class="nav-name">Gonzalo Cruz</a>
     <div class="nav-right">
@@ -1124,6 +1153,7 @@
                     <ul class="stack-list">
                         <li class="stack-item"><span class="stack-name">C</span><span class="stack-desc">Systems programming, memory management, HPC coursework</span></li>
                         <li class="stack-item"><span class="stack-name">Excel</span><span class="stack-desc">Data analysis, pivot tables, advanced formulas</span></li>
+                        <li class="stack-item"><span class="stack-name">Claude Code</span><span class="stack-desc">Agentic coding, extended context engineering, multi-step task automation</span></li>
                     </ul>
                 </div>
             </div>
@@ -1144,6 +1174,7 @@
             <div class="projects-wrap">
 
                 <div class="project-card fade-in" data-cat="engineering">
+                    <span class="project-featured-badge">★ Featured</span>
                     <p class="project-meta">01 — Data Engineering / MLOps</p>
                     <h3 class="project-title">TripAdvisor Restaurants Pipeline</h3>
                     <p class="project-desc">Full-stack data system: Airflow DAG processing 1M+ rows of European restaurant data, PySpark ML KMeans clustering with automatic K selection (silhouette, K=10–80), dual Spark Structured Streaming consumers, and a web app (FastAPI + React/Vite). Restaurant recommendations via cosine similarity within clusters; live scoring pushed to the browser over Server-Sent Events.</p>
@@ -1263,19 +1294,19 @@
             <div class="now-grid fade-in">
                 <div class="now-item">
                     <span class="now-label">Building</span>
-                    <p class="now-text">Datalab — growing the association, planning the first workshop series and collaborative data projects with members at URJC.</p>
+                    <p class="now-text">A multilingual NLP system comparing sentiment and linguistic structure across Chinese, Spanish, and English — transformer-based, cross-lingual, built from a genuine interest in how language shapes meaning differently.</p>
                 </div>
                 <div class="now-item">
                     <span class="now-label">Studying</span>
-                    <p class="now-text">High Performance Computing — OpenMP, MPI, CUDA. Time series analysis. Bayesian methods.</p>
+                    <p class="now-text">Cross-lingual NLP — multilingual embeddings, fine-tuning strategies, transfer learning across language families. Also: transformer internals, not just the API.</p>
                 </div>
                 <div class="now-item">
                     <span class="now-label">Learning</span>
-                    <p class="now-text">Chinese — working towards HSK4. LLM fine-tuning workflows with PyTorch and transformer architectures.</p>
+                    <p class="now-text">Chinese — working towards HSK4. The NLP project and the language study are feeding each other in ways that feel productive.</p>
                 </div>
                 <div class="now-item">
                     <span class="now-label">Seeking</span>
-                    <p class="now-text">Internship or junior role in data engineering or ML systems. Based in Madrid, open to remote. Available from August 2026.</p>
+                    <p class="now-text">Internship or junior role in data engineering or ML systems. Based in Madrid, open to remote. Available immediately.</p>
                 </div>
             </div>
             <p class="now-updated fade-in">— Updated May 2026</p>
@@ -1711,6 +1742,13 @@
         if (e.key === 'ArrowLeft' && idx > 0) switchModal(currentModalId, modalOrder[idx - 1]);
         if (e.key === 'ArrowRight' && idx < modalOrder.length - 1) switchModal(currentModalId, modalOrder[idx + 1]);
     });
+
+    // ── SCROLL PROGRESS ──
+    const scrollProgress = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        if (total > 0) scrollProgress.style.width = (window.scrollY / total * 100) + '%';
+    }, { passive: true });
 
     // ── COPY EMAIL ──
     const copyBtn = document.getElementById('copyEmailBtn');
