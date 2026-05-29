@@ -67,7 +67,7 @@
 \end{center}
 
 \vspace{6pt}
-{\small Data Science \& Engineering undergraduate (3rd year, URJC) with a background in Telecommunications Engineering. Builds production-ready data systems: end-to-end ML pipelines, distributed computing, and deep learning. Founder of Asociación Datalab. Seeking an internship in data science or data engineering.}
+{\small Data Science \& Engineering undergraduate (final year, URJC) with a background in Telecommunications Engineering. Builds production-ready data systems: end-to-end ML pipelines, distributed computing, and deep learning. Founder of Asociación Datalab. Seeking an internship in data science or data engineering.}
 
 %----------------------------------------------------------------------------------------
 %    EDUCATION
@@ -75,7 +75,7 @@
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X r@{}}
 \textbf{B.S. Data Science \& Engineering} & \textbf{URJC} & \textit{2024 -- Present} \\
-\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ Completed two academic years in one (2024--2025). Coursework: ML, Distributed Systems, Deep Learning.} \\[5pt]
+\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ Final year (expected graduation 2027). Completed two academic years in one (2024--2025). Coursework: ML, Distributed Systems, Deep Learning, HPC, Statistical Inference.} \\[5pt]
 \textbf{B.S. Telecommunications Engineering} & \textbf{UC3M} & \textit{2019 -- 2023} \\
 \multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ 120+ credits in Networking, Physics and Signal Processing. Transferred to specialize in Data Science.} \\[5pt]
 \textbf{Certificate of Advanced English (C2)} & Cambridge Assessment & \textit{2019}
@@ -86,11 +86,11 @@
 %----------------------------------------------------------------------------------------
 \section{Projects}
 
-\begin{joblong}{TripAdvisor Restaurants Data Pipeline}{Python, Apache Airflow, Kafka, Scikit-learn, Pandas}
-\item Orchestrated a 5-task ETL pipeline with Apache Airflow, processing \textbf{1M+ rows} in 50k-row chunks to stay memory-safe throughout — extract, clean, EDA, preprocessing, and load.
-\item Fitted \texttt{IncrementalPCA} and \texttt{StandardScaler} via \texttt{partial\_fit} on batches; applied OHE or label encoding per column based on cardinality.
-\item Streamed the processed dataset to Kafka using a fault-tolerant producer (\texttt{acks=all}, sub-batch delivery) ready for downstream consumption.
-\item Centralised all pipeline parameters (chunk size, thresholds, Kafka config) in a single \texttt{config.toml}; all tasks read from it at runtime.
+\begin{joblong}{TripAdvisor Restaurants Data Pipeline}{Python, Apache Airflow, PySpark, Kafka, FastAPI, React}
+\item Orchestrated a 5-task Airflow DAG (ETL + ML + streaming) over \textbf{1M+ rows} in 50k-row chunks: extract, clean, EDA, preprocess (IncrementalPCA, StandardScaler via \texttt{partial\_fit}), stream to Kafka.
+\item Applied PySpark ML KMeans clustering with automatic K selection via silhouette scoring (K = 10--80); OHE or label encoding per column based on cardinality; all parameters in \texttt{config.toml}.
+\item Built dual Spark Structured Streaming consumers: a fast filter path and an ML-scored path computing centroid distances and writing timestamped classifications in real time.
+\item Developed a full-stack web app (FastAPI + React/Vite): restaurant search via cosine similarity within clusters; live scoring tab pushing KMeans classifications to the browser via Server-Sent Events.
 \end{joblong}
 
 \begin{joblong}{Forest Fire Spread Prediction}{R, GLMs, GAMs, Statistical Modeling}
@@ -126,7 +126,7 @@
 \begin{tabularx}{\linewidth}{@{}l X@{}}
 \textbf{Programming:}  & Python (Advanced), R, SQL, C \\
 \textbf{Data Science:} & Scikit-learn, PyTorch, TensorFlow, Pandas, NumPy, Hadoop, Spark, Matplotlib \\
-\textbf{Engineering:}  & Apache Airflow, Kafka, Docker, Git/GitHub, Linux (Bash) \\
+\textbf{Engineering:}  & Apache Airflow, Kafka, Docker, Git/GitHub, Linux (Bash), Claude Code (agentic coding) \\
 \textbf{Languages:}    & Spanish (Native), English (C2), German (B1), Chinese (HSK3) \\
 \end{tabularx}
 

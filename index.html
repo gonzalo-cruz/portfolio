@@ -1112,8 +1112,8 @@
                     <h3 class="exp-role">B.S. Data Science & Engineering</h3>
                     <p class="exp-org">URJC · Madrid</p>
                     <p class="exp-desc">
-                        Completed two full academic years in one (2024–2025). Coursework spans ML, Distributed Systems,
-                        Deep Learning, HPC, and Statistical Inference. Running parallel to founding and leading Datalab.
+                        Final year (expected graduation 2027). Completed two full academic years in one (2024–2025).
+                        Coursework spans ML, Distributed Systems, Deep Learning, HPC, and Statistical Inference. Running parallel to founding and leading Datalab.
                     </p>
                 </div>
             </div>
@@ -1332,19 +1332,21 @@
                 <p class="project-meta">01 — Data Engineering / MLOps</p>
                 <h3 class="project-title">TripAdvisor Restaurants Pipeline</h3>
                 <p class="project-desc">
-                    End-to-end data pipeline processing ~1.08M rows of European restaurant data.
-                    Five-stage DAG orchestrated with Apache Airflow: extract, clean, EDA, preprocessing,
-                    and streaming to Kafka. Every stage processes data in 50k-row chunks to avoid memory
-                    overload. Incremental PCA and StandardScaler fitted batch by batch using
-                    <code>partial_fit</code>. All parameters centralized in a single <code>config.toml</code>.
+                    Full-stack data system: Airflow DAG processing 1M+ rows of European restaurant data,
+                    PySpark ML KMeans clustering with automatic K selection (silhouette, K=10–80),
+                    dual Spark Structured Streaming consumers, and a web app (FastAPI + React/Vite).
+                    Restaurant recommendations via cosine similarity within clusters; live scoring pushed
+                    to the browser over Server-Sent Events.
                 </p>
-                <p class="project-callout">→ Incremental PCA + StandardScaler, acks=all Kafka producer, chunked throughout</p>
+                <p class="project-callout">→ Auto-K KMeans · dual streaming paths · full-stack web app with live SSE scoring</p>
                 <div class="project-tags">
                     <span class="tag-dark">Airflow</span>
+                    <span class="tag-dark">PySpark</span>
                     <span class="tag-dark">Kafka</span>
+                    <span class="tag-dark">Spark Streaming</span>
+                    <span class="tag-dark">FastAPI</span>
+                    <span class="tag-dark">React</span>
                     <span class="tag-dark">Docker</span>
-                    <span class="tag-dark">scikit-learn</span>
-                    <span class="tag-dark">Incremental PCA</span>
                     <span class="tag-dark">Python</span>
                 </div>
                 <a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank" class="project-link">View on GitHub ↗</a>
@@ -1675,24 +1677,24 @@
                 <p class="modal-meta">01 — Data Engineering / MLOps</p>
                 <h2 class="modal-title">TripAdvisor Restaurants Pipeline</h2>
             </div>
-            <div class="modal-tags"><span class="tag-dark">Airflow</span><span class="tag-dark">Kafka</span><span class="tag-dark">Docker</span><span class="tag-dark">scikit-learn</span><span class="tag-dark">Incremental PCA</span><span class="tag-dark">Python</span></div>
+            <div class="modal-tags"><span class="tag-dark">Airflow</span><span class="tag-dark">PySpark</span><span class="tag-dark">Kafka</span><span class="tag-dark">Spark Streaming</span><span class="tag-dark">FastAPI</span><span class="tag-dark">React</span><span class="tag-dark">Docker</span><span class="tag-dark">Python</span></div>
             <div class="modal-section">
                 <p class="modal-section-label">Overview</p>
-                <p>End-to-end data pipeline processing ~1.08M rows of European TripAdvisor restaurant data. The core constraint was memory: the dataset can't fit in RAM, so every stage processes data in 50k-row chunks from first to last.</p>
+                <p>Full-stack data system built around 1M+ rows of European TripAdvisor restaurant data. Goes end-to-end: from raw CSV to a live web app where users can search for restaurants by cluster similarity and watch real-time ML scoring in their browser.</p>
             </div>
             <div class="modal-section">
                 <p class="modal-section-label">Architecture</p>
                 <ul>
-                    <li>5-stage Airflow DAG using TaskFlow API: Extract → Clean → EDA → Preprocess → Stream</li>
-                    <li>IncrementalPCA and StandardScaler fitted via <code>partial_fit</code> — online learning, no full dataset in memory</li>
-                    <li>OHE vs label encoding chosen per column based on cardinality thresholds</li>
-                    <li>Kafka producer with <code>acks=all</code> and sub-batch delivery for fault tolerance</li>
-                    <li>All parameters (chunk size, thresholds, Kafka config) centralized in a single <code>config.toml</code></li>
+                    <li>5-stage Airflow DAG: Extract → Clean → EDA → Preprocess (IncrementalPCA + StandardScaler via <code>partial_fit</code>) → Stream to Kafka — all in 50k-row chunks, no full dataset in memory</li>
+                    <li>PySpark ML KMeans with automatic K selection via silhouette scoring across K = 10–80; model cached to avoid redundant recomputation</li>
+                    <li>Dual Spark Structured Streaming consumers: <code>streaming_filter.py</code> (fast filter, no ML) and <code>streaming_score.py</code> (centroid distance + timestamped cluster assignments)</li>
+                    <li>FastAPI backend + React/Vite frontend — two views: restaurant search with cosine-similarity recommendations within clusters, and a live tab with Server-Sent Events pushing classifications in real time</li>
+                    <li>Priority queue for immediate model scoring of user-selected restaurants</li>
                 </ul>
             </div>
             <div class="modal-section">
                 <p class="modal-section-label">Key challenge</p>
-                <p>Making scikit-learn transformers work incrementally. The standard <code>fit/transform</code> API requires the full dataset. Switching to <code>partial_fit</code> required careful state management — the fitted transformers had to persist across chunk iterations and be reused for the transform pass.</p>
+                <p>Fitting scikit-learn transformers incrementally — the standard <code>fit/transform</code> API requires the full dataset in memory. Switching to <code>partial_fit</code> required persisting transformer state across chunk iterations. On the streaming side, the two-consumer architecture separates latency-sensitive display from compute-heavy ML scoring without blocking either path.</p>
             </div>
             <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank">View on GitHub ↗</a></div>
         </div>
