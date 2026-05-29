@@ -793,16 +793,17 @@
             font-size: 0.875rem;
             line-height: 1.6;
             opacity: 0.8;
-            display: flex;
-            align-items: baseline;
-            gap: 0.6rem;
+            padding-left: 1.4rem;
+            position: relative;
         }
         .modal-section ul li::before {
             content: '→';
             font-family: var(--mono);
             font-size: 0.7rem;
             color: var(--accent);
-            flex-shrink: 0;
+            position: absolute;
+            left: 0;
+            top: 0.15em;
         }
 
         .modal-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.5rem; }
@@ -1685,7 +1686,7 @@
             <div class="modal-section">
                 <p class="modal-section-label">Architecture</p>
                 <ul>
-                    <li>5-stage Airflow DAG: Extract → Clean → EDA → Preprocess (IncrementalPCA + StandardScaler via <code>partial_fit</code>) → Stream to Kafka — all in 50k-row chunks, no full dataset in memory</li>
+                    <li>5-stage Airflow DAG: Extract → Clean → EDA → Preprocess (normalization, OHE/label encoding by cardinality, incremental PCA) → Stream to Kafka — all in 50k-row chunks, no full dataset in memory</li>
                     <li>PySpark ML KMeans with automatic K selection via silhouette scoring across K = 10–80; model cached to avoid redundant recomputation</li>
                     <li>Dual Spark Structured Streaming consumers: <code>streaming_filter.py</code> (fast filter, no ML) and <code>streaming_score.py</code> (centroid distance + timestamped cluster assignments)</li>
                     <li>FastAPI backend + React/Vite frontend — two views: restaurant search with cosine-similarity recommendations within clusters, and a live tab with Server-Sent Events pushing classifications in real time</li>
@@ -1694,7 +1695,7 @@
             </div>
             <div class="modal-section">
                 <p class="modal-section-label">Key challenge</p>
-                <p>Fitting scikit-learn transformers incrementally — the standard <code>fit/transform</code> API requires the full dataset in memory. Switching to <code>partial_fit</code> required persisting transformer state across chunk iterations. On the streaming side, the two-consumer architecture separates latency-sensitive display from compute-heavy ML scoring without blocking either path.</p>
+                <p>The ETL pipeline can't load 1M+ rows at once — every stage processes data in 50k-row chunks, including the incremental PCA and encoding steps, which required careful state management across iterations. On the streaming side, the two-consumer architecture separates latency-sensitive display from compute-heavy ML scoring without blocking either path.</p>
             </div>
             <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank">View on GitHub ↗</a></div>
         </div>

@@ -89,7 +89,7 @@
 \section{Projects}
 
 \begin{joblong}{TripAdvisor Restaurants Data Pipeline}{Python, Apache Airflow, PySpark, Kafka, FastAPI, React}
-\item Orchestrated a 5-task Airflow DAG (ETL + ML + streaming) over \textbf{1M+ rows} in 50k-row chunks: extract, clean, EDA, preprocess (IncrementalPCA, StandardScaler via \texttt{partial\_fit}), stream to Kafka.
+\item Orchestrated a 5-task Airflow DAG (ETL + ML + streaming) over \textbf{1M+ rows} in 50k-row chunks: extract, clean, EDA, preprocess (normalization, OHE/label encoding by cardinality, incremental PCA), stream to Kafka.
 \item Applied PySpark ML KMeans clustering with automatic K selection via silhouette scoring (K = 10--80); OHE or label encoding per column based on cardinality; all parameters in \texttt{config.toml}.
 \item Built dual Spark Structured Streaming consumers: a fast filter path and an ML-scored path computing centroid distances and writing timestamped classifications in real time.
 \item Developed a full-stack web app (FastAPI + React/Vite): restaurant search via cosine similarity within clusters; live scoring tab pushing KMeans classifications to the browser via Server-Sent Events.
