@@ -4,1294 +4,610 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gonzalo Cruz — Data Science & Engineering</title>
-    <meta property="og:title"       content="Gonzalo Cruz — Data Science & Engineering">
+    <meta property="og:title"        content="Gonzalo Cruz — Data Science & Engineering">
     <meta property="og:description" content="Building the pipelines that make machine learning actually work.">
     <meta property="og:type"        content="website">
-    <meta property="og:url"         content="https://gonzalo-cruz.github.io">
-    <meta name="twitter:card"       content="summary">
-    <meta name="twitter:title"      content="Gonzalo Cruz — Data Science & Engineering">
+    <meta property="og:url"         content="https://gonzalo-cruz.github.io/portfolio/">
+    <meta name="twitter:card"        content="summary">
+    <meta name="twitter:title"       content="Gonzalo Cruz — Data Science & Engineering">
     <meta name="twitter:description" content="Building the pipelines that make machine learning actually work.">
-    <meta name="description"        content="Portfolio of Gonzalo Cruz, data science & engineering student based in Madrid.">
-    <meta name="theme-color"        content="#7C3AED">
+    <meta name="description"         content="Portfolio of Gonzalo Cruz, data science & engineering student based in Madrid.">
+    <meta name="theme-color"         content="#2f4f3e">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        ::selection { background: var(--accent); color: #fff; }
-        :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--bg); }
-        ::-webkit-scrollbar-thumb { background: var(--border); }
-
-        /* ── TOKENS ── */
-        :root {
-            --bg:       #F4F4F0;
-            --bg-card:  #FFFFFF;
-            --text:     #000000;
-            --muted:    #666666;
-            --accent:   #7C3AED;
-            --border:   #000000;
-            --dot:      rgba(0,0,0,0.12);
-            --shadow:   4px 4px 0px var(--border);
-            --mono:     'JetBrains Mono', monospace;
-            --sans:     'Space Grotesk', sans-serif;
-            --display:  'DotGothic16', monospace;
-        }
-
-        [data-theme="dark"] {
-            --bg:       #0A0A0A;
-            --bg-card:  #141414;
-            --text:     #EAEAEA;
-            --muted:    #777777;
-            --accent:   #9F6AFF;
-            --border:   #333333;
-            --dot:      rgba(255,255,255,0.07);
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background-color: var(--bg);
-            background-image: radial-gradient(var(--dot) 1px, transparent 1px);
-            background-size: 24px 24px;
-            color: var(--text);
-            font-family: var(--sans);
-            font-size: 16px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            transition: background-color 0.2s, color 0.2s;
-            padding-top: 80px;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            inset: 0 0 auto 0;
-            z-index: 100;
-            background: var(--bg);
-            border-bottom: 2px solid var(--border);
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 2.5rem;
-            transition: background 0.2s, border-color 0.2s;
-        }
-
-        .nav-name {
-            font-family: var(--display);
-            font-size: 1.05rem;
-            letter-spacing: 0.06em;
-            text-decoration: none;
-            color: var(--text);
-            flex-shrink: 0;
-        }
-
-        .nav-right { display: flex; align-items: center; gap: 2rem; }
-        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            letter-spacing: 0.06em;
-            transition: color 0.15s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active { color: var(--accent); }
-
-        .theme-btn {
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            color: var(--muted);
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            padding: 0.3rem 0.65rem;
-            cursor: pointer;
-            transition: transform 0.1s, box-shadow 0.1s;
-            letter-spacing: 0.04em;
-            white-space: nowrap;
-            box-shadow: var(--shadow);
-        }
-        .theme-btn:hover { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-
-        .nav-menu-btn {
-            display: none;
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            padding: 0.3rem 0.65rem;
-            cursor: pointer;
-            transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: var(--shadow);
-        }
-        .nav-menu-btn:hover { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-
-        /* ── LAYOUT ── */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2.5rem;
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                display: grid;
-                grid-template-columns: 400px 1fr;
-                gap: 5rem;
-                align-items: start;
-            }
-            .datasheet-fixed {
-                position: sticky;
-                top: 80px;
-                height: calc(100vh - 80px);
-                overflow-y: auto;
-                scrollbar-width: none;
-                border-right: 2px solid var(--border);
-                padding-right: 3rem;
-            }
-            .datasheet-fixed::-webkit-scrollbar { display: none; }
-        }
-
-        /* ── SECTIONS ── */
-        section {
-            padding: 60px 0;
-            border-bottom: 2px solid var(--border);
-        }
-
-        section:last-of-type { border-bottom: none; }
-
-        #hero { padding: 2.5rem 0; }
-
-        @media (min-width: 1024px) {
-            #hero { border-bottom: none; }
-        }
-
-        .section-header {
-            display: flex;
-            align-items: baseline;
-            gap: 0.75rem;
-            margin-bottom: 2.5rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .section-num {
-            font-family: var(--display);
-            font-size: 0.75rem;
-            color: var(--muted);
-            flex-shrink: 0;
-        }
-
-        .section-title {
-            font-family: var(--display);
-            font-size: 1.05rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* ── FADE-IN ── */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(14px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .fade-in-delay-1 { transition-delay: 0.08s; }
-        .fade-in-delay-2 { transition-delay: 0.16s; }
-        .fade-in-delay-3 { transition-delay: 0.24s; }
-
-        /* ── HERO ── */
-        .hero-statusbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            color: var(--muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            padding-bottom: 1.25rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border);
-        }
-
-        .status-live {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            color: var(--accent);
-        }
-
-        .hero-name {
-            font-family: var(--display);
-            font-size: clamp(3.5rem, 9vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.0;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-        }
-
-        .hero-name .accent { color: var(--accent); }
-
-        .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 0.7em;
-            background: var(--accent);
-            margin-left: 2px;
-            vertical-align: middle;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0; }
-        }
-
-        .hero-specs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border: 2px solid var(--border);
-            background: var(--border);
-            gap: 2px;
-            margin-bottom: 2rem;
-        }
-
-        .spec-item {
-            background: var(--bg-card);
-            padding: 0.75rem;
-            display: flex;
-            flex-direction: column;
-            gap: 0.25rem;
-        }
-
-        .spec-key {
-            font-family: var(--mono);
-            font-size: 0.52rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-        }
-
-        .spec-val {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            font-weight: 500;
-        }
-
-        .hero-cta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-        /* ── BUTTONS ── */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.5rem 1rem;
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            letter-spacing: 0.04em;
-            text-decoration: none;
-            border: 2px solid var(--border);
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            transition: transform 0.1s, box-shadow 0.1s;
-            white-space: nowrap;
-        }
-        .btn:hover { transform: translate(4px, 4px); box-shadow: none; }
-        .btn-dark { background: var(--text); color: var(--bg); }
-        .btn-outline { background: var(--bg-card); color: var(--text); }
-
-        .dot-accent {
-            display: inline-block;
-            width: 6px; height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50%       { opacity: 0.5; transform: scale(0.75); }
-        }
-
-        /* ── ABOUT ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 3.5rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            opacity: 0.75;
-            font-size: 0.95rem;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-        .about-text p:last-child { margin-bottom: 0; }
-
-        .about-sidebar { display: flex; flex-direction: column; gap: 1.4rem; }
-
-        .sidebar-block { padding-left: 0.9rem; border-left: 2px solid var(--accent); }
-
-        .sidebar-label {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 0.5rem;
-        }
-
-        .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-
-        .tag-pill {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            padding: 0.15rem 0.4rem;
-            background: transparent;
-            border: 2px solid var(--border);
-            color: var(--muted);
-        }
-
-        /* ── LANG TABLE ── */
-        .lang-table { border: 2px solid var(--border); }
-
-        .lang-item {
-            display: grid;
-            grid-template-columns: 2rem 1fr auto;
-            gap: 0.75rem;
-            align-items: center;
-            padding: 0.45rem 0.7rem;
-            border-bottom: 1px solid var(--border);
-        }
-        .lang-item:last-child { border-bottom: none; }
-
-        .lang-code {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .lang-name { font-size: 0.8rem; font-weight: 500; }
-
-        .lang-level {
-            font-family: var(--mono);
-            font-size: 0.58rem;
-            color: var(--muted);
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        /* ── EXPERIENCE / EDUCATION ── */
-        .experience-list { display: flex; flex-direction: column; }
-
-        .exp-item {
-            display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 2rem;
-            padding: 2rem 0;
-            border-bottom: 2px solid var(--border);
-        }
-        .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .exp-item:first-child { padding-top: 0; }
-
-        .exp-meta { display: flex; flex-direction: column; gap: 0.3rem; padding-top: 0.1rem; }
-
-        .exp-date { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
-
-        .exp-type {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-        }
-
-        .exp-content { display: flex; flex-direction: column; gap: 0.3rem; }
-
-        .exp-role {
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: -0.01em;
-            line-height: 1.25;
-        }
-
-        .exp-org {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--muted);
-            margin-bottom: 0.35rem;
-        }
-
-        .exp-desc { font-size: 0.875rem; line-height: 1.7; opacity: 0.75; }
-
-        .exp-item.exp-featured {
-            border-left: 2px solid var(--accent);
-            padding-left: 1rem;
-        }
-
-        /* ── STACK ── */
-        .stack-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            background: var(--border);
-            border: 2px solid var(--border);
-            margin-bottom: 2px;
-        }
-
-        .stack-col { background: var(--bg-card); padding: 1.75rem; }
-
-        .stack-col-title {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 1.1rem;
-        }
-
-        .stack-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
-
-        .stack-item {
-            display: grid;
-            grid-template-columns: 145px 1fr;
-            gap: 0.75rem;
-            align-items: baseline;
-        }
-
-        .stack-name {
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--text);
-            white-space: nowrap;
-        }
-
-        .stack-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
-
-        /* ── PROJECTS ── */
-        .filter-bar { display: flex; gap: 0.4rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-
-        .filter-btn {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            padding: 0.28rem 0.65rem;
-            border: 2px solid var(--border);
-            background: var(--bg-card);
-            color: var(--muted);
-            cursor: pointer;
-            letter-spacing: 0.04em;
-            transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: var(--shadow);
-        }
-        .filter-btn:hover { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-        .filter-btn.active { background: var(--text); color: var(--bg); transform: translate(4px, 4px); box-shadow: none; }
-
-        .projects-wrap {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            box-shadow: var(--shadow);
-            transition: transform 0.1s, box-shadow 0.1s;
-        }
-        .project-card:hover { transform: translate(4px, 4px); box-shadow: none; }
-        .project-card[hidden] { display: none; }
-
-        .project-meta {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            color: var(--muted);
-            letter-spacing: 0.05em;
-            margin-bottom: 0.55rem;
-        }
-
-        .project-title {
-            font-family: var(--display);
-            font-size: 1rem;
-            letter-spacing: 0.04em;
-            line-height: 1.25;
-            margin-bottom: 0.6rem;
-        }
-
-        .project-desc {
-            font-size: 0.845rem;
-            opacity: 0.65;
-            line-height: 1.7;
-            margin-bottom: 0.85rem;
-            flex-grow: 1;
-        }
-
-        .project-callout {
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--accent);
-            margin-bottom: 0.85rem;
-            line-height: 1.5;
-        }
-
-        .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1rem; }
-
-        .tag-dark {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            padding: 0.12rem 0.38rem;
-            background: var(--text);
-            color: var(--bg);
-        }
-
-        .project-link {
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            font-weight: 500;
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 1px;
-            align-self: flex-start;
-            transition: color 0.15s;
-            background: none;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            cursor: pointer;
-        }
-        .project-link:hover { color: var(--accent); }
-        .project-detail-btn { margin-top: 0.35rem; }
-        .project-visual { display: none; }
-
-        /* ── FEATURED BADGE ── */
-        .project-featured-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            font-family: var(--mono);
-            font-size: 0.56rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent);
-            border: 1px solid var(--accent);
-            padding: 0.1rem 0.4rem;
-            margin-bottom: 0.6rem;
-            align-self: flex-start;
-        }
-
-        /* ── SCROLL PROGRESS ── */
-        #scroll-progress {
-            position: fixed;
-            top: 80px;
-            left: 0;
-            height: 2px;
-            background: var(--accent);
-            width: 0%;
-            z-index: 101;
-            transition: width 0.08s linear;
-        }
-
-        /* ── NOW ── */
-        .now-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2px;
-            background: var(--border);
-            border: 2px solid var(--border);
-            margin-bottom: 1rem;
-        }
-
-        .now-item { background: var(--bg-card); padding: 1.5rem; }
-
-        .now-label {
-            font-family: var(--display);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.45rem;
-        }
-
-        .now-text { font-size: 0.865rem; line-height: 1.7; opacity: 0.75; }
-
-        .now-updated {
-            font-family: var(--mono);
-            font-size: 0.58rem;
-            color: var(--muted);
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        /* ── CONTACT ── */
-        .contact-layout {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-heading {
-            font-family: var(--display);
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            line-height: 0.95;
-            margin-bottom: 1rem;
-        }
-        .contact-heading .accent { color: var(--accent); }
-
-        .contact-body { font-size: 0.925rem; line-height: 1.75; margin-bottom: 1.75rem; opacity: 0.7; }
-
-        .contact-links { display: flex; flex-direction: column; gap: 1.1rem; padding-top: 0.5rem; }
-        .contact-item { display: flex; flex-direction: column; gap: 0.15rem; }
-
-        .contact-item-label {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-        }
-
-        .contact-item-row { display: flex; align-items: center; gap: 0.65rem; }
-
-        .contact-item a {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text);
-            text-decoration: none;
-            transition: color 0.15s;
-        }
-        .contact-item a:hover { color: var(--accent); }
-
-        .copy-btn {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            padding: 0.12rem 0.38rem;
-            border: 2px solid var(--border);
-            background: transparent;
-            color: var(--muted);
-            cursor: pointer;
-            transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: var(--shadow);
-        }
-        .copy-btn:hover { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-        .copy-btn.copied { color: var(--accent); border-color: var(--accent); }
-
-        /* ── FOOTER ── */
-        footer {
-            padding: 2rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 2px solid var(--border);
-        }
-        .footer-mono { font-family: var(--mono); font-size: 0.68rem; color: var(--muted); }
-
-        /* ── MODAL ── */
-        .modal-backdrop {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.65);
-            z-index: 200;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-        .modal-backdrop.open { display: flex; }
-
-        .modal {
-            background: var(--bg-card);
-            border: 2px solid var(--border);
-            box-shadow: 8px 8px 0px var(--border);
-            max-width: 640px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 2.5rem;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: 2px solid var(--border);
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--muted);
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-            transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: var(--shadow);
-        }
-        .modal-close:hover { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-
-        .modal-header { margin-bottom: 1.25rem; }
-
-        .modal-meta {
-            font-family: var(--mono);
-            font-size: 0.62rem;
-            color: var(--muted);
-            letter-spacing: 0.05em;
-            margin-bottom: 0.4rem;
-        }
-
-        .modal-title {
-            font-family: var(--display);
-            font-size: 1.5rem;
-            letter-spacing: 0.04em;
-            line-height: 1.2;
-        }
-
-        .modal-section { margin-bottom: 1.1rem; }
-
-        .modal-section-label {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-section p { font-size: 0.875rem; line-height: 1.75; opacity: 0.8; }
-
-        .modal-section ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
-
-        .modal-section ul li {
-            font-size: 0.845rem;
-            line-height: 1.6;
-            opacity: 0.8;
-            padding-left: 1.4rem;
-            position: relative;
-        }
-        .modal-section ul li::before {
-            content: '→';
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            top: 0.15em;
-        }
-
-        .modal-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 1.25rem; }
-
-        .modal-footer {
-            padding-top: 1rem;
-            border-top: 2px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .modal-footer a {
-            font-family: var(--mono);
-            font-size: 0.68rem;
-            font-weight: 500;
-            color: var(--text);
-            text-decoration: none;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 1px;
-            transition: color 0.15s;
-        }
-        .modal-footer a:hover { color: var(--accent); }
-
-        .modal-footer-nav { display: flex; gap: 0.4rem; }
-
-        .modal-nav-btn {
-            font-family: var(--mono);
-            font-size: 0.6rem;
-            letter-spacing: 0.06em;
-            color: var(--muted);
-            background: none;
-            border: 2px solid var(--border);
-            padding: 0.2rem 0.5rem;
-            cursor: pointer;
-            transition: transform 0.1s, box-shadow 0.1s;
-            box-shadow: var(--shadow);
-        }
-        .modal-nav-btn:hover:not(:disabled) { transform: translate(4px, 4px); box-shadow: none; color: var(--text); }
-        .modal-nav-btn:disabled { opacity: 0.25; cursor: default; box-shadow: none; }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1023px) {
-            .nav-menu-btn { display: block; }
-            .nav-links { display: none; }
-            .nav-links.open {
-                display: flex;
-                position: fixed;
-                inset: 80px 0 0 0;
-                background: var(--bg);
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-                z-index: 99;
-                border-top: 2px solid var(--border);
-            }
-            .nav-links.open a { font-size: 0.9rem; }
-            section { padding: 48px 0; }
-            .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
-            .projects-wrap, .stack-grid, .now-grid { grid-template-columns: 1fr; }
-            .exp-item { grid-template-columns: 1fr; gap: 0.35rem; }
-            .stack-item { grid-template-columns: 120px 1fr; }
-            footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-        }
-
-        @media (max-width: 600px) {
-            nav { padding: 0 1.25rem; }
-            .container { padding: 0 1.25rem; }
-            .projects-wrap { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=42">
+    <script>document.documentElement.classList.add('js-ready');</script>
+    <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
 <body>
 
-<div id="scroll-progress"></div>
-<nav>
-    <a href="#" class="nav-name">Gonzalo Cruz</a>
-    <div class="nav-right">
-        <ul class="nav-links">
-            <li><a href="#about"      data-nav="about">About</a></li>
-            <li><a href="#education"  data-nav="education">Education</a></li>
-            <li><a href="#experience" data-nav="experience">Experience</a></li>
-            <li><a href="#stack"      data-nav="stack">Stack</a></li>
-            <li><a href="#projects"   data-nav="projects">Projects</a></li>
-            <li><a href="#now"        data-nav="now">Now</a></li>
-            <li><a href="#contact"    data-nav="contact">Contact</a></li>
-        </ul>
-        <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">MENU</button>
-        <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">◐ dark</button>
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<header class="masthead">
+    <div class="masthead-inner">
+        <a href="#" class="masthead-title">Gonzalo Cruz</a>
+        <div class="masthead-meta">
+            <span>No. 04</span><span class="sep">·</span>
+            <span>Jun 2026</span><span class="sep">·</span>
+            <span class="accent">Open to work</span>
+        </div>
+        <nav class="masthead-nav" id="mastheadNav">
+            <a href="#about"      data-nav="about">About</a>
+            <a href="#curriculum" data-nav="curriculum">Curriculum</a>
+            <a href="#stack"      data-nav="stack">Stack</a>
+            <a href="#projects"   data-nav="projects">Projects</a>
+            <a href="#now"        data-nav="now">Now</a>
+            <a href="#contact"    data-nav="contact">Contact</a>
+        </nav>
+        <div class="masthead-controls">
+            <button class="btn-icon" id="themeBtn" aria-label="Toggle theme">◐ dark</button>
+            <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">menu</button>
+        </div>
     </div>
-</nav>
+</header>
 
-<div class="container">
+<main class="page">
+    <div class="container">
 
-    <!-- ── LEFT PANEL ── -->
-    <div class="datasheet-fixed">
-        <section id="hero">
-            <div class="hero-statusbar">
-                <span>GCG_001</span>
-                <span class="status-live"><span class="dot-accent"></span>Open to work</span>
+        <!-- ── Opening spread ── -->
+        <section class="spread reveal" id="top">
+            <div class="spread-status">
+                <span class="mono">GCG_001 — Edition 04</span>
+                <span class="status-live"><span class="status-dot"></span>Open to work</span>
             </div>
-            <h1 class="hero-name">
-                Gonzalo<br>
-                <span class="accent">Cruz.<span class="cursor"></span></span>
-            </h1>
-            <div class="hero-specs">
-                <div class="spec-item">
-                    <span class="spec-key">Location</span>
-                    <span class="spec-val">Madrid, ES</span>
+            <div class="spread-grid">
+                <div>
+                    <h1 class="spread-headline">
+                        Gonzalo
+                        <span class="accent">Cruz.</span>
+                    </h1>
+                    <p class="spread-lede">Data Science &amp; Engineering. Building the pipelines that make ML actually work.</p>
+                    <div class="spread-actions">
+                        <a href="CV.pdf" download class="btn btn-primary">CV ↓</a>
+                        <a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+                        <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
+                        <a href="mailto:gonza.c.gomez03@gmail.com" class="btn">Email</a>
+                    </div>
                 </div>
-                <div class="spec-item">
-                    <span class="spec-key">Seeking</span>
-                    <span class="spec-val">Internship</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-key">Degree</span>
-                    <span class="spec-val">Data Science & Engineering · URJC</span>
-                </div>
-                <div class="spec-item">
-                    <span class="spec-key">Avail.</span>
-                    <span class="spec-val">Aug 2026</span>
-                </div>
-            </div>
-            <div class="hero-cta">
-                <a href="CV.pdf" download class="btn btn-dark">CV ↓</a>
-                <a href="https://github.com/gonzalo-cruz" target="_blank" class="btn btn-outline">GitHub ↗</a>
-                <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-                <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-outline">Email</a>
+                <aside class="spread-meta">
+                    <div class="spread-meta-row"><span class="spread-meta-key">Location</span><span class="spread-meta-val">Madrid, ES</span></div>
+                    <div class="spread-meta-row"><span class="spread-meta-key">Seeking</span><span class="spread-meta-val">Internship</span></div>
+                    <div class="spread-meta-row"><span class="spread-meta-key">Degree</span><span class="spread-meta-val">DS&amp;E · URJC</span></div>
+                    <div class="spread-meta-row"><span class="spread-meta-key">Avail.</span><span class="spread-meta-val">Aug 2026</span></div>
+                    <div class="spread-meta-row"><span class="spread-meta-key">Languages</span><span class="spread-meta-val">ES · EN · DE · ZH</span></div>
+                </aside>
             </div>
         </section>
-    </div>
 
-    <!-- ── RIGHT PANEL ── -->
-    <div class="datasheet-scroll">
+        <!-- ── Index / Contents ── -->
+        <section class="contents reveal">
+            <p class="contents-label">Index</p>
+            <div class="contents-grid">
+                <a href="#about" class="contents-item">
+                    <span class="contents-num">01</span>
+                    <span class="contents-title">About</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§01</span>
+                </a>
+                <a href="#curriculum" class="contents-item">
+                    <span class="contents-num">02</span>
+                    <span class="contents-title">Curriculum</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§02</span>
+                </a>
+                <a href="#stack" class="contents-item">
+                    <span class="contents-num">03</span>
+                    <span class="contents-title">Stack</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§03</span>
+                </a>
+                <a href="#projects" class="contents-item">
+                    <span class="contents-num">04</span>
+                    <span class="contents-title">Projects</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§04</span>
+                </a>
+                <a href="#now" class="contents-item">
+                    <span class="contents-num">05</span>
+                    <span class="contents-title">Now</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§05</span>
+                </a>
+                <a href="#contact" class="contents-item">
+                    <span class="contents-num">06</span>
+                    <span class="contents-title">Contact</span>
+                    <span class="contents-dots"></span>
+                    <span class="contents-target">§06</span>
+                </a>
+            </div>
+        </section>
 
-        <!-- 01 ABOUT -->
-        <section id="about">
-            <div class="section-header">
+        <!-- ── 01 About ── -->
+        <section class="section" id="about">
+            <div class="section-head reveal">
                 <span class="section-num">01</span>
                 <h2 class="section-title">About</h2>
             </div>
-            <div class="about-grid">
-                <div class="about-text">
-                    <p class="fade-in">
-                        Building a machine learning system is mostly not about the model. It's about making
-                        sure the data gets there reliably, that the pipeline doesn't break at 3am, that
-                        the transformers you fit in development still make sense on the data you see in
-                        production. That's the part I find genuinely interesting and the part most
-                        people underinvest in.
-                    </p>
-                    <p class="fade-in fade-in-delay-1">
-                        Four years in Telecommunications Engineering gave me something unusual for a data
-                        scientist: real fluency with the math. Not pattern-matching on formulas, but
-                        understanding why a convolution is useful or what a Fourier transform is actually
-                        telling you. That foundation makes the jump into ML engineering feel like a
-                        natural extension rather than a context switch.
-                    </p>
-                    <p class="fade-in fade-in-delay-2">
-                        I'm starting my final year at URJC and running Datalab alongside coursework; a student
-                        association I founded because collaborative, project-driven learning didn't exist
-                        yet. Most of what I've built started as a question I couldn't answer from a
-                        lecture slide.
-                    </p>
-                </div>
-                <div class="about-sidebar fade-in fade-in-delay-1">
-                    <div class="sidebar-block">
-                        <p class="sidebar-label">Data Engineering</p>
-                        <div class="tags">
-                            <span class="tag-pill">Apache Airflow</span>
-                            <span class="tag-pill">Apache Kafka</span>
-                            <span class="tag-pill">PySpark</span>
-                            <span class="tag-pill">Hadoop / HDFS</span>
-                            <span class="tag-pill">MapReduce</span>
-                            <span class="tag-pill">Docker</span>
-                        </div>
-                    </div>
-                    <div class="sidebar-block">
-                        <p class="sidebar-label">ML / Modeling</p>
-                        <div class="tags">
-                            <span class="tag-pill">scikit-learn</span>
-                            <span class="tag-pill">PyTorch</span>
-                            <span class="tag-pill">XGBoost</span>
-                            <span class="tag-pill">CNN</span>
-                            <span class="tag-pill">LLM</span>
-                            <span class="tag-pill">Time Series</span>
-                            <span class="tag-pill">Incremental PCA</span>
-                            <span class="tag-pill">SMOTE</span>
-                            <span class="tag-pill">SVM / MLP</span>
-                            <span class="tag-pill">GAM / GLM</span>
-                        </div>
-                    </div>
-                    <div class="sidebar-block">
-                        <p class="sidebar-label">Languages & Tools</p>
-                        <div class="tags">
-                            <span class="tag-pill">Python</span>
-                            <span class="tag-pill">R</span>
-                            <span class="tag-pill">C</span>
-                            <span class="tag-pill">SQL</span>
-                            <span class="tag-pill">Bash</span>
-                            <span class="tag-pill">Excel</span>
-                        </div>
-                    </div>
-                    <div class="sidebar-block">
-                        <p class="sidebar-label">HPC</p>
-                        <div class="tags">
-                            <span class="tag-pill">OpenMP</span>
-                            <span class="tag-pill">MPI</span>
-                            <span class="tag-pill">CUDA</span>
-                        </div>
-                    </div>
-                    <div class="sidebar-block">
-                        <p class="sidebar-label">Spoken languages</p>
-                        <div class="lang-table">
-                            <div class="lang-item">
-                                <span class="lang-code">ES</span>
-                                <span class="lang-name">Spanish</span>
-                                <span class="lang-level">Native</span>
-                            </div>
-                            <div class="lang-item">
-                                <span class="lang-code">EN</span>
-                                <span class="lang-name">English</span>
-                                <span class="lang-level">C2</span>
-                            </div>
-                            <div class="lang-item">
-                                <span class="lang-code">DE</span>
-                                <span class="lang-name">German</span>
-                                <span class="lang-level">B2</span>
-                            </div>
-                            <div class="lang-item">
-                                <span class="lang-code">ZH</span>
-                                <span class="lang-name">Chinese</span>
-                                <span class="lang-level">HSK3</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="prose reveal">
+                <p>Building a machine learning system is mostly not about the model. It's about making sure the data gets there reliably, that the pipeline doesn't break at 3am, that the transformers you fit in development still make sense on the data you see in production. That's the part I find genuinely interesting and the part most people underinvest in.</p>
+                <p>Four years in Telecommunications Engineering gave me something unusual for a data scientist: real fluency with the math. Not pattern-matching on formulas, but understanding why a convolution is useful or what a Fourier transform is actually telling you. That foundation makes the jump into ML engineering feel like a natural extension rather than a context switch.</p>
+                <blockquote class="pullquote">Most of what I've built started as a question I couldn't answer from a lecture slide.</blockquote>
+                <p>I'm starting my final year at URJC and running Datalab alongside coursework; a student association I founded because collaborative, project-driven learning didn't exist yet.</p>
             </div>
         </section>
 
-        <!-- 02 EDUCATION -->
-        <section id="education">
-            <div class="section-header fade-in">
+        <!-- ── 02 Curriculum (merged Education + Experience) ── -->
+        <section class="section" id="curriculum">
+            <div class="section-head reveal">
                 <span class="section-num">02</span>
-                <h2 class="section-title">Education</h2>
+                <h2 class="section-title">Curriculum</h2>
             </div>
-            <div class="experience-list">
-                <div class="exp-item fade-in">
-                    <div class="exp-meta">
-                        <span class="exp-date">2024 — Present</span>
-                        <span class="exp-type">Current</span>
-                    </div>
-                    <div class="exp-content">
-                        <h3 class="exp-role">B.S. Data Science & Engineering</h3>
-                        <p class="exp-org">URJC · Madrid</p>
-                        <p class="exp-desc">Final year (expected graduation June 2027). Completed two full academic years in one (2024–2025). Coursework spans ML, Distributed Systems, Deep Learning, HPC, and Statistical Inference. Running parallel to founding and leading Datalab.</p>
-                    </div>
-                </div>
-                <div class="exp-item fade-in fade-in-delay-1">
-                    <div class="exp-meta">
-                        <span class="exp-date">2020 — 2023</span>
-                        <span class="exp-type">Transferred</span>
-                    </div>
-                    <div class="exp-content">
-                        <h3 class="exp-role">B.S. Telecommunications Engineering</h3>
-                        <p class="exp-org">UC3M · Madrid</p>
-                        <p class="exp-desc">120+ credits in Networking, Physics, and Signal Processing. Transferred after four years to specialize in Data Science. The mathematical foundation — linear algebra, probability theory, signal processing — carries directly into modeling and engineering work.</p>
-                    </div>
-                </div>
-                <div class="exp-item fade-in fade-in-delay-2">
-                    <div class="exp-meta">
-                        <span class="exp-date">2019</span>
-                        <span class="exp-type">Certification</span>
-                    </div>
-                    <div class="exp-content">
-                        <h3 class="exp-role">Certificate of Advanced English — C2</h3>
-                        <p class="exp-org">Cambridge Assessment</p>
-                        <p class="exp-desc">Highest level of the Cambridge English suite.</p>
-                    </div>
-                </div>
+            <div class="timeline reveal">
+                <div class="timeline-date">2024 — Present<span class="entry-tag">Current</span></div>
+                <article class="timeline-entry">
+                    <h3 class="entry-role">B.S. Data Science &amp; Engineering</h3>
+                    <p class="entry-org">URJC · Madrid</p>
+                    <p class="entry-desc">Final year (expected graduation June 2027). Completed two full academic years in one (2024–2025). Coursework spans ML, Distributed Systems, Deep Learning, HPC, and Statistical Inference. Running parallel to founding and leading Datalab.</p>
+                </article>
+
+                <div class="timeline-date">2025 — Present<span class="entry-tag">Community</span></div>
+                <article class="timeline-entry">
+                    <span class="entry-featured">★ Featured</span>
+                    <h3 class="entry-role">Founder &amp; President — Datalab</h3>
+                    <p class="entry-org">URJC · Madrid</p>
+                    <p class="entry-desc">Founded the first data science student association at URJC. Defined the strategic roadmap, handled legal registration, and built the community from zero. Organizing technical workshops, coordinating members, and running the first collaborative data projects. The goal: make it easier for students to work on real problems together.</p>
+                </article>
+
+                <div class="timeline-date">2020 — Present<span class="entry-tag">Teaching · 5 yrs</span></div>
+                <article class="timeline-entry">
+                    <h3 class="entry-role">Math &amp; Physics Tutor</h3>
+                    <p class="entry-org">Self-employed · Madrid</p>
+                    <p class="entry-desc">Five years tutoring high school students in mathematics and physics — calculus, linear algebra, mechanics, electromagnetism. Prepared students for university entrance exams (Selectividad). Teaching this long forces you to explain things clearly and find multiple ways into a problem, which turns out to be useful in data science too.</p>
+                </article>
+
+                <div class="timeline-date">2020 — 2023<span class="entry-tag">Transferred</span></div>
+                <article class="timeline-entry">
+                    <h3 class="entry-role">B.S. Telecommunications Engineering</h3>
+                    <p class="entry-org">UC3M · Madrid</p>
+                    <p class="entry-desc">120+ credits in Networking, Physics, and Signal Processing. Transferred after four years to specialize in Data Science. The mathematical foundation — linear algebra, probability theory, signal processing — carries directly into modeling and engineering work.</p>
+                </article>
+
+                <div class="timeline-date">2019<span class="entry-tag">Certification</span></div>
+                <article class="timeline-entry">
+                    <h3 class="entry-role">Certificate of Advanced English — C2</h3>
+                    <p class="entry-org">Cambridge Assessment</p>
+                    <p class="entry-desc">Highest level of the Cambridge English suite.</p>
+                </article>
             </div>
         </section>
 
-        <!-- 03 EXPERIENCE -->
-        <section id="experience">
-            <div class="section-header fade-in">
+        <!-- ── 03 Stack ── -->
+        <section class="section" id="stack">
+            <div class="section-head reveal">
                 <span class="section-num">03</span>
-                <h2 class="section-title">Experience</h2>
-            </div>
-            <div class="experience-list">
-                <div class="exp-item exp-featured fade-in">
-                    <div class="exp-meta">
-                        <span class="exp-date">2025 — Present</span>
-                        <span class="exp-type">Community</span>
-                    </div>
-                    <div class="exp-content">
-                        <h3 class="exp-role">Founder & President — Datalab</h3>
-                        <p class="exp-org">URJC · Madrid</p>
-                        <p class="exp-desc">Founded the first data science student association at URJC. Defined the strategic roadmap, handled legal registration, and built the community from zero. Organizing technical workshops, coordinating members, and running the first collaborative data projects. The goal: make it easier for students to work on real problems together.</p>
-                    </div>
-                </div>
-                <div class="exp-item fade-in fade-in-delay-1">
-                    <div class="exp-meta">
-                        <span class="exp-date">2020 — Present</span>
-                        <span class="exp-type">Teaching · 5 years</span>
-                    </div>
-                    <div class="exp-content">
-                        <h3 class="exp-role">Math & Physics Tutor</h3>
-                        <p class="exp-org">Self-employed · Madrid</p>
-                        <p class="exp-desc">Five years tutoring high school students in mathematics and physics — calculus, linear algebra, mechanics, electromagnetism. Prepared students for university entrance exams (Selectividad). Teaching this long forces you to explain things clearly and find multiple ways into a problem, which turns out to be useful in data science too.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 04 STACK -->
-        <section id="stack">
-            <div class="section-header fade-in">
-                <span class="section-num">04</span>
                 <h2 class="section-title">Stack</h2>
             </div>
-            <div class="stack-grid fade-in">
-                <div class="stack-col">
-                    <p class="stack-col-title">Engineering</p>
+
+            <div class="stack-group reveal">
+                <p class="stack-group-label">Engineering &amp; ML</p>
+                <div class="stack-cols">
                     <ul class="stack-list">
-                        <li class="stack-item"><span class="stack-name">Apache Airflow</span><span class="stack-desc">DAG orchestration across 2 pipeline projects; TaskFlow API</span></li>
-                        <li class="stack-item"><span class="stack-name">Apache Kafka</span><span class="stack-desc">Event streaming, acks=all producers, sub-batch delivery</span></li>
-                        <li class="stack-item"><span class="stack-name">PySpark</span><span class="stack-desc">DStreams real-time windowed aggregation with inverse reduction</span></li>
-                        <li class="stack-item"><span class="stack-name">Hadoop / HDFS</span><span class="stack-desc">MapReduce batch jobs on 314MB+ datasets; YARN job submission</span></li>
-                        <li class="stack-item"><span class="stack-name">Docker / Compose</span><span class="stack-desc">Containerized Hadoop clusters and Kafka brokers from scratch</span></li>
-                        <li class="stack-item"><span class="stack-name">pandas / NumPy</span><span class="stack-desc">Chunked processing of 1M+ row datasets without OOM</span></li>
+                        <li class="stack-row"><span class="stack-name">Apache Airflow</span><span class="stack-desc">DAG orchestration across 2 pipeline projects; TaskFlow API</span></li>
+                        <li class="stack-row"><span class="stack-name">Apache Kafka</span><span class="stack-desc">Event streaming, acks=all producers, sub-batch delivery</span></li>
+                        <li class="stack-row"><span class="stack-name">PySpark</span><span class="stack-desc">DStreams real-time windowed aggregation with inverse reduction</span></li>
+                        <li class="stack-row"><span class="stack-name">Hadoop / HDFS</span><span class="stack-desc">MapReduce batch jobs on 314MB+ datasets; YARN job submission</span></li>
+                        <li class="stack-row"><span class="stack-name">Docker / Compose</span><span class="stack-desc">Containerized Hadoop clusters and Kafka brokers from scratch</span></li>
+                        <li class="stack-row"><span class="stack-name">pandas / NumPy</span><span class="stack-desc">Chunked processing of 1M+ row datasets without OOM</span></li>
                     </ul>
-                </div>
-                <div class="stack-col">
-                    <p class="stack-col-title">ML & Statistics</p>
                     <ul class="stack-list">
-                        <li class="stack-item"><span class="stack-name">scikit-learn</span><span class="stack-desc">Classification pipelines, StandardScaler, OHE, RFECV, PCA</span></li>
-                        <li class="stack-item"><span class="stack-name">PyTorch</span><span class="stack-desc">CNNs, LLM fine-tuning, custom training loops</span></li>
-                        <li class="stack-item"><span class="stack-name">XGBoost</span><span class="stack-desc">Gradient boosting for churn and risk prediction</span></li>
-                        <li class="stack-item"><span class="stack-name">Time Series</span><span class="stack-desc">Forecasting, decomposition, stationarity testing</span></li>
-                        <li class="stack-item"><span class="stack-name">imbalanced-learn</span><span class="stack-desc">SMOTE for class imbalance on medical datasets</span></li>
-                        <li class="stack-item"><span class="stack-name">R / mgcv</span><span class="stack-desc">GAMs, GLMs, Gamma/Inverse Gaussian regression, statistical inference</span></li>
-                        <li class="stack-item"><span class="stack-name">From scratch</span><span class="stack-desc">Naive Bayes, AdaBoost, K-NN implemented by hand and benchmarked</span></li>
+                        <li class="stack-row"><span class="stack-name">scikit-learn</span><span class="stack-desc">Classification pipelines, StandardScaler, OHE, RFECV, PCA</span></li>
+                        <li class="stack-row"><span class="stack-name">PyTorch</span><span class="stack-desc">CNNs, LLM fine-tuning, custom training loops</span></li>
+                        <li class="stack-row"><span class="stack-name">XGBoost</span><span class="stack-desc">Gradient boosting for churn and risk prediction</span></li>
+                        <li class="stack-row"><span class="stack-name">Time Series</span><span class="stack-desc">Forecasting, decomposition, stationarity testing</span></li>
+                        <li class="stack-row"><span class="stack-name">imbalanced-learn</span><span class="stack-desc">SMOTE for class imbalance on medical datasets</span></li>
+                        <li class="stack-row"><span class="stack-name">R / mgcv</span><span class="stack-desc">GAMs, GLMs, Gamma/Inverse Gaussian regression, inference</span></li>
+                        <li class="stack-row"><span class="stack-name">From scratch</span><span class="stack-desc">Naive Bayes, AdaBoost, K-NN implemented by hand and benchmarked</span></li>
                     </ul>
                 </div>
             </div>
-            <div class="stack-grid fade-in fade-in-delay-1">
-                <div class="stack-col">
-                    <p class="stack-col-title">High Performance Computing</p>
+
+            <div class="stack-group reveal reveal-stagger-1">
+                <p class="stack-group-label">High Performance Computing &amp; Other</p>
+                <div class="stack-cols">
                     <ul class="stack-list">
-                        <li class="stack-item"><span class="stack-name">OpenMP</span><span class="stack-desc">Shared-memory parallelism, thread management, loop parallelization</span></li>
-                        <li class="stack-item"><span class="stack-name">MPI</span><span class="stack-desc">Distributed-memory communication, collective operations</span></li>
-                        <li class="stack-item"><span class="stack-name">CUDA</span><span class="stack-desc">GPU kernel programming, memory hierarchy, parallel reduction</span></li>
+                        <li class="stack-row"><span class="stack-name">OpenMP</span><span class="stack-desc">Shared-memory parallelism, thread management, loop parallelization</span></li>
+                        <li class="stack-row"><span class="stack-name">MPI</span><span class="stack-desc">Distributed-memory communication, collective operations</span></li>
+                        <li class="stack-row"><span class="stack-name">CUDA</span><span class="stack-desc">GPU kernel programming, memory hierarchy, parallel reduction</span></li>
+                    </ul>
+                    <ul class="stack-list">
+                        <li class="stack-row"><span class="stack-name">C</span><span class="stack-desc">Systems programming, memory management, HPC coursework</span></li>
+                        <li class="stack-row"><span class="stack-name">Excel</span><span class="stack-desc">Data analysis, pivot tables, advanced formulas</span></li>
+                        <li class="stack-row"><span class="stack-name">Claude Code</span><span class="stack-desc">Agentic coding, extended context engineering, task automation</span></li>
                     </ul>
                 </div>
-                <div class="stack-col">
-                    <p class="stack-col-title">Other</p>
-                    <ul class="stack-list">
-                        <li class="stack-item"><span class="stack-name">C</span><span class="stack-desc">Systems programming, memory management, HPC coursework</span></li>
-                        <li class="stack-item"><span class="stack-name">Excel</span><span class="stack-desc">Data analysis, pivot tables, advanced formulas</span></li>
-                        <li class="stack-item"><span class="stack-name">Claude Code</span><span class="stack-desc">Agentic coding, extended context engineering, multi-step task automation</span></li>
-                    </ul>
+            </div>
+
+            <div class="tag-cluster reveal reveal-stagger-2">
+                <p class="cluster-label">Data Engineering</p>
+                <div class="tags">
+                    <span class="tag">Apache Airflow</span><span class="tag">Apache Kafka</span><span class="tag">PySpark</span><span class="tag">Hadoop / HDFS</span><span class="tag">MapReduce</span><span class="tag">Docker</span>
+                </div>
+            </div>
+            <div class="tag-cluster reveal reveal-stagger-2">
+                <p class="cluster-label">ML / Modeling</p>
+                <div class="tags">
+                    <span class="tag">scikit-learn</span><span class="tag">PyTorch</span><span class="tag">XGBoost</span><span class="tag">CNN</span><span class="tag">LLM</span><span class="tag">Time Series</span><span class="tag">Incremental PCA</span><span class="tag">SMOTE</span><span class="tag">SVM / MLP</span><span class="tag">GAM / GLM</span>
+                </div>
+            </div>
+            <div class="tag-cluster reveal reveal-stagger-3">
+                <p class="cluster-label">Languages &amp; Tools</p>
+                <div class="tags">
+                    <span class="tag">Python</span><span class="tag">R</span><span class="tag">C</span><span class="tag">SQL</span><span class="tag">Bash</span><span class="tag">Excel</span>
+                </div>
+            </div>
+            <div class="tag-cluster reveal reveal-stagger-3">
+                <p class="cluster-label">HPC</p>
+                <div class="tags">
+                    <span class="tag">OpenMP</span><span class="tag">MPI</span><span class="tag">CUDA</span>
+                </div>
+            </div>
+            <div class="tag-cluster reveal reveal-stagger-4">
+                <p class="cluster-label">Spoken languages</p>
+                <div class="lang-table">
+                    <div class="lang-row"><span class="lang-code">ES</span><span class="lang-name">Spanish</span><span class="lang-level">Native</span></div>
+                    <div class="lang-row"><span class="lang-code">EN</span><span class="lang-name">English</span><span class="lang-level">C2</span></div>
+                    <div class="lang-row"><span class="lang-code">DE</span><span class="lang-name">German</span><span class="lang-level">B2</span></div>
+                    <div class="lang-row"><span class="lang-code">ZH</span><span class="lang-name">Chinese</span><span class="lang-level">HSK3</span></div>
                 </div>
             </div>
         </section>
 
-        <!-- 05 PROJECTS -->
-        <section id="projects">
-            <div class="section-header fade-in">
-                <span class="section-num">05</span>
+        <!-- ── 04 Projects ── -->
+        <section class="section" id="projects">
+            <div class="section-head reveal">
+                <span class="section-num">04</span>
                 <h2 class="section-title">Projects</h2>
             </div>
-            <div class="filter-bar fade-in">
+
+            <!-- Featured spread -->
+            <article class="project-featured reveal">
+                <span class="featured-badge">★ Featured — No. 01</span>
+                <h3 class="featured-title">TripAdvisor Restaurants Pipeline</h3>
+                <p class="featured-meta">Data Engineering / MLOps</p>
+                <p class="featured-desc">Full-stack data system: Airflow DAG processing 1M+ rows of European restaurant data, PySpark ML KMeans clustering with automatic K selection (silhouette, K=10–80), dual Spark Structured Streaming consumers, and a web app (FastAPI + React/Vite). Restaurant recommendations via cosine similarity within clusters; live scoring pushed to the browser over Server-Sent Events.</p>
+                <p class="featured-callout">→ Auto-K KMeans · dual streaming paths · full-stack web app with live SSE scoring</p>
+                <div class="project-tags">
+                    <span class="project-tag">Airflow</span><span class="project-tag">PySpark</span><span class="project-tag">Kafka</span><span class="project-tag">Spark Streaming</span><span class="project-tag">FastAPI</span><span class="project-tag">React</span><span class="project-tag">Docker</span><span class="project-tag">Python</span>
+                </div>
+                <div class="project-detail-section">
+                    <p class="project-detail-label">Architecture</p>
+                    <div class="project-detail-text">
+                        <ul>
+                            <li>5-stage Airflow DAG: Extract → Clean → EDA → Preprocess (normalization, OHE/label encoding by cardinality, incremental PCA) → Stream to Kafka — all in 50k-row chunks, no full dataset in memory</li>
+                            <li>PySpark ML KMeans with automatic K selection via silhouette scoring across K = 10–80; model cached to avoid redundant recomputation</li>
+                            <li>Dual Spark Structured Streaming consumers: <code>streaming_filter.py</code> (fast filter, no ML) and <code>streaming_score.py</code> (centroid distance + timestamped cluster assignments)</li>
+                            <li>FastAPI backend + React/Vite frontend — restaurant search with cosine-similarity recommendations within clusters, and a live tab with Server-Sent Events pushing classifications in real time</li>
+                            <li>Priority queue for immediate model scoring of user-selected restaurants</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="project-detail-section">
+                    <p class="project-detail-label">Key challenge</p>
+                    <p class="project-detail-text">The ETL pipeline can't load 1M+ rows at once — every stage processes data in 50k-row chunks, including the incremental PCA and encoding steps, which required careful state management across iterations. On the streaming side, the two-consumer architecture separates latency-sensitive display from compute-heavy ML scoring without blocking either path.</p>
+                </div>
+                <a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+            </article>
+
+            <!-- Filter -->
+            <div class="project-filter reveal">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="engineering">Engineering</button>
                 <button class="filter-btn" data-filter="ml">ML</button>
                 <button class="filter-btn" data-filter="statistics">Statistics</button>
             </div>
-            <div class="projects-wrap">
 
-                <div class="project-card fade-in" data-cat="engineering">
-                    <span class="project-featured-badge">★ Featured</span>
-                    <p class="project-meta">01 — Data Engineering / MLOps</p>
-                    <h3 class="project-title">TripAdvisor Restaurants Pipeline</h3>
-                    <p class="project-desc">Full-stack data system: Airflow DAG processing 1M+ rows of European restaurant data, PySpark ML KMeans clustering with automatic K selection (silhouette, K=10–80), dual Spark Structured Streaming consumers, and a web app (FastAPI + React/Vite). Restaurant recommendations via cosine similarity within clusters; live scoring pushed to the browser over Server-Sent Events.</p>
-                    <p class="project-callout">→ Auto-K KMeans · dual streaming paths · full-stack web app with live SSE scoring</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">Airflow</span><span class="tag-dark">PySpark</span><span class="tag-dark">Kafka</span><span class="tag-dark">Spark Streaming</span><span class="tag-dark">FastAPI</span><span class="tag-dark">React</span><span class="tag-dark">Docker</span><span class="tag-dark">Python</span>
-                    </div>
-                    <a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-1')">Details +</button>
-                </div>
+            <!-- Project index (accordion) -->
+            <div class="project-index">
 
-                <div class="project-card fade-in fade-in-delay-1" data-cat="engineering">
-                    <p class="project-meta">02 — Streaming / Distributed</p>
-                    <h3 class="project-title">Real-Time Hashtag Trending</h3>
-                    <p class="project-desc">Distributed real-time trending analysis using PySpark DStreams. Connects to a TCP tweet feed, filters for US-only content, and uses a 5-minute sliding window with 10-second slide intervals to rank hashtags. Uses inverse reduction functions for incremental window recalculation — only processes new arrivals and expired tweets instead of recomputing the full window each slide.</p>
-                    <p class="project-callout">→ Sliding window with invFunc — O(slide interval), not O(window size)</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">PySpark</span><span class="tag-dark">DStreams</span><span class="tag-dark">Windowing</span><span class="tag-dark">Python</span>
+                <article class="project-row reveal" data-cat="engineering">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">02</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Real-Time Hashtag Trending</span>
+                            <span class="project-row-meta">Streaming / Distributed</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Distributed real-time trending analysis using PySpark DStreams. Connects to a live TCP tweet feed, filters for US-only content, and maintains a 5-minute sliding window with 10-second slide intervals to rank hashtags continuously.</p>
+                                <p class="project-detail-callout">→ Sliding window with invFunc — O(slide interval), not O(window size)</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">The interesting part</p>
+                                    <p class="project-detail-text">The naive approach — recomputing the full window on each slide — is O(window size). Instead, the pipeline uses inverse reduction functions (<code>invFunc</code>): on each slide, only new arrivals are added and expired tweets are subtracted. This makes each update O(slide interval), not O(window size). A 5-minute window with 10-second slides is 30x cheaper per update.</p>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Stack decisions</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>DStreams over Structured Streaming — lower-level, but invFunc is not available in the Structured API</li>
+                                            <li>TCP socket source simulates a real-time feed for local testing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">PySpark</span><span class="project-tag">DStreams</span><span class="project-tag">Windowing</span><span class="project-tag">Python</span></div>
+                                <a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-2')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in" data-cat="engineering">
-                    <p class="project-meta">03 — Data Engineering</p>
-                    <h3 class="project-title">Hadoop Sentiment Analysis</h3>
-                    <p class="project-desc">AFINN-111 lexicon sentiment scoring on a 314MB Twitter JSON dataset using MapReduce on a fully Dockerized Hadoop cluster. Set up HDFS, YARN, and custom Docker images from scratch. Shell-scripted HDFS file upload and job submission — the kind of deployment automation that matters when working with distributed infrastructure.</p>
-                    <p class="project-callout">→ 314MB dataset, full Hadoop cluster in Docker Compose, automated deploy script</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">Hadoop</span><span class="tag-dark">MapReduce</span><span class="tag-dark">HDFS / YARN</span><span class="tag-dark">Docker Compose</span><span class="tag-dark">Python</span>
+                <article class="project-row reveal reveal-stagger-1" data-cat="engineering">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">03</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Hadoop Sentiment Analysis</span>
+                            <span class="project-row-meta">Data Engineering</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">AFINN-111 lexicon sentiment scoring on a 314MB Twitter JSON dataset using MapReduce on a fully Dockerized Hadoop cluster. The goal was to build and operate the infrastructure from scratch, not just run a managed service.</p>
+                                <p class="project-detail-callout">→ 314MB dataset, full Hadoop cluster in Docker Compose, automated deploy script</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Infrastructure</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>Multi-node Hadoop cluster (NameNode + DataNodes) set up with Docker Compose and custom images</li>
+                                            <li>HDFS for distributed storage, YARN for resource management and job scheduling</li>
+                                            <li>Shell-scripted HDFS file upload and MapReduce job submission — fully automated deploy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">MapReduce design</p>
+                                    <p class="project-detail-text">Mapper tokenizes tweet text and scores each token against the AFINN lexicon. Reducer aggregates per-tweet scores. The Dockerized setup means the entire cluster can be reproduced with a single <code>docker compose up</code>.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">Hadoop</span><span class="project-tag">MapReduce</span><span class="project-tag">HDFS / YARN</span><span class="project-tag">Docker Compose</span><span class="project-tag">Python</span></div>
+                                <a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-3')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in fade-in-delay-1" data-cat="ml">
-                    <p class="project-meta">04 — Applied ML</p>
-                    <h3 class="project-title">Stroke Risk Prediction</h3>
-                    <p class="project-desc">Binary classification of stroke risk on a heavily imbalanced medical dataset. Made a deliberate decision to optimize for Recall over Accuracy — in clinical settings, a missed positive costs far more than a false alarm. SMOTE for class imbalance, RFECV to reduce features from 20+ down to 12. Compared Logistic Regression, MLP, LinearSVC, and RBF-SVM; correctly diagnosed RBF-SVM's failure mode.</p>
-                    <p class="project-callout">→ Logistic Regression: 0.88 Recall, 0.84 AUC on validation set</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">scikit-learn</span><span class="tag-dark">SMOTE</span><span class="tag-dark">RFECV</span><span class="tag-dark">SVM</span><span class="tag-dark">MLP</span><span class="tag-dark">Python</span>
+                <article class="project-row reveal" data-cat="ml">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">04</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Stroke Risk Prediction</span>
+                            <span class="project-row-meta">Applied ML</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Binary classification of stroke risk on a heavily imbalanced medical dataset (5110 patients, ~5% positive). The core decision was to optimize for Recall over Accuracy — in a clinical setting, a missed stroke costs far more than a false alarm.</p>
+                                <p class="project-detail-callout">→ Logistic Regression: 0.88 Recall, 0.84 AUC on validation set</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Pipeline</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>SMOTE for class imbalance — synthetic oversampling of the minority class</li>
+                                            <li>RFECV for feature selection: 20+ features reduced to 12 most predictive</li>
+                                            <li>Decision threshold tuned post-training to maximize Recall on validation</li>
+                                            <li>Models compared: Logistic Regression, MLP, LinearSVC, RBF-SVM</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Results</p>
+                                    <p class="project-detail-text">Logistic Regression won with <strong>0.88 Recall</strong> and <strong>0.84 AUC</strong> on the validation set. RBF-SVM achieved high accuracy but failed on Recall — it was predicting the majority class almost exclusively. Diagnosing that failure mode was the most instructive part of the project.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">scikit-learn</span><span class="project-tag">SMOTE</span><span class="project-tag">RFECV</span><span class="project-tag">SVM</span><span class="project-tag">MLP</span><span class="project-tag">Python</span></div>
+                                <a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-4')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in" data-cat="ml">
-                    <p class="project-meta">05 — ML from Scratch</p>
-                    <h3 class="project-title">Bank Customer Churn</h3>
-                    <p class="project-desc">Churn prediction with XGBoost plus a research component: Naive Bayes, AdaBoost, and K-NN implemented from mathematical first principles in base R, then benchmarked against library versions. The hand-rolled Naive Bayes outperformed the library on Recall — 34.55% vs 23.24% — because understanding the math let me tune it directly. XGBoost won overall after PCA and K-Means segmentation.</p>
-                    <p class="project-callout">→ Manual NB: 34.55% Recall vs library 23.24% — the math matters</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">R</span><span class="tag-dark">XGBoost</span><span class="tag-dark">PCA</span><span class="tag-dark">K-Means</span><span class="tag-dark">AdaBoost</span>
+                <article class="project-row reveal reveal-stagger-1" data-cat="ml">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">05</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Bank Customer Churn</span>
+                            <span class="project-row-meta">ML from Scratch</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Churn prediction on 10,000 bank customers with a research component: Naive Bayes, AdaBoost, and K-NN implemented from mathematical first principles in base R, then benchmarked against library implementations.</p>
+                                <p class="project-detail-callout">→ Manual NB: 34.55% Recall vs library 23.24% — the math matters</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">The from-scratch experiment</p>
+                                    <p class="project-detail-text">The hand-rolled Naive Bayes outperformed the library version on Recall — <strong>34.55% vs 23.24%</strong>. The reason: the library applies Laplace smoothing by default, which dampens probabilities for rare classes. Implementing it from scratch meant I could tune this directly for the imbalanced dataset.</p>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Full pipeline</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>PCA for dimensionality reduction before boosted models</li>
+                                            <li>K-Means for customer segmentation — reveals behavioral clusters before classification</li>
+                                            <li>XGBoost as final model, best overall performance after segmentation</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">XGBoost</span><span class="project-tag">PCA</span><span class="project-tag">K-Means</span><span class="project-tag">AdaBoost</span></div>
+                                <a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-5')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in fade-in-delay-1" data-cat="ml statistics">
-                    <p class="project-meta">06 — Statistical Modeling / ML</p>
-                    <h3 class="project-title">Forest Fire Prediction</h3>
-                    <p class="project-desc">Regression study predicting burned area in Montesinho Natural Park. Moved beyond OLS to address heteroscedasticity and zero-inflation with Gamma GLMs, Inverse Gaussian GLMs, and GAMs with smoothing splines via <code>mgcv</code>. The GAMs revealed non-linear threshold effects for temperature and Drought Code that OLS and GLMs missed entirely.</p>
-                    <p class="project-callout">→ GAMs uncovered non-linearities invisible to OLS and GLMs</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">R</span><span class="tag-dark">GAM</span><span class="tag-dark">GLM</span><span class="tag-dark">mgcv</span><span class="tag-dark">tidyverse</span>
+                <article class="project-row reveal" data-cat="ml statistics">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">06</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Forest Fire Prediction</span>
+                            <span class="project-row-meta">Statistical Modeling / ML</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Regression study predicting burned area in Montesinho Natural Park from meteorological and fire index covariates. The dataset has severe zero-inflation (many fires burn near-zero area) and extreme right skew — OLS is the wrong tool from the start.</p>
+                                <p class="project-detail-callout">→ GAMs uncovered non-linearities invisible to OLS and GLMs</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Model progression</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>OLS baseline — exposed heteroscedasticity and zero-inflation problems</li>
+                                            <li>Gamma GLM — handles positive skew and non-constant variance</li>
+                                            <li>Inverse Gaussian GLM — heavier tail, better fit for extreme values</li>
+                                            <li>GAM with smoothing splines via <code>mgcv</code> — final model, best fit</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Key finding</p>
+                                    <p class="project-detail-text">GAMs revealed non-linear threshold effects for temperature and Drought Code that were invisible to OLS and GLMs — above certain thresholds, burned area increases sharply. This is a physical phenomenon the parametric models couldn't capture. Model choice here is a scientific decision, not a default.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">GAM</span><span class="project-tag">GLM</span><span class="project-tag">mgcv</span><span class="project-tag">tidyverse</span></div>
+                                <a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-6')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in" data-cat="engineering">
-                    <p class="project-meta">07 — Embedded Systems / Robotics</p>
-                    <h3 class="project-title">Dual-Mode RC Robot</h3>
-                    <p class="project-desc">Autonomous obstacle-avoiding vehicle built on an STM32 Nucleo-L152RE. Two operating modes: autonomous navigation using HC-SR04 ultrasonic ranging (three distance thresholds — forward, decelerate, hard stop), and manual RC control via Bluetooth commands from an Android app. Firmware written in C using STM32 HAL; motor speed controlled via PWM, with soft braking.</p>
-                    <p class="project-callout">→ Interrupt-driven: TIM2 capture, TIM3 PWM, USART2 async Bluetooth</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">C</span><span class="tag-dark">STM32</span><span class="tag-dark">HAL</span><span class="tag-dark">PWM</span><span class="tag-dark">Bluetooth</span><span class="tag-dark">Embedded</span>
+                <article class="project-row reveal reveal-stagger-1" data-cat="engineering">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">07</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Dual-Mode RC Robot</span>
+                            <span class="project-row-meta">Embedded Systems / Robotics</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Dual-mode robotic vehicle built on an STM32 Nucleo-L152RE. Operates autonomously using ultrasonic obstacle detection, or manually via Bluetooth commands from an Android app. Firmware written in C using STM32 HAL.</p>
+                                <p class="project-detail-callout">→ Interrupt-driven: TIM2 capture, TIM3 PWM, USART2 async Bluetooth</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Hardware</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>STM32 Nucleo-L152RE microcontroller</li>
+                                            <li>HC-SR04 ultrasonic sensor — three distance thresholds: forward (&gt;20cm), decelerate (10–20cm), hard stop (&lt;10cm)</li>
+                                            <li>L298N H-Bridge driver + two DC motors</li>
+                                            <li>HC-05 Bluetooth module for RC mode (Forward, Backward, Left, Right, Stop)</li>
+                                            <li>Piezoelectric buzzer for audio warning on hard stop</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Firmware architecture</p>
+                                    <p class="project-detail-text">Fully interrupt-driven: TIM2 captures ultrasonic echo pulses, TIM3 generates PWM for motor speed, USART2 handles async Bluetooth commands, GPIO manages direction. Soft braking — progressive PWM duty cycle reduction rather than abrupt stop — protects the drivetrain from mechanical stress.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">C</span><span class="project-tag">STM32</span><span class="project-tag">HAL</span><span class="project-tag">PWM</span><span class="project-tag">Bluetooth</span><span class="project-tag">Embedded</span></div>
+                                <a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-7')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in fade-in-delay-1" data-cat="statistics">
-                    <p class="project-meta">08 — Statistical Inference</p>
-                    <h3 class="project-title">Whitehead Sample Size Analysis</h3>
-                    <p class="project-desc">Implementation of Whitehead's (1983) unified theory for optimal sample sizing in clinical trials. Starting from the mathematical derivation of Fisher Information and Score Statistics for binomial distributions, the project determines the sample size needed to detect a deviation from a baseline probability of p₀ = 0.003 with 80% power. Monte Carlo simulations validate theoretical error rates.</p>
-                    <p class="project-callout">→ Score Test vs Exact Binomial vs Wilcoxon — asymptotic limits at p = 0.003</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">R</span><span class="tag-dark">MLE</span><span class="tag-dark">Score Test</span><span class="tag-dark">Monte Carlo</span><span class="tag-dark">R Markdown</span>
+                <article class="project-row reveal" data-cat="statistics">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">08</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Whitehead Sample Size Analysis</span>
+                            <span class="project-row-meta">Statistical Inference</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Implementation of Whitehead's (1983) unified theory for sample size determination in clinical trials. The goal: find the minimum sample size to detect a deviation from a baseline event probability of p₀ = 0.003 with Type I error α = 0.025 and 80% power.</p>
+                                <p class="project-detail-callout">→ Score Test vs Exact Binomial vs Wilcoxon — asymptotic limits at p = 0.003</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Methods</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>Mathematical derivation of Fisher Information and Score Statistics for binomial distributions</li>
+                                            <li>Whitehead's formula applied to get the theoretical sample size</li>
+                                            <li>Parametric tests: Chi-Square and Exact Binomial for validation</li>
+                                            <li>Wilcoxon Rank-Sum Test as a non-parametric alternative when normality assumptions break down</li>
+                                            <li>Monte Carlo simulation: binomial draws used to compare theoretical vs empirical Type I error rates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Key finding</p>
+                                    <p class="project-detail-text">At p = 0.003, asymptotic approximations (Score Test) are computationally efficient but require sufficiently large n to be valid — small probabilities push the asymptotics hard. The Exact Binomial test provides a ground truth check, and the Wilcoxon confirms robustness when the normality assumption is questionable.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">R</span><span class="project-tag">MLE</span><span class="project-tag">Score Test</span><span class="project-tag">Monte Carlo</span><span class="project-tag">R Markdown</span></div>
+                                <a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-8')">Details +</button>
-                </div>
+                </article>
 
-                <div class="project-card fade-in" data-cat="statistics">
-                    <p class="project-meta">09 — Time Series / Forecasting</p>
-                    <h3 class="project-title">Time Series Analysis with SARIMA</h3>
-                    <p class="project-desc">Analysis and forecasting of four different time series using SARIMA models. Each series goes through stationarity testing (ADF, KPSS), decomposition into trend, seasonality, and residuals, ACF/PACF inspection for order identification, and model selection via AIC/BIC. The seasonal component is modeled explicitly through the SARIMA(p,d,q)(P,D,Q)s structure.</p>
-                    <p class="project-callout">→ Kaggle competition · awarded · grid search + Fourier terms + temporal windowing</p>
-                    <div class="project-tags">
-                        <span class="tag-dark">Python</span><span class="tag-dark">SARIMA</span><span class="tag-dark">statsmodels</span><span class="tag-dark">pandas</span><span class="tag-dark">Kaggle</span>
+                <article class="project-row reveal reveal-stagger-1" data-cat="statistics">
+                    <button class="project-row-head" aria-expanded="false">
+                        <span class="project-row-num">09</span>
+                        <span class="project-row-titleblock">
+                            <span class="project-row-title">Time Series Analysis with SARIMA</span>
+                            <span class="project-row-meta">Time Series / Forecasting</span>
+                        </span>
+                        <span class="project-row-toggle">+</span>
+                    </button>
+                    <div class="project-row-body">
+                        <div class="project-row-body-inner">
+                            <div class="project-row-content">
+                                <p class="project-detail-desc">Analysis and forecasting of four different time series using SARIMA models. The workflow for each series follows the Box-Jenkins methodology: identify, estimate, and diagnose — repeated until the residuals behave like white noise.</p>
+                                <p class="project-detail-callout">→ Kaggle competition · awarded · grid search + Fourier terms + temporal windowing</p>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">Methodology</p>
+                                    <div class="project-detail-text">
+                                        <ul>
+                                            <li>Stationarity testing with ADF and KPSS — both tests used together since they have opposite null hypotheses</li>
+                                            <li>Time series decomposition into trend, seasonal, and remainder components</li>
+                                            <li>ACF and PACF plots to determine candidate AR, MA, and seasonal orders</li>
+                                            <li>Model selection via AIC and BIC across a grid of SARIMA(p,d,q)(P,D,Q)s candidates</li>
+                                            <li>Residual diagnostics: Ljung-Box test, ACF of residuals, Q-Q plots to validate white noise assumption</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="project-detail-section">
+                                    <p class="project-detail-label">What makes it interesting</p>
+                                    <p class="project-detail-text">Working with four structurally different series forces you to make different modeling decisions for each one — different differencing orders, different seasonal periods, different levels of heteroscedasticity. The project is as much about diagnosing what's wrong with a model as it is about fitting one.</p>
+                                </div>
+                                <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">SARIMA</span><span class="project-tag">statsmodels</span><span class="project-tag">pandas</span><span class="project-tag">Kaggle</span></div>
+                                <a href="https://github.com/gonzalo-cruz/time-series-analysis" target="_blank" rel="noopener" class="project-detail-link">View on GitHub ↗</a>
+                            </div>
+                        </div>
                     </div>
-                    <a href="https://github.com/gonzalo-cruz/time-series-analysis" target="_blank" class="project-link">View on GitHub ↗</a>
-                    <button class="project-link project-detail-btn" onclick="openModal('modal-9')">Details +</button>
-                </div>
+                </article>
 
             </div>
         </section>
 
-        <!-- 06 NOW -->
-        <section id="now">
-            <div class="section-header fade-in">
-                <span class="section-num">06</span>
+        <!-- ── 05 Now ── -->
+        <section class="section" id="now">
+            <div class="section-head reveal">
+                <span class="section-num">05</span>
                 <h2 class="section-title">Now</h2>
             </div>
-            <div class="now-grid fade-in">
+            <div class="now-list reveal">
                 <div class="now-item">
                     <span class="now-label">Building</span>
                     <p class="now-text">A quantitative study of whether Chinese, Spanish, and English online communities express systematically different sentiment toward global tech products — with a methodology to separate genuine cultural difference from model bias. Fine-tuning XLM-RoBERTa on 200k+ multilingual posts; back-translation controls, LLM zero-shot baselines, and per-language calibration to isolate what's real from what's artefact.</p>
@@ -1309,460 +625,50 @@
                     <p class="now-text">Internship or junior role in data engineering or ML systems. Based in Madrid, open to remote. Available immediately.</p>
                 </div>
             </div>
-            <p class="now-updated fade-in">— Updated May 2026</p>
+            <p class="now-updated reveal">— Updated June 2026</p>
         </section>
 
-        <!-- CONTACT -->
-        <section id="contact">
-            <div class="contact-layout">
-                <div class="fade-in">
+        <!-- ── 06 Contact ── -->
+        <section class="contact-spread" id="contact">
+            <div class="contact-grid reveal">
+                <div>
                     <h2 class="contact-heading">Let's<br><span class="accent">talk.</span></h2>
                     <p class="contact-body">Looking for internships, junior roles, or just interesting conversations about data engineering and ML systems. Based in Madrid, open to remote.</p>
-                    <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-dark">Send an email</a>
+                    <a href="mailto:gonza.c.gomez03@gmail.com" class="btn btn-primary">Send an email</a>
                 </div>
-                <div class="contact-links fade-in fade-in-delay-1">
+                <div class="contact-links">
                     <div class="contact-item">
-                        <span class="contact-item-label">Email</span>
-                        <div class="contact-item-row">
+                        <span class="contact-label">Email</span>
+                        <div class="contact-row">
                             <a href="mailto:gonza.c.gomez03@gmail.com">gonza.c.gomez03@gmail.com</a>
                             <button class="copy-btn" id="copyEmailBtn" data-email="gonza.c.gomez03@gmail.com">copy</button>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-item-label">LinkedIn</span>
-                        <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank">gonzalo-cruz-gomez</a>
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" rel="noopener">gonzalo-cruz-gomez</a>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-item-label">GitHub</span>
-                        <a href="https://github.com/gonzalo-cruz" target="_blank">gonzalo-cruz</a>
+                        <span class="contact-label">GitHub</span>
+                        <a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener">gonzalo-cruz</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <span class="footer-mono">GCG_001 — V 2.0 — MAY 2026</span>
-            <span class="footer-mono">Madrid, Spain / DS&amp;E / URJC</span>
+        <!-- ── Colophon ── -->
+        <footer class="colophon">
+            <div class="colophon-grid">
+                <span>GCG_001 · V 4.0 · Jun 2026</span>
+                <span>Madrid, Spain · DS&amp;E · URJC</span>
+                <span>Set in Libre Bodoni, DM Sans &amp; IBM Plex Mono</span>
+            </div>
         </footer>
 
-    </div><!-- end datasheet-scroll -->
-</div><!-- end container -->
-
-<!-- ── MODALS ── -->
-<div class="modal-backdrop" id="modal-1">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-1')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">01 — Data Engineering / MLOps</p>
-            <h2 class="modal-title">TripAdvisor Restaurants Pipeline</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">Airflow</span><span class="tag-dark">PySpark</span><span class="tag-dark">Kafka</span><span class="tag-dark">Spark Streaming</span><span class="tag-dark">FastAPI</span><span class="tag-dark">React</span><span class="tag-dark">Docker</span><span class="tag-dark">Python</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Full-stack data system built around 1M+ rows of European TripAdvisor restaurant data. Goes end-to-end: from raw CSV to a live web app where users can search for restaurants by cluster similarity and watch real-time ML scoring in their browser.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Architecture</p>
-            <ul>
-                <li>5-stage Airflow DAG: Extract → Clean → EDA → Preprocess (normalization, OHE/label encoding by cardinality, incremental PCA) → Stream to Kafka — all in 50k-row chunks, no full dataset in memory</li>
-                <li>PySpark ML KMeans with automatic K selection via silhouette scoring across K = 10–80; model cached to avoid redundant recomputation</li>
-                <li>Dual Spark Structured Streaming consumers: <code>streaming_filter.py</code> (fast filter, no ML) and <code>streaming_score.py</code> (centroid distance + timestamped cluster assignments)</li>
-                <li>FastAPI backend + React/Vite frontend — restaurant search with cosine-similarity recommendations within clusters, and a live tab with Server-Sent Events pushing classifications in real time</li>
-                <li>Priority queue for immediate model scoring of user-selected restaurants</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Key challenge</p>
-            <p>The ETL pipeline can't load 1M+ rows at once — every stage processes data in 50k-row chunks, including the incremental PCA and encoding steps, which required careful state management across iterations. On the streaming side, the two-consumer architecture separates latency-sensitive display from compute-heavy ML scoring without blocking either path.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/SD2-proyecto" target="_blank">View on GitHub ↗</a></div>
     </div>
-</div>
+</main>
 
-<div class="modal-backdrop" id="modal-2">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-2')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">02 — Streaming / Distributed</p>
-            <h2 class="modal-title">Real-Time Hashtag Trending</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">PySpark</span><span class="tag-dark">DStreams</span><span class="tag-dark">Windowing</span><span class="tag-dark">Python</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Distributed real-time trending analysis using PySpark DStreams. Connects to a live TCP tweet feed, filters for US-only content, and maintains a 5-minute sliding window with 10-second slide intervals to rank hashtags continuously.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">The interesting part</p>
-            <p>The naive approach — recomputing the full window on each slide — is O(window size). Instead, the pipeline uses inverse reduction functions (<code>invFunc</code>): on each slide, only new arrivals are added and expired tweets are subtracted. This makes each update O(slide interval), not O(window size). A 5-minute window with 10-second slides is 30x cheaper per update.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Stack decisions</p>
-            <ul>
-                <li>DStreams over Structured Streaming — lower-level, but invFunc is not available in the Structured API</li>
-                <li>TCP socket source simulates a real-time feed for local testing</li>
-            </ul>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-3">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-3')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">03 — Data Engineering</p>
-            <h2 class="modal-title">Hadoop Sentiment Analysis</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">Hadoop</span><span class="tag-dark">MapReduce</span><span class="tag-dark">HDFS / YARN</span><span class="tag-dark">Docker Compose</span><span class="tag-dark">Python</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>AFINN-111 lexicon sentiment scoring on a 314MB Twitter JSON dataset using MapReduce on a fully Dockerized Hadoop cluster. The goal was to build and operate the infrastructure from scratch, not just run a managed service.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Infrastructure</p>
-            <ul>
-                <li>Multi-node Hadoop cluster (NameNode + DataNodes) set up with Docker Compose and custom images</li>
-                <li>HDFS for distributed storage, YARN for resource management and job scheduling</li>
-                <li>Shell-scripted HDFS file upload and MapReduce job submission — fully automated deploy</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">MapReduce design</p>
-            <p>Mapper tokenizes tweet text and scores each token against the AFINN lexicon. Reducer aggregates per-tweet scores. The Dockerized setup means the entire cluster can be reproduced with a single <code>docker compose up</code>.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-4">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-4')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">04 — Applied ML</p>
-            <h2 class="modal-title">Stroke Risk Prediction</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">scikit-learn</span><span class="tag-dark">SMOTE</span><span class="tag-dark">RFECV</span><span class="tag-dark">SVM</span><span class="tag-dark">MLP</span><span class="tag-dark">Python</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Binary classification of stroke risk on a heavily imbalanced medical dataset (5110 patients, ~5% positive). The core decision was to optimize for Recall over Accuracy — in a clinical setting, a missed stroke costs far more than a false alarm.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Pipeline</p>
-            <ul>
-                <li>SMOTE for class imbalance — synthetic oversampling of the minority class</li>
-                <li>RFECV for feature selection: 20+ features reduced to 12 most predictive</li>
-                <li>Decision threshold tuned post-training to maximize Recall on validation</li>
-                <li>Models compared: Logistic Regression, MLP, LinearSVC, RBF-SVM</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Results</p>
-            <p>Logistic Regression won with <strong>0.88 Recall</strong> and <strong>0.84 AUC</strong> on the validation set. RBF-SVM achieved high accuracy but failed on Recall — it was predicting the majority class almost exclusively. Diagnosing that failure mode was the most instructive part of the project.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-5">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-5')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">05 — ML from Scratch</p>
-            <h2 class="modal-title">Bank Customer Churn</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">XGBoost</span><span class="tag-dark">PCA</span><span class="tag-dark">K-Means</span><span class="tag-dark">AdaBoost</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Churn prediction on 10,000 bank customers with a research component: Naive Bayes, AdaBoost, and K-NN implemented from mathematical first principles in base R, then benchmarked against library implementations.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">The from-scratch experiment</p>
-            <p>The hand-rolled Naive Bayes outperformed the library version on Recall — <strong>34.55% vs 23.24%</strong>. The reason: the library applies Laplace smoothing by default, which dampens probabilities for rare classes. Implementing it from scratch meant I could tune this directly for the imbalanced dataset.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Full pipeline</p>
-            <ul>
-                <li>PCA for dimensionality reduction before boosted models</li>
-                <li>K-Means for customer segmentation — reveals behavioral clusters before classification</li>
-                <li>XGBoost as final model, best overall performance after segmentation</li>
-            </ul>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-6">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-6')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">06 — Statistical Modeling / ML</p>
-            <h2 class="modal-title">Forest Fire Prediction</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">GAM</span><span class="tag-dark">GLM</span><span class="tag-dark">mgcv</span><span class="tag-dark">tidyverse</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Regression study predicting burned area in Montesinho Natural Park from meteorological and fire index covariates. The dataset has severe zero-inflation (many fires burn near-zero area) and extreme right skew — OLS is the wrong tool from the start.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Model progression</p>
-            <ul>
-                <li>OLS baseline — exposed heteroscedasticity and zero-inflation problems</li>
-                <li>Gamma GLM — handles positive skew and non-constant variance</li>
-                <li>Inverse Gaussian GLM — heavier tail, better fit for extreme values</li>
-                <li>GAM with smoothing splines via <code>mgcv</code> — final model, best fit</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Key finding</p>
-            <p>GAMs revealed non-linear threshold effects for temperature and Drought Code that were invisible to OLS and GLMs — above certain thresholds, burned area increases sharply. This is a physical phenomenon the parametric models couldn't capture. Model choice here is a scientific decision, not a default.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-7">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-7')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">07 — Embedded Systems / Robotics</p>
-            <h2 class="modal-title">Dual-Mode RC Robot</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">C</span><span class="tag-dark">STM32</span><span class="tag-dark">HAL</span><span class="tag-dark">PWM</span><span class="tag-dark">Bluetooth</span><span class="tag-dark">Embedded</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Dual-mode robotic vehicle built on an STM32 Nucleo-L152RE. Operates autonomously using ultrasonic obstacle detection, or manually via Bluetooth commands from an Android app. Firmware written in C using STM32 HAL.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Hardware</p>
-            <ul>
-                <li>STM32 Nucleo-L152RE microcontroller</li>
-                <li>HC-SR04 ultrasonic sensor — three distance thresholds: forward (&gt;20cm), decelerate (10–20cm), hard stop (&lt;10cm)</li>
-                <li>L298N H-Bridge driver + two DC motors</li>
-                <li>HC-05 Bluetooth module for RC mode (Forward, Backward, Left, Right, Stop)</li>
-                <li>Piezoelectric buzzer for audio warning on hard stop</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Firmware architecture</p>
-            <p>Fully interrupt-driven: TIM2 captures ultrasonic echo pulses, TIM3 generates PWM for motor speed, USART2 handles async Bluetooth commands, GPIO manages direction. Soft braking — progressive PWM duty cycle reduction rather than abrupt stop — protects the drivetrain from mechanical stress.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/RC-object-avoiding-robot" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-8">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-8')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">08 — Statistical Inference</p>
-            <h2 class="modal-title">Whitehead Sample Size Analysis</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">R</span><span class="tag-dark">MLE</span><span class="tag-dark">Score Test</span><span class="tag-dark">Monte Carlo</span><span class="tag-dark">R Markdown</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Implementation of Whitehead's (1983) unified theory for sample size determination in clinical trials. The goal: find the minimum sample size to detect a deviation from a baseline event probability of p₀ = 0.003 with Type I error α = 0.025 and 80% power.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Methods</p>
-            <ul>
-                <li>Mathematical derivation of Fisher Information and Score Statistics for binomial distributions</li>
-                <li>Whitehead's formula applied to get the theoretical sample size</li>
-                <li>Parametric tests: Chi-Square and Exact Binomial for validation</li>
-                <li>Wilcoxon Rank-Sum Test as a non-parametric alternative when normality assumptions break down</li>
-                <li>Monte Carlo simulation: binomial draws used to compare theoretical vs empirical Type I error rates</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Key finding</p>
-            <p>At p = 0.003, asymptotic approximations (Score Test) are computationally efficient but require sufficiently large n to be valid — small probabilities push the asymptotics hard. The Exact Binomial test provides a ground truth check, and the Wilcoxon confirms robustness when the normality assumption is questionable.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/Whitehead-sample-size-IE" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<div class="modal-backdrop" id="modal-9">
-    <div class="modal">
-        <button class="modal-close" onclick="closeModal('modal-9')">close ×</button>
-        <div class="modal-header">
-            <p class="modal-meta">09 — Time Series / Forecasting</p>
-            <h2 class="modal-title">Time Series Analysis with SARIMA</h2>
-        </div>
-        <div class="modal-tags"><span class="tag-dark">Python</span><span class="tag-dark">SARIMA</span><span class="tag-dark">statsmodels</span><span class="tag-dark">pandas</span><span class="tag-dark">Kaggle</span></div>
-        <div class="modal-section">
-            <p class="modal-section-label">Overview</p>
-            <p>Analysis and forecasting of four different time series using SARIMA models. The workflow for each series follows the Box-Jenkins methodology: identify, estimate, and diagnose — repeated until the residuals behave like white noise.</p>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">Methodology</p>
-            <ul>
-                <li>Stationarity testing with ADF and KPSS — both tests used together since they have opposite null hypotheses</li>
-                <li>Time series decomposition into trend, seasonal, and remainder components</li>
-                <li>ACF and PACF plots to determine candidate AR, MA, and seasonal orders</li>
-                <li>Model selection via AIC and BIC across a grid of SARIMA(p,d,q)(P,D,Q)s candidates</li>
-                <li>Residual diagnostics: Ljung-Box test, ACF of residuals, Q-Q plots to validate white noise assumption</li>
-            </ul>
-        </div>
-        <div class="modal-section">
-            <p class="modal-section-label">What makes it interesting</p>
-            <p>Working with four structurally different series forces you to make different modeling decisions for each one — different differencing orders, different seasonal periods, different levels of heteroscedasticity. The project is as much about diagnosing what's wrong with a model as it is about fitting one.</p>
-        </div>
-        <div class="modal-footer"><a href="https://github.com/gonzalo-cruz/time-series-analysis" target="_blank">View on GitHub ↗</a></div>
-    </div>
-</div>
-
-<script>
-    // ── MOBILE NAV ──
-    const navMenuBtn = document.getElementById('navMenuBtn');
-    const navLinksList = document.querySelector('.nav-links');
-    navMenuBtn.addEventListener('click', () => {
-        const open = navLinksList.classList.toggle('open');
-        navMenuBtn.textContent = open ? 'CLOSE' : 'MENU';
-    });
-    navLinksList.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            navLinksList.classList.remove('open');
-            navMenuBtn.textContent = 'MENU';
-        });
-    });
-
-    // ── DARK MODE ──
-    const themeBtn = document.getElementById('themeBtn');
-    const html = document.documentElement;
-    const saved = localStorage.getItem('theme') || 'light';
-    html.dataset.theme = saved;
-    themeBtn.textContent = saved === 'dark' ? '◑ light' : '◐ dark';
-    themeBtn.addEventListener('click', () => {
-        const next = html.dataset.theme === 'dark' ? 'light' : 'dark';
-        html.dataset.theme = next;
-        localStorage.setItem('theme', next);
-        themeBtn.textContent = next === 'dark' ? '◑ light' : '◐ dark';
-    });
-
-    // ── ACTIVE NAV ──
-    const navLinks = document.querySelectorAll('.nav-links a[data-nav]');
-    const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                navLinks.forEach(a => a.classList.remove('active'));
-                const active = document.querySelector(`.nav-links a[data-nav="${entry.target.id}"]`);
-                if (active) active.classList.add('active');
-            }
-        });
-    }, { rootMargin: '-40% 0px -55% 0px' });
-    document.querySelectorAll('section[id]').forEach(s => navObserver.observe(s));
-
-    // ── SCROLL FADE-IN ──
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
-
-    // ── PROJECT FILTER ──
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.project-card');
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            cards.forEach(card => {
-                card.hidden = filter !== 'all' && !card.dataset.cat.split(' ').includes(filter);
-            });
-        });
-    });
-
-    // ── MODALS ──
-    const modalOrder = ['modal-1','modal-2','modal-3','modal-4','modal-5','modal-6','modal-7','modal-8','modal-9'];
-    let currentModalId = null;
-
-    modalOrder.forEach(id => {
-        const footer = document.querySelector(`#${id} .modal-footer`);
-        if (!footer) return;
-        const nav = document.createElement('div');
-        nav.className = 'modal-footer-nav';
-        nav.innerHTML = '<button class="modal-nav-btn" data-dir="prev">← prev</button><button class="modal-nav-btn" data-dir="next">next →</button>';
-        footer.appendChild(nav);
-    });
-
-    function updateModalNav(id) {
-        const idx = modalOrder.indexOf(id);
-        const footer = document.querySelector(`#${id} .modal-footer`);
-        if (!footer) return;
-        const prevBtn = footer.querySelector('[data-dir="prev"]');
-        const nextBtn = footer.querySelector('[data-dir="next"]');
-        if (prevBtn) {
-            prevBtn.disabled = idx <= 0;
-            prevBtn.onclick = idx > 0 ? () => switchModal(id, modalOrder[idx - 1]) : null;
-        }
-        if (nextBtn) {
-            nextBtn.disabled = idx >= modalOrder.length - 1;
-            nextBtn.onclick = idx < modalOrder.length - 1 ? () => switchModal(id, modalOrder[idx + 1]) : null;
-        }
-    }
-
-    function switchModal(fromId, toId) {
-        document.getElementById(fromId).classList.remove('open');
-        document.getElementById(toId).classList.add('open');
-        currentModalId = toId;
-        updateModalNav(toId);
-        const modal = document.querySelector(`#${toId} .modal`);
-        if (modal) modal.scrollTop = 0;
-    }
-
-    function openModal(id) {
-        currentModalId = id;
-        document.getElementById(id).classList.add('open');
-        document.body.style.overflow = 'hidden';
-        updateModalNav(id);
-    }
-
-    function closeModal(id) {
-        document.getElementById(id).classList.remove('open');
-        document.body.style.overflow = '';
-        currentModalId = null;
-    }
-
-    document.querySelectorAll('.modal-backdrop').forEach(backdrop => {
-        backdrop.addEventListener('click', e => {
-            if (e.target === backdrop) closeModal(backdrop.id);
-        });
-    });
-
-    document.addEventListener('keydown', e => {
-        if (e.key === 'Escape') {
-            document.querySelectorAll('.modal-backdrop.open').forEach(m => closeModal(m.id));
-        }
-        if (!currentModalId) return;
-        const idx = modalOrder.indexOf(currentModalId);
-        if (e.key === 'ArrowLeft' && idx > 0) switchModal(currentModalId, modalOrder[idx - 1]);
-        if (e.key === 'ArrowRight' && idx < modalOrder.length - 1) switchModal(currentModalId, modalOrder[idx + 1]);
-    });
-
-    // ── SCROLL PROGRESS ──
-    const scrollProgress = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-        const total = document.documentElement.scrollHeight - window.innerHeight;
-        if (total > 0) scrollProgress.style.width = (window.scrollY / total * 100) + '%';
-    }, { passive: true });
-
-    // ── COPY EMAIL ──
-    const copyBtn = document.getElementById('copyEmailBtn');
-    copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText(copyBtn.dataset.email).then(() => {
-            copyBtn.textContent = 'copied!';
-            copyBtn.classList.add('copied');
-            setTimeout(() => {
-                copyBtn.textContent = 'copy';
-                copyBtn.classList.remove('copied');
-            }, 2000);
-        });
-    });
-</script>
+<script src="js/main.js?v=42"></script>
 
 </body>
 </html>
