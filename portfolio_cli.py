@@ -93,7 +93,7 @@ def render_about():
         t = Text(f"\n  {body}\n", style=f"dim {W}")
         parts.append(t)
 
-    skills_lbl = Text(f"\n  SKILLS\n", style=f"bold {P}")
+    skills_lbl = Text("\n  SKILLS\n", style=f"bold {P}")
     parts.append(skills_lbl)
 
     tbl = Table(box=None, show_header=False, padding=(0, 2), expand=False)
@@ -263,7 +263,7 @@ def render_projects():
         t.append(f"\n  {desc}\n", style=f"dim {W}")
         t.append("  ")
         for tag in tags:
-            t.append(f" {tag} ", style=f"reverse dim")
+            t.append(f" {tag} ", style="reverse dim")
             t.append(" ")
         t.append(f"\n  ↗  {url}\n", style=f"dim {P}")
         parts.append(t)
@@ -299,14 +299,14 @@ def render_now():
         t.append(f"  {text}\n", style=f"dim {W}")
         parts.append(t)
 
-    parts.append(Text(f"\n  — Updated May 2026\n", style=f"dim {M}"))
+    parts.append(Text("\n  — Updated May 2026\n", style=f"dim {M}"))
     return Group(*parts)
 
 
 def render_contact():
     t = Text()
-    t.append(f"\n  LET'S\n", style=f"bold {W}")
-    t.append(f"  TALK.\n\n", style=f"bold {P}")
+    t.append("\n  LET'S\n", style=f"bold {W}")
+    t.append("  TALK.\n\n", style=f"bold {P}")
     t.append(
         "  Looking for internships, junior roles, or just interesting conversations\n"
         "  about data engineering and ML systems. Based in Madrid, open to remote.\n\n",
