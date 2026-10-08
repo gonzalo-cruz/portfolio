@@ -1,5 +1,5 @@
 /* ─────────────────────────────────────────────────────────────
-   Gonzalo Cruz — Portfolio · Edition 04
+   Gonzalo Cruz — Portfolio
    Interactions: theme, nav, scroll progress, reveal, filter,
    accordion, email copy.
    ───────────────────────────────────────────────────────────── */
@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  console.log("[portfolio] main.js v42 loaded");
+  console.log("[portfolio] main.js v48 loaded");
 
   // localStorage can throw on file:// origins; wrap it so one failed
   // API doesn't kill the rest of the interactions.
@@ -30,7 +30,7 @@
   // ── Theme toggle ──
   const themeBtn = document.getElementById("themeBtn");
   const html = document.documentElement;
-  const savedTheme = getStored("theme_v4");
+  const savedTheme = getStored("theme_v6");
   const initialTheme = savedTheme || html.dataset.theme || "light";
 
   html.dataset.theme = initialTheme;
@@ -39,12 +39,12 @@
   themeBtn.addEventListener("click", () => {
     const next = html.dataset.theme === "dark" ? "light" : "dark";
     html.dataset.theme = next;
-    setStored("theme_v4", next);
+    setStored("theme_v6", next);
     updateThemeLabel(next);
   });
 
   function updateThemeLabel(theme) {
-    themeBtn.textContent = theme === "dark" ? "◑ light" : "◐ dark";
+    themeBtn.textContent = theme === "dark" ? "☾ dark" : "☼ light";
   }
 
   // ── Mobile navigation ──
@@ -99,36 +99,29 @@
 
   // ── Scroll reveal ──
   // .js-ready is added by inline <head> script → CSS hides .reveal
-  // before first paint (no flash). Here we force a synchronous reflow
-  // on each reveal element so the browser commits opacity:0 to the
-  // compositor, THEN set up the observer. Without the forced reflow,
-  // the browser can skip the transition because it never painted the
-  // starting state.
+  // before first paint (no flash). An IntersectionObserver toggles
+  // .visible in both directions so elements rise/fade in on scroll and
+  // fade back out when scrolled past.
   const revealEls = document.querySelectorAll(".reveal");
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
 
-  if (prefersReducedMotion) {
-    revealEls.forEach((el) => el.classList.add("visible"));
-  } else {
-    // Force reflow: reading offsetHeight triggers layout + style commit.
-    revealEls.forEach((el) => void el.offsetHeight);
+  // Force reflow: reading offsetHeight commits the hidden state before
+  // the observer reveals anything, so the enter animation always plays.
+  revealEls.forEach((el) => void el.offsetHeight);
 
-    const revealObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            revealObserver.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0, rootMargin: "0px 0px -10% 0px" }
-    );
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        } else {
+          entry.target.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0, rootMargin: "0px 0px -10% 0px" }
+  );
 
-    revealEls.forEach((el) => revealObserver.observe(el));
-  }
+  revealEls.forEach((el) => revealObserver.observe(el));
 
   // ── Project filter ──
   const filterBtns = document.querySelectorAll(".filter-btn");
@@ -142,26 +135,8 @@
       const filter = btn.dataset.filter;
       projectRows.forEach((row) => {
         const categories = row.dataset.cat.split(" ");
-        const match = filter === "all" || categories.includes(filter);
-        row.hidden = !match;
-        // Collapse any open accordion when filtering
-        if (!match) {
-          row.classList.remove("open");
-          const head = row.querySelector(".project-row-head");
-          if (head) head.setAttribute("aria-expanded", "false");
-        }
+        row.hidden = filter !== "all" && !categories.includes(filter);
       });
-    });
-  });
-
-  // ── Project accordion ──
-  projectRows.forEach((row) => {
-    const head = row.querySelector(".project-row-head");
-    if (!head) return;
-
-    head.addEventListener("click", () => {
-      const isOpen = row.classList.toggle("open");
-      head.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
   });
 
