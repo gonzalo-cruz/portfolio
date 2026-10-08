@@ -12,12 +12,12 @@
     <meta name="twitter:title"       content="Gonzalo Cruz — Data &amp; AI Engineer">
     <meta name="twitter:description" content="Building the pipelines that make machine learning actually work.">
     <meta name="description"         content="Portfolio of Gonzalo Cruz — data intelligence platform intern at Repsol and data science & engineering student in Madrid.">
-    <meta name="theme-color"         content="#2f4f3e">
+    <meta name="theme-color"         content="#002fa7">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=48">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=55">
     <script>document.documentElement.classList.add('js-ready');</script>
     <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -25,10 +25,17 @@
 
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<header class="masthead">
-    <div class="masthead-inner">
-        <a href="#" class="masthead-title">Gonzalo Cruz</a>
-        <nav class="masthead-nav" id="mastheadNav">
+<aside class="rail">
+    <div class="rail-bar">
+        <a href="#top" class="rail-name">Gonzalo Cruz</a>
+        <div class="rail-bar-controls">
+            <button class="btn-icon" id="themeBtn" aria-label="Toggle theme">☼ light</button>
+            <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">menu</button>
+        </div>
+    </div>
+    <div class="rail-body" id="railBody">
+        <p class="rail-tagline">Data &amp; AI Engineer</p>
+        <nav class="rail-nav" id="mastheadNav">
             <a href="#about"      data-nav="about">About</a>
             <a href="#curriculum" data-nav="curriculum">Curriculum</a>
             <a href="#stack"      data-nav="stack">Stack</a>
@@ -36,38 +43,34 @@
             <a href="#now"        data-nav="now">Now</a>
             <a href="#contact"    data-nav="contact">Contact</a>
         </nav>
-        <div class="masthead-controls">
-            <button class="btn-icon" id="themeBtn" aria-label="Toggle theme">☼ light</button>
-            <button class="nav-menu-btn" id="navMenuBtn" aria-label="Toggle menu">menu</button>
+        <div class="rail-meta">
+            <span>Data Intelligence Platform Intern — Repsol</span>
+            <span>Madrid, ES · DS&amp;E · URJC</span>
+            <span>ES · EN · DE · ZH</span>
+        </div>
+        <div class="rail-links">
+            <a href="mailto:gonza.c.gomez03@gmail.com">Email</a>
+            <a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" rel="noopener">LinkedIn</a>
         </div>
     </div>
-</header>
+</aside>
 
 <main class="page">
     <div class="container">
 
         <!-- ── Opening spread ── -->
         <section class="spread reveal" id="top">
-            <div class="spread-grid">
-                <div>
-                    <p class="spread-kicker">Data Intelligence Platform Intern — Repsol · Madrid</p>
-                    <h1 class="spread-headline">
-                        <span class="headline-line"><span class="headline-inner">Gonzalo</span></span>
-                        <span class="headline-line accent"><span class="headline-inner">Cruz.</span></span>
-                    </h1>
-                    <p class="spread-lede">Data &amp; AI engineer. I build machine learning systems end to end.</p>
-                    <div class="spread-actions">
-                        <a href="CV.pdf" download class="btn btn-primary">CV ↓</a>
-                        <a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
-                        <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
-                        <a href="mailto:gonza.c.gomez03@gmail.com" class="btn">Email</a>
-                    </div>
-                </div>
-                <aside class="spread-meta">
-                    <div class="spread-meta-row"><span class="spread-meta-key">Location</span><span class="spread-meta-val">Madrid, ES</span></div>
-                    <div class="spread-meta-row"><span class="spread-meta-key">Degree</span><span class="spread-meta-val">DS&amp;E · URJC</span></div>
-                    <div class="spread-meta-row"><span class="spread-meta-key">Languages</span><span class="spread-meta-val">ES · EN · DE · ZH</span></div>
-                </aside>
+            <h1 class="spread-headline">
+                <span class="headline-line"><span class="headline-inner">Gonzalo</span></span>
+                <span class="headline-line accent"><span class="headline-inner">Cruz.</span></span>
+            </h1>
+            <p class="spread-lede">Data &amp; AI engineer. I build machine learning systems end to end.</p>
+            <div class="spread-actions">
+                <a href="CV.pdf" download class="btn btn-primary">CV ↓</a>
+                <a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
+                <a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235" target="_blank" rel="noopener" class="btn">LinkedIn ↗</a>
+                <a href="mailto:gonza.c.gomez03@gmail.com" class="btn">Email</a>
             </div>
         </section>
 
@@ -77,10 +80,11 @@
                 <h2 class="section-title">About</h2>
             </div>
             <div class="prose reveal">
-                <p>Building a machine learning system is mostly not about the model. It's about making sure the data gets there reliably, that the pipeline doesn't break at 3am, that the transformers you fit in development still make sense on the data you see in production. That's the part I find genuinely interesting and the part most people underinvest in.</p>
-                <p>Four years in Telecommunications Engineering gave me something unusual for a data scientist: real fluency with the math. Not pattern-matching on formulas, but understanding why a convolution is useful or what a Fourier transform is actually telling you. That foundation makes the jump into ML engineering feel like a natural extension rather than a context switch.</p>
+                <p>Machine learning is mostly plumbing, and that's as true for a fine-tuned LLM as for a churn model. The model is the glamorous 20%; the rest is data that has to arrive on time, a pipeline that can't break at 3am, and a serving stack that still makes sense months later. That's the part I find interesting, and the part most people skip.</p>
+                <p>Right now that means fine-tuning LLMs, wiring agentic workflows, and building the retrieval that sits underneath them.</p>
+                <p>I spent three years in telecommunications engineering before I ever trained a model. It taught me to read the math instead of memorizing it. I know what a Fourier transform is doing, why a convolution helps. ML and AI engineering felt like a continuation, not a pivot.</p>
                 <blockquote class="pullquote">Most of what I've built started as a question I couldn't answer from a lecture slide.</blockquote>
-                <p>I'm in my final year at URJC, interning on Repsol's data team, and running Datalab — the student association I founded because collaborative, project-driven learning didn't exist yet.</p>
+                <p>I'm finishing my degree at URJC, interning on Repsol's data team, and running Datalab, the association I founded because project-driven learning didn't exist yet.</p>
             </div>
         </section>
 
@@ -205,7 +209,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Streaming / Distributed</span>
                             <h3 class="project-row-title">Real-Time Hashtag Trending</h3>
+                            <p class="project-row-desc">Distributed real-time trending with PySpark DStreams — a live TCP tweet feed, US-only filter, and a 5-minute sliding window ranking hashtags continuously.</p>
                             <p class="project-row-hook">Sliding window with invFunc — O(slide interval), not O(window size).</p>
+                            <div class="project-row-tags"><span class="project-tag">PySpark</span><span class="project-tag">DStreams</span><span class="project-tag">Windowing</span><span class="project-tag">Python</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -216,7 +222,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Data Engineering</span>
                             <h3 class="project-row-title">Hadoop Sentiment Analysis</h3>
+                            <p class="project-row-desc">AFINN-111 sentiment scoring on a 314MB Twitter dataset via MapReduce, on a Hadoop cluster built from scratch with Docker Compose.</p>
                             <p class="project-row-hook">314MB dataset, full Hadoop cluster in Docker Compose, automated deploy.</p>
+                            <div class="project-row-tags"><span class="project-tag">Hadoop</span><span class="project-tag">MapReduce</span><span class="project-tag">HDFS / YARN</span><span class="project-tag">Docker</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -227,7 +235,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Applied ML</span>
                             <h3 class="project-row-title">Stroke Risk Prediction</h3>
+                            <p class="project-row-desc">Binary classification of stroke risk on a heavily imbalanced dataset (5110 patients, ~5% positive) — optimized for Recall over Accuracy.</p>
                             <p class="project-row-hook">Logistic regression: 0.88 Recall, 0.84 AUC on a 5% positive class.</p>
+                            <div class="project-row-tags"><span class="project-tag">scikit-learn</span><span class="project-tag">SMOTE</span><span class="project-tag">RFECV</span><span class="project-tag">SVM</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -238,7 +248,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">ML from Scratch</span>
                             <h3 class="project-row-title">Bank Customer Churn</h3>
+                            <p class="project-row-desc">Churn prediction on 10,000 customers, with Naive Bayes, AdaBoost, and K-NN built from mathematical first principles in base R.</p>
                             <p class="project-row-hook">Hand-rolled Naive Bayes beats the library — 34.55% vs 23.24% Recall.</p>
+                            <div class="project-row-tags"><span class="project-tag">R</span><span class="project-tag">XGBoost</span><span class="project-tag">PCA</span><span class="project-tag">K-Means</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -249,7 +261,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Statistical Modeling</span>
                             <h3 class="project-row-title">Forest Fire Prediction</h3>
+                            <p class="project-row-desc">Predicting burned area in Montesinho Natural Park from meteorological covariates — zero-inflated, right-skewed data where OLS fails.</p>
                             <p class="project-row-hook">GAMs uncovered non-linearities invisible to OLS and GLMs.</p>
+                            <div class="project-row-tags"><span class="project-tag">R</span><span class="project-tag">GAM</span><span class="project-tag">GLM</span><span class="project-tag">mgcv</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -260,7 +274,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Embedded / Robotics</span>
                             <h3 class="project-row-title">Dual-Mode RC Robot</h3>
-                            <p class="project-row-hook">Interrupt-driven firmware on an STM32 — autonomous or Bluetooth-controlled.</p>
+                            <p class="project-row-desc">A dual-mode vehicle on an STM32 Nucleo-L152RE — autonomous ultrasonic obstacle detection, or manual Bluetooth control from an Android app.</p>
+                            <p class="project-row-hook">Interrupt-driven firmware — TIM2 capture, TIM3 PWM, async Bluetooth.</p>
+                            <div class="project-row-tags"><span class="project-tag">C</span><span class="project-tag">STM32</span><span class="project-tag">PWM</span><span class="project-tag">Bluetooth</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -271,7 +287,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Statistical Inference</span>
                             <h3 class="project-row-title">Whitehead Sample Size Analysis</h3>
+                            <p class="project-row-desc">Whitehead's (1983) unified theory for sample-size determination in clinical trials — the minimum n to detect a deviation from p₀ = 0.003.</p>
                             <p class="project-row-hook">Score Test vs Exact Binomial vs Wilcoxon, pushed to their limits at p = 0.003.</p>
+                            <div class="project-row-tags"><span class="project-tag">R</span><span class="project-tag">MLE</span><span class="project-tag">Score Test</span><span class="project-tag">Monte Carlo</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -282,7 +300,9 @@
                         <div class="project-row-text">
                             <span class="project-row-meta">Time Series / Forecasting</span>
                             <h3 class="project-row-title">Time Series Analysis with SARIMA</h3>
+                            <p class="project-row-desc">Forecasting four different time series with SARIMA, following Box-Jenkins — identify, estimate, diagnose, repeat.</p>
                             <p class="project-row-hook">Kaggle awarded — grid search + Fourier terms + temporal windowing.</p>
+                            <div class="project-row-tags"><span class="project-tag">Python</span><span class="project-tag">SARIMA</span><span class="project-tag">statsmodels</span><span class="project-tag">pandas</span></div>
                         </div>
                         <span class="project-row-arrow" aria-hidden="true">↗</span>
                     </a>
@@ -350,14 +370,14 @@
             <div class="colophon-grid">
                 <span>© 2026 Gonzalo Cruz</span>
                 <span>Madrid, Spain · DS&amp;E · URJC</span>
-                <span>Set in Libre Bodoni, DM Sans &amp; IBM Plex Mono</span>
+                <span>Set in Syne, DM Sans &amp; IBM Plex Mono</span>
             </div>
         </footer>
 
     </div>
 </main>
 
-<script src="js/main.js?v=48"></script>
+<script src="js/main.js?v=55"></script>
 
 </body>
 </html>

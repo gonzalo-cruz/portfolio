@@ -7,7 +7,7 @@
 (function () {
   "use strict";
 
-  console.log("[portfolio] main.js v48 loaded");
+  console.log("[portfolio] main.js v55 loaded");
 
   // localStorage can throw on file:// origins; wrap it so one failed
   // API doesn't kill the rest of the interactions.
@@ -50,15 +50,16 @@
   // ── Mobile navigation ──
   const navMenuBtn = document.getElementById("navMenuBtn");
   const mastheadNav = document.getElementById("mastheadNav");
+  const railBody = document.getElementById("railBody");
 
   navMenuBtn.addEventListener("click", () => {
-    const isOpen = mastheadNav.classList.toggle("open");
+    const isOpen = railBody.classList.toggle("open");
     navMenuBtn.textContent = isOpen ? "close" : "menu";
   });
 
   mastheadNav.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
-      mastheadNav.classList.remove("open");
+      railBody.classList.remove("open");
       navMenuBtn.textContent = "menu";
     });
   });
