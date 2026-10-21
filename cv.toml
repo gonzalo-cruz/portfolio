@@ -1,0 +1,377 @@
+# ─────────────────────────────────────────────────────────────
+#  cv.toml — canonical CV source
+#
+#  Edit this file only. Then:
+#      python3 build_cv.py
+#
+#  Emits:  CV.md            (machine-readable, for agents)
+#          cv/cv.json       (JSON Resume schema)
+#          cv/index.html    (interactive, printable)
+#
+#  CV.tex / CV_print.tex stay hand-tuned on purpose: the PDF is a
+#  design artifact, not a template. Update them here when content
+#  changes materially.
+#
+#  Conventions
+#    start / end   "YYYY-MM"; empty end = present
+#    tracks        de | ml | ai  (drives the role lens)
+#    tier          "primary" renders as its own accordion,
+#                  "compact" renders in the short "also" list
+# ─────────────────────────────────────────────────────────────
+
+[meta]
+updated = "2026-10-21"
+version = "1.1"
+
+[basics]
+name = "Gonzalo Cruz Gómez"
+display = "Gonzalo Cruz"
+label = "Data & AI Engineer"
+email = "gonza.c.gomez03@gmail.com"
+url = "https://gonzalo-cruz.github.io/portfolio/"
+city = "Madrid"
+country = "Spain"
+country_code = "ES"
+availability = "Open to junior data, ML and AI engineering roles from mid-2027"
+tagline = """Final-year Data Science & Engineering student at URJC, interning on Repsol's data team. Pipelines, models, and the evaluation that keeps them honest."""
+summary = """Final-year Data Science & Engineering student at URJC (graduating June 2027), currently on Repsol's Data Intelligence Platform team. Builds data systems end to end: orchestration, streaming, and models that hold up on real data. Founder of Asociación Datalab. Three years of Telecommunications Engineering at UC3M before switching to data."""
+
+[[basics.profiles]]
+network = "GitHub"
+username = "gonzalo-cruz"
+url = "https://github.com/gonzalo-cruz"
+
+[[basics.profiles]]
+network = "LinkedIn"
+username = "gonzalo-cruz-gomez-788516235"
+url = "https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235"
+
+# ── Lenses ───────────────────────────────────────────────────
+# A lens dims the entries that don't match the role you're hiring
+# for. Content stays in the DOM, so agents and print see everything.
+
+[lens]
+order = ["all", "de", "ml", "ai"]
+
+[lens.labels]
+all = "Everything"
+de = "Data engineering"
+ml = "ML engineering"
+ai = "AI engineering"
+
+# ── Experience ───────────────────────────────────────────────
+
+[[work]]
+name = "Repsol"
+position = "Data Intelligence Platform Intern"
+location = "Madrid, Spain"
+start = "2026-09"
+end = "2027-03"
+tags = ["Internship"]
+tracks = ["de", "ml"]
+hook = "Pipelines, orchestration and the infrastructure that keeps data moving across the platform."
+summary = """Talent Energy internship on the Data Intelligence Platform team at Repsol's Madrid Campus, running in parallel with the final year of the degree."""
+
+[[work]]
+name = "Asociación Datalab"
+position = "Founder & President"
+location = "URJC, Madrid"
+start = "2025-05"
+end = ""
+url = ""
+tags = ["Community"]
+tracks = ["de", "ml", "ai"]
+hook = "Founded URJC's first data science student association. Legal registration, roadmap, workshops."
+summary = """Started the association because project-driven learning didn't exist at the university yet."""
+
+[[work.highlights]]
+text = "Handled legal registration and defined the strategic roadmap from zero."
+
+[[work.highlights]]
+text = "Organised technical workshops and coordinated the first collaborative data projects."
+
+[[work]]
+name = "Self-employed"
+position = "Mathematics & Physics Tutor"
+location = "Madrid, Spain"
+start = "2021-09"
+end = ""
+url = ""
+tags = ["Teaching · 5 yrs"]
+tracks = []
+hook = "Five years, 100% pass rate, 90% of students up at least 3 grade points."
+summary = """Tutored high-school students through calculus, linear algebra, mechanics and electromagnetism, including Selectividad preparation."""
+
+[[work.highlights]]
+text = "100% pass rate over five years; 90% of students improved by at least three grade points."
+
+[[work.highlights]]
+text = "Built individual study plans per student rather than a shared syllabus."
+
+# ── Projects ─────────────────────────────────────────────────
+
+[[projects]]
+name = "TripAdvisor Restaurants Pipeline"
+kind = "Data Engineering / MLOps"
+start = "2025-09"
+end = "2026-01"
+url = "https://github.com/gonzalo-cruz/Tripadvisor-restaurants-pipeline"
+tier = "primary"
+tracks = ["de", "ml"]
+hook = "1M+ rows · auto-K KMeans (silhouette, K=10–80) · dual streaming paths · live SSE scoring"
+keywords = ["Airflow", "PySpark", "Kafka", "Spark Streaming", "FastAPI", "React", "Docker", "Python"]
+summary = """Full-stack data system over European restaurant data: a five-task Airflow DAG for ETL plus ML plus streaming, a distributed clustering stage, and a web app on top."""
+
+[[projects.highlights]]
+text = "Orchestrated a five-task Airflow DAG over 1M+ rows in 50k-row chunks — extract, clean, EDA, preprocess (normalisation, OHE or label encoding by cardinality, incremental PCA), stream to Kafka — so the pipeline stays memory-safe on a laptop."
+
+[[projects.highlights]]
+text = "Applied PySpark ML KMeans with automatic K selection via silhouette scoring (K = 10–80); every parameter (chunk size, thresholds, Kafka config) lives in one config.toml read at runtime."
+
+[[projects.highlights]]
+text = "Built two Spark Structured Streaming consumers — a fast filter path and an ML-scored path computing centroid distances — writing timestamped classifications in real time."
+
+[[projects.highlights]]
+text = "Shipped a FastAPI + React/Vite app: restaurant search by cosine similarity within clusters, plus a live scoring tab pushing classifications to the browser over Server-Sent Events."
+
+[[projects.highlights]]
+text = "Streamed to Kafka with a fault-tolerant producer (acks=all, sub-batch delivery)."
+
+[[projects]]
+name = "Stroke Risk Prediction"
+kind = "Applied ML · Imbalanced classification"
+start = "2025-02"
+end = "2025-05"
+url = "https://github.com/gonzalo-cruz/Predictive-stroke-analysis"
+tier = "primary"
+tracks = ["ml"]
+hook = "0.88 recall / 0.84 AUC on a 5% positive class — optimised for missed strokes, not accuracy"
+keywords = ["scikit-learn", "TensorFlow", "SMOTE", "RFECV", "SVM", "imbalanced-learn"]
+summary = """Binary classification of stroke risk on 5,110 patients at roughly 5% positive rate, where a false negative costs far more than a false positive."""
+
+[[projects.highlights]]
+text = "Optimised for recall over accuracy and moved the decision threshold explicitly, since the clinical cost of a missed stroke dominates the cost of a false alarm."
+
+[[projects.highlights]]
+text = "Rebalanced with SMOTE and selected features with RFECV rather than hand-picking."
+
+[[projects.highlights]]
+text = "Benchmarked an MLP against a logistic-regression baseline (0.88 recall, 0.84 AUC); kept AUC-ROC and F1 as the reported metrics."
+
+[[projects]]
+name = "Real-Time Hashtag Trending"
+kind = "Streaming / Distributed"
+start = "2025-10"
+end = "2025-12"
+url = "https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis"
+tier = "primary"
+tracks = ["de"]
+hook = "Sliding window with invFunc — O(slide interval), not O(window size)"
+keywords = ["PySpark", "DStreams", "Windowing", "TCP sockets", "Python"]
+summary = """Continuous ranking of trending hashtags over a live tweet feed, using Spark DStreams and a five-minute sliding window."""
+
+[[projects.highlights]]
+text = "Filtered to US-only tweets before aggregation to keep the ranking meaningful instead of dominated by non-English noise."
+
+[[projects.highlights]]
+text = "Implemented the window with a reduceByKeyAndWindow inverse function, so each slide costs the interval rather than the whole window."
+
+[[projects]]
+name = "Hadoop Sentiment Analysis"
+kind = "Data Engineering"
+start = "2025-03"
+end = "2025-06"
+url = "https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop"
+tier = "primary"
+tracks = ["de"]
+hook = "314MB dataset · full Hadoop cluster in Docker Compose · automated deploy"
+keywords = ["Hadoop", "MapReduce", "HDFS", "YARN", "Docker Compose"]
+summary = """AFINN-111 sentiment scoring over a 314MB Twitter corpus on a cluster built from scratch rather than borrowed."""
+
+[[projects.highlights]]
+text = "Stood up HDFS and YARN across containers with Docker Compose, including the deploy script, instead of using a pre-built image."
+
+[[projects.highlights]]
+text = "Wrote the MapReduce job to score each tweet against the AFINN-111 lexicon and aggregate by term."
+
+[[projects]]
+name = "Forest Fire Spread Prediction"
+kind = "Statistical Modeling"
+start = "2025-04"
+end = "2025-06"
+url = "https://github.com/gonzalo-cruz/Forest-fires-prediction"
+tier = "primary"
+tracks = ["ml"]
+hook = "GAMs caught non-linearities that OLS and GLMs missed on zero-inflated data"
+keywords = ["R", "mgcv", "GAM", "GLM", "cross-validation"]
+summary = """Predicting burned area in Montesinho Natural Park from meteorological covariates, on data that is zero-inflated and heavily right-skewed — the case where OLS quietly fails."""
+
+[[projects.highlights]]
+text = "Compared GLM and GAM fits by cross-validated RMSE; GAMs won because the covariate effects are not linear."
+
+[[projects.highlights]]
+text = "Handled high skew, missing values and near-zero-variance predictors with log transforms, imputation and feature selection before modelling."
+
+[[projects]]
+name = "Bank Customer Churn"
+kind = "ML from first principles"
+start = "2024-11"
+end = "2025-01"
+url = "https://github.com/gonzalo-cruz/Bank-customer-churn"
+tier = "primary"
+tracks = ["ml"]
+hook = "Hand-rolled Naive Bayes beat the library — 34.55% vs 23.24% recall"
+keywords = ["R", "Naive Bayes", "AdaBoost", "K-NN", "PCA", "K-Means"]
+summary = """Churn prediction on 10,000 customers with Naive Bayes, AdaBoost and K-NN implemented from the maths in base R, then compared against library versions."""
+
+[[projects.highlights]]
+text = "Reimplemented each algorithm from its mathematical definition to check understanding, then compared against the off-the-shelf implementation."
+
+[[projects.highlights]]
+text = "The from-scratch Naive Bayes reached 34.55% recall against the library's 23.24% — the gap came from how smoothing was handled on rare categories."
+
+[[projects]]
+name = "Cross-Lingual Sentiment Study"
+kind = "NLP Research"
+start = "2026-09"
+end = "2027-06"
+url = "https://github.com/gonzalo-cruz"
+tier = "primary"
+tracks = ["ai", "ml"]
+status = "in progress"
+hook = "XLM-R across Spanish and English — measuring where multilingual transfer actually degrades"
+keywords = ["XLM-R", "PyTorch", "Hugging Face", "Evaluation", "Multilingual NLP"]
+summary = """Ongoing study of cross-lingual sentiment transfer between Spanish and English with XLM-R, focused on evaluation rather than headline F1."""
+
+[[projects.highlights]]
+text = "Building the evaluation harness first: per-language slices, label-distribution shifts and error analysis instead of a single aggregate score."
+
+[[projects.highlights]]
+text = "Fine-tuning on a 4GB-VRAM GPU, which forces explicit choices about batch size, gradient accumulation and fp16."
+
+[[projects]]
+name = "Final Degree Thesis — ANN over multimodal data"
+kind = "Thesis (TFG) · 15 ECTS"
+start = "2026-09"
+end = "2027-06"
+url = "https://github.com/gonzalo-cruz"
+tier = "primary"
+tracks = ["ml", "ai"]
+status = "in progress"
+hook = "Approximate nearest-neighbour search where vectors come from more than one modality"
+keywords = ["Python", "ANN", "Multimodal", "Benchmarking", "Profiling"]
+summary = """Final degree thesis on approximate nearest-neighbour search over multimodal data, on an existing algorithm owned by the advising group. Definitive title pending."""
+
+[[projects.highlights]]
+text = "First phase is a codebase audit and profiling of the existing implementation, not a rewrite."
+
+[[projects.highlights]]
+text = "Rebuilding parts of it in Polars, with MLflow for experiment tracking and Airflow for the benchmark runs."
+
+# Compact tier — one line each in the rendered CV.
+
+[[projects]]
+name = "Time Series Analysis with SARIMA"
+kind = "Forecasting"
+start = "2025-02"
+end = "2025-04"
+url = "https://github.com/gonzalo-cruz/time-series-analysis"
+tier = "compact"
+tracks = ["ml"]
+keywords = ["Python", "statsmodels", "SARIMA"]
+summary = """Four series forecast following Box-Jenkins — identify, estimate, diagnose, repeat — with grid search, Fourier terms and temporal windowing."""
+
+[[projects]]
+name = "Whitehead Sample Size Analysis"
+kind = "Statistical Inference"
+start = "2025-05"
+end = "2025-06"
+url = "https://github.com/gonzalo-cruz/Whitehead-sample-size-IE"
+tier = "compact"
+tracks = ["ml"]
+keywords = ["R", "MLE", "Score Test", "Monte Carlo"]
+summary = """Minimum n to detect a deviation from p₀ = 0.003, comparing Score Test, exact binomial and Wilcoxon at the edge of their validity."""
+
+[[projects]]
+name = "Dual-Mode RC Robot"
+kind = "Embedded / Robotics"
+start = "2024-09"
+end = "2024-12"
+url = "https://github.com/gonzalo-cruz/RC-object-avoiding-robot"
+tier = "compact"
+tracks = []
+keywords = ["C", "STM32", "PWM", "Bluetooth"]
+summary = """STM32 Nucleo-L152RE vehicle with autonomous ultrasonic avoidance or manual Bluetooth control, on interrupt-driven firmware (TIM2 capture, TIM3 PWM)."""
+
+# ── Education ────────────────────────────────────────────────
+
+[[education]]
+institution = "Universidad Rey Juan Carlos (URJC)"
+area = "Data Science & Engineering"
+study_type = "B.S."
+location = "Madrid, Spain"
+start = "2024-09"
+end = "2027-06"
+status = "final year"
+url = "https://www.urjc.es/"
+summary = """Final year, graduating June 2027. Completed two full academic years in one (2024–2025)."""
+courses = ["Machine Learning", "Distributed Systems", "Deep Learning", "HPC", "Statistical Inference", "Non-Relational Databases", "Visualisation"]
+
+[[education]]
+institution = "Universidad Carlos III de Madrid (UC3M)"
+area = "Telecommunications Engineering"
+study_type = "B.S."
+location = "Madrid, Spain"
+start = "2019-09"
+end = "2023-06"
+status = "transferred"
+url = "https://www.uc3m.es/"
+summary = """120+ credits in networking, physics and signal processing. Transferred to specialise in data science."""
+
+# ── Skills ───────────────────────────────────────────────────
+
+[[skills]]
+name = "Programming"
+level = "Advanced"
+keywords = ["Python", "R", "SQL", "C", "Bash"]
+
+[[skills]]
+name = "Data engineering"
+level = ""
+keywords = ["Airflow", "Kafka", "PySpark", "Hadoop", "Docker", "Polars", "DuckDB", "FastAPI"]
+
+[[skills]]
+name = "Modeling"
+level = ""
+keywords = ["PyTorch", "scikit-learn", "XGBoost", "MLflow", "mgcv", "Hugging Face", "LLM fine-tuning"]
+
+[[skills]]
+name = "Tools"
+level = ""
+keywords = ["Git / GitHub", "Linux", "React / Vite", "LaTeX", "Claude Code (agentic)"]
+
+[[skills]]
+name = "Spoken"
+level = ""
+keywords = ["Spanish — native", "English — C2", "German — B1", "Chinese — HSK3"]
+
+[[certificates]]
+name = "Certificate of Advanced English (C2)"
+issuer = "Cambridge Assessment"
+date = "2019-06"
+
+[[languages]]
+language = "Spanish"
+fluency = "Native"
+
+[[languages]]
+language = "English"
+fluency = "C2 — Cambridge"
+
+[[languages]]
+language = "German"
+fluency = "B1"
+
+[[languages]]
+language = "Chinese"
+fluency = "HSK3"

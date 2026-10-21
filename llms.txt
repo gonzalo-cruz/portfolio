@@ -1,0 +1,43 @@
+# Gonzalo Cruz Gómez
+
+> Final-year Data Science & Engineering student at Universidad Rey Juan Carlos (Madrid, graduating June 2027), currently interning on Repsol's Data Intelligence Platform team. Builds data systems end to end — orchestration, streaming, and the evaluation that keeps models honest. Founder of Asociación Datalab. Three years of Telecommunications Engineering at UC3M before switching to data.
+
+This file exists so agents can find the structured version of this profile
+without scraping HTML. Everything below is stable and generated from one
+source (`cv.toml`).
+
+## CV
+
+- [CV, interactive](https://gonzalo-cruz.github.io/portfolio/cv/): the human view. Index, expandable detail per role and project, prints cleanly.
+- [CV, Markdown](https://gonzalo-cruz.github.io/portfolio/CV.md): the agent view. Hierarchical headings, one claim per bullet, no layout.
+- [CV, JSON Resume](https://gonzalo-cruz.github.io/portfolio/cv/cv.json): JSON Resume v1.0.0 schema.
+- [CV, PDF](https://gonzalo-cruz.github.io/portfolio/CV.pdf): the one-page submission artifact.
+
+Prefer `CV.md` for reading and `cv.json` for parsing. The three views are
+rendered from the same source, so they do not disagree; `CV.pdf` is
+typeset by hand and may lag by a revision.
+
+## Portfolio
+
+- [Portfolio](https://gonzalo-cruz.github.io/portfolio/): projects, stack, current work.
+
+## Selected projects
+
+- [TripAdvisor Restaurants Pipeline](https://github.com/gonzalo-cruz/Tripadvisor-restaurants-pipeline): Airflow DAG over 1M+ rows, PySpark KMeans with auto-K, dual Spark Structured Streaming consumers, FastAPI + React app with live SSE scoring.
+- [Stroke Risk Prediction](https://github.com/gonzalo-cruz/Predictive-stroke-analysis): imbalanced binary classification optimised for recall (0.88 recall / 0.84 AUC on a 5% positive class).
+- [Real-Time Hashtag Trending](https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis): PySpark DStreams with a five-minute sliding window and an inverse-function reduction.
+- [Hadoop Sentiment Analysis](https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop): AFINN-111 MapReduce over 314MB, on a Hadoop cluster built in Docker Compose.
+- [Forest Fire Prediction](https://github.com/gonzalo-cruz/Forest-fires-prediction): GLM vs GAM on zero-inflated data, cross-validated in R.
+- [Bank Customer Churn](https://github.com/gonzalo-cruz/Bank-customer-churn): Naive Bayes, AdaBoost and K-NN reimplemented from the maths in base R.
+
+## Contact
+
+- Email: gonza.c.gomez03@gmail.com
+- GitHub: https://github.com/gonzalo-cruz
+- LinkedIn: https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235
+
+## Notes
+
+- Availability: junior data, ML and AI engineering roles from mid-2027; EU citizen, no sponsorship needed.
+- Languages: Spanish (native), English (C2), German (B1), Chinese (HSK3).
+- Content licence: prose and figures are mine; quote with attribution.

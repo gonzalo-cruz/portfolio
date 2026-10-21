@@ -17,7 +17,10 @@ jobs:
           python-version: "3.11"
 
       - name: Byte-compile the terminal portfolio
-        run: python -m py_compile portfolio_cli.py
+        run: python -m py_compile portfolio_cli.py build_cv.py
+
+      - name: CV outputs match cv.toml
+        run: python build_cv.py --check
 
       - name: Verify the site assets are present
-        run: test -f index.html && test -f css/styles.css && test -f js/main.js
+        run: test -f index.html && test -f css/styles.css && test -f js/main.js && test -f cv/index.html && test -f cv/cv.json && test -f CV.md && test -f llms.txt

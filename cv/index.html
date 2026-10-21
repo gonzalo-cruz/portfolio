@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gonzalo Cruz Gómez — Data & AI Engineer</title>
+<meta name="description" content="Final-year Data Science & Engineering student at URJC (graduating June 2027), currently on Repsol's Data Intelligence Platform team. Builds data systems end to end: orchestration,…">
+<meta name="author" content="Gonzalo Cruz Gómez">
+<link rel="canonical" href="https://gonzalo-cruz.github.io/portfolio/cv/">
+<link rel="alternate" type="text/markdown" href="../CV.md" title="CV as Markdown">
+<link rel="alternate" type="application/json" href="cv.json" title="CV as JSON Resume">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Gonzalo Cruz Gómez — Data & AI Engineer">
+<meta property="og:description" content="Final-year Data Science & Engineering student at URJC (graduating June 2027), currently on Repsol's Data Intelligence Platform team. Builds data systems end to end: orchestration,…">
+<meta property="og:url" content="https://gonzalo-cruz.github.io/portfolio/cv/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=DM+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<style>
+:root {
+  --bg: #f2efe6;
+  --bg-surface: #ebe7dc;
+  --text: #161616;
+  --text-muted: #5a5a55;
+  --text-faint: #8c8c84;
+  --accent: #002fa7;
+  --accent-subtle: #e7ebf7;
+  --on-accent: #fff;
+  --rule: #c9c4b6;
+  --rule-light: #dcd7c9;
+  --font-display: "Syne", "DM Sans", sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --reading: 68ch;
+  --duration: 220ms;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0e0c;
+    --bg-surface: #171512;
+    --text: #ece9e0;
+    --text-muted: #9a9589;
+    --text-faint: #6b665a;
+    --accent: #7d94ff;
+    --accent-subtle: #161b3a;
+    --on-accent: #0f0e0c;
+    --rule: #2a2822;
+    --rule-light: #23211c;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+
+.page {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: var(--space-2xl);
+  max-width: 74rem;
+  margin: 0 auto;
+  padding: var(--space-xl) var(--space-lg) var(--space-2xl);
+}
+
+/* ── index rail ── */
+.index {
+  position: sticky;
+  top: var(--space-md);
+  align-self: start;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.index-title {
+  margin: 0 0 var(--space-sm);
+  color: var(--text-faint);
+  font-weight: 500;
+  line-height: 1;
+}
+.index ol { margin: 0; padding: 0; list-style: none; }
+.index a {
+  display: grid;
+  grid-template-columns: 1.75rem 1fr;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-top: 1px solid var(--rule-light);
+  padding: 0.35rem 0;
+}
+.index a:hover { color: var(--text); }
+.index a.is-active { color: var(--accent); }
+.index .num { color: var(--text-faint); }
+.index a.is-active .num { color: var(--accent); }
+
+/* ── masthead ── */
+header {
+  border-top: 2px solid var(--text);
+  padding-top: var(--space-sm);
+}
+h1 {
+  margin: var(--space-2xs) 0 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 7vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+h1 .surname { display: block; color: var(--accent); }
+.lede {
+  margin: var(--space-md) 0 0;
+  max-width: var(--reading);
+  font-size: 1.08rem;
+  color: var(--text-muted);
+}
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--space-md);
+}
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color var(--duration) var(--ease),
+              background var(--duration) var(--ease);
+}
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn-primary:hover { background: var(--accent); color: var(--on-accent); opacity: 0.88; }
+
+/* ── sections ── */
+section { margin-top: var(--space-2xl); }
+.section-head {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr);
+  align-items: baseline;
+  border-top: 2px solid var(--text);
+  padding-top: 0.6rem;
+  margin-bottom: var(--space-md);
+}
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+}
+h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.section-note {
+  grid-column: 2;
+  margin: 0.25rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+}
+.prose { max-width: var(--reading); }
+.prose p { margin: 0 0 var(--space-sm); }
+
+/* ── lens ── */
+.lens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: var(--space-md);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lens-label { color: var(--text-faint); margin-right: 0.25rem; }
+.lens button {
+  font: inherit;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--rule);
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+  transition: color var(--duration) var(--ease),
+              border-color var(--duration) var(--ease);
+}
+.lens button:hover { color: var(--text); border-color: var(--text-muted); }
+.lens button[aria-pressed="true"] {
+  color: var(--on-accent);
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.lens-count { color: var(--text-faint); margin-left: 0.25rem; }
+
+/* ── accordions ── */
+details.entry {
+  border-top: 1px solid var(--rule);
+  transition: opacity var(--duration) var(--ease);
+}
+details.entry:last-of-type { border-bottom: 1px solid var(--rule); }
+details.entry[hidden] { display: none; }
+details.entry.dimmed { opacity: 0.4; }
+summary {
+  display: grid;
+  grid-template-columns: 1.2rem minmax(0, 1fr) auto;
+  gap: 0 var(--space-sm);
+  align-items: baseline;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker { display: none; }
+summary::before {
+  content: "+";
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--accent);
+  line-height: 1.4;
+}
+details[open] > summary::before { content: "–"; }
+summary:hover .entry-title { color: var(--accent); }
+.entry-head { grid-column: 2; }
+.entry-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: color var(--duration) var(--ease);
+}
+.entry-org { color: var(--text-muted); font-size: 0.92rem; }
+.entry-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.entry-meta {
+  grid-column: 2 / -1;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-faint);
+  margin-top: 0.15rem;
+}
+.entry-hook {
+  grid-column: 2 / -1;
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  max-width: var(--reading);
+}
+.entry-body {
+  padding: 0 0 var(--space-md) 1.2rem;
+  max-width: var(--reading);
+}
+.entry-body ul { margin: 0; padding-left: 1.1rem; }
+.entry-body li { margin-bottom: 0.5rem; font-size: 0.94rem; }
+.entry-body li::marker { color: var(--accent); }
+.status {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  padding: 0.1rem 0.4rem;
+  margin-left: 0.4rem;
+  vertical-align: 0.15em;
+}
+.keywords {
+  margin: var(--space-sm) 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.also {
+  margin: var(--space-md) 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.9rem;
+}
+.also li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-sm);
+  border-top: 1px solid var(--rule-light);
+  padding: 0.5rem 0;
+  color: var(--text-muted);
+}
+.also .also-name { color: var(--text); font-weight: 600; }
+.also .also-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+/* ── skills ── */
+.skill-row {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  border-top: 1px solid var(--rule-light);
+  padding: 0.6rem 0;
+}
+.skill-name {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  padding-top: 0.15rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem 0.5rem; }
+.tag {
+  font-size: 0.88rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── footer ── */
+footer {
+  margin-top: var(--space-2xl);
+  border-top: 2px solid var(--text);
+  padding-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  line-height: 1.9;
+}
+footer a { color: var(--text-muted); }
+
+/* ── narrow screens ── */
+@media (max-width: 900px) {
+  .page { grid-template-columns: 1fr; gap: var(--space-lg); }
+  .index { position: static; }
+  .index ol { display: flex; flex-wrap: wrap; gap: 0 1rem; }
+  .index a { border-top: 0; }
+  .index a.is-active { color: var(--accent); }
+  .section-head { grid-template-columns: 2.25rem minmax(0, 1fr); }
+  .section-num { font-size: 1.1rem; }
+  .skill-row { grid-template-columns: 1fr; gap: 0.25rem; }
+}
+
+@media (max-width: 600px) {
+  summary { grid-template-columns: 1.2rem minmax(0, 1fr); }
+  .entry-date { grid-column: 2; margin-top: 0.1rem; }
+  .entry-meta, .entry-hook { grid-column: 2; }
+  .entry-head .entry-org { display: block; }
+  .also li { grid-template-columns: 1fr; gap: 0.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+}
+
+/* ── print: one page, everything open, no chrome ── */
+@page { size: A4; margin: 13mm 14mm; }
+
+@media print {
+  :root {
+    --bg: #fff;
+    --text: #000;
+    --text-muted: #222;
+    --text-faint: #555;
+    --accent: #002fa7;
+    --rule: #999;
+    --rule-light: #ccc;
+  }
+  body { font-size: 8.6pt; line-height: 1.36; }
+  .page { display: block; max-width: none; padding: 0; }
+  .index, .actions, .lens, .lede { display: none !important; }
+  header { border-top: 1px solid var(--text); padding-top: 0.3rem; }
+  h1 { font-size: 1.9rem; margin-top: 0.2rem; }
+  .contact { font-size: 0.68rem; margin-top: 0.4rem; }
+  section { margin-top: 0.85rem; }
+  .section-head { margin-bottom: 0.35rem; padding-top: 0.3rem; }
+  h2 { font-size: 0.95rem; }
+  .section-num { font-size: 0.9rem; }
+  .section-note { display: none; }
+  .prose p { margin-bottom: 0.25rem; }
+  summary { padding: 0.22rem 0; }
+  .entry-title { font-size: 0.92rem; }
+  .entry-org { font-size: 0.78rem; }
+  .entry-head .entry-org { display: block; }
+  .entry-date, .entry-meta { font-size: 0.6rem; }
+  .entry-hook { margin-top: 0.1rem; font-size: 0.8rem; }
+  .entry-body { padding-bottom: 0.25rem; }
+  .entry-body li { font-size: 0.78rem; margin-bottom: 0.1rem; }
+  .keywords { font-size: 0.6rem; margin-top: 0.2rem; }
+  .entry-link { display: none !important; }
+  details.entry { break-inside: auto; opacity: 1 !important; }
+  details.entry[hidden] { display: block !important; }
+  details > summary { break-after: avoid; }
+  .also { margin-top: 0.4rem; }
+  .also li { padding: 0.25rem 0; font-size: 0.78rem; }
+  .skill-row { padding: 0.28rem 0; }
+  .skill-name { font-size: 0.6rem; }
+  .tag { font-size: 0.78rem; }
+  footer { display: none; }
+  p, li { orphans: 2; widows: 2; }
+  .entry-body li { break-inside: avoid; }
+  .entry-body p { break-before: avoid; }
+  details:not([open]) > *:not(summary) {
+    display: block !important;
+    content-visibility: visible !important;
+  }
+  a { color: #000; text-decoration: none; }
+  .status { background: none; border: 1px solid var(--rule); color: #000; }
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Gonzalo Cruz Gómez",
+  "jobTitle": "Data & AI Engineer",
+  "email": "mailto:gonza.c.gomez03@gmail.com",
+  "url": "https://gonzalo-cruz.github.io/portfolio/cv/",
+  "description": "Final-year Data Science & Engineering student at URJC (graduating June 2027), currently on Repsol's Data Intelligence Platform team. Builds data systems end to end: orchestration, streaming, and models that hold up on real data. Founder of Asociación Datalab. Three years of Telecommunications Engineering at UC3M before switching to data.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES"
+  },
+  "alumniOf": [
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Rey Juan Carlos (URJC)"
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      "name": "Universidad Carlos III de Madrid (UC3M)"
+    }
+  ],
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Asociación Datalab"
+    },
+    {
+      "@type": "Organization",
+      "name": "Self-employed"
+    }
+  ],
+  "knowsLanguage": [
+    {
+      "@type": "Language",
+      "name": "Spanish"
+    },
+    {
+      "@type": "Language",
+      "name": "English"
+    },
+    {
+      "@type": "Language",
+      "name": "German"
+    },
+    {
+      "@type": "Language",
+      "name": "Chinese"
+    }
+  ],
+  "knowsAbout": [
+    "Airflow",
+    "Bash",
+    "C",
+    "Chinese — HSK3",
+    "Claude Code (agentic)",
+    "Docker",
+    "DuckDB",
+    "English — C2",
+    "FastAPI",
+    "German — B1",
+    "Git / GitHub",
+    "Hadoop",
+    "Hugging Face",
+    "Kafka",
+    "LLM fine-tuning",
+    "LaTeX",
+    "Linux",
+    "MLflow",
+    "Polars",
+    "PySpark",
+    "PyTorch",
+    "Python",
+    "R",
+    "React / Vite",
+    "SQL",
+    "Spanish — native",
+    "XGBoost",
+    "mgcv",
+    "scikit-learn"
+  ],
+  "sameAs": [
+    "https://github.com/gonzalo-cruz",
+    "https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235"
+  ]
+}
+</script>
+</head>
+<body>
+<div class="page">
+
+<nav class="index" aria-label="CV sections">
+    <p class="index-title">Index</p>
+    <ol>
+        <li><a href="#profile"><span class="num">01</span><span>Profile</span></a></li>
+        <li><a href="#experience"><span class="num">02</span><span>Experience</span></a></li>
+        <li><a href="#projects"><span class="num">03</span><span>Projects</span></a></li>
+        <li><a href="#education"><span class="num">04</span><span>Education</span></a></li>
+        <li><a href="#skills"><span class="num">05</span><span>Skills</span></a></li>
+    </ol>
+</nav>
+
+<main>
+
+<header>
+    <h1>Gonzalo<span class="surname">Cruz Gómez.</span></h1>
+    <p class="lede">Final-year Data Science &amp; Engineering student at URJC, interning on Repsol's data team. Pipelines, models, and the evaluation that keeps them honest.</p>
+    <ul class="contact">
+        <li><a href="mailto:gonza.c.gomez03@gmail.com">gonza.c.gomez03@gmail.com</a></li>
+        <li><a href="https://github.com/gonzalo-cruz">github</a></li>
+        <li><a href="https://www.linkedin.com/in/gonzalo-cruz-gomez-788516235">linkedin</a></li>
+        <li><a href="../CV.pdf">pdf</a></li>
+    </ul>
+    <div class="actions">
+        <a class="btn" href="../CV.md">Plain markdown</a>
+        <a class="btn" href="cv.json">JSON Resume</a>
+        <a class="btn btn-primary" href="../CV.pdf" download="Gonzalo-Cruz-CV.pdf">Download CV.pdf</a>
+    </div>
+</header>
+
+<section id="profile">
+    <div class="section-head"><span class="section-num">01</span><h2>Profile</h2></div>
+    <div class="prose">
+        <p>Final-year Data Science &amp; Engineering student at URJC (graduating June 2027), currently on Repsol's Data Intelligence Platform team. Builds data systems end to end: orchestration, streaming, and models that hold up on real data. Founder of Asociación Datalab. Three years of Telecommunications Engineering at UC3M before switching to data.</p>
+        <p><strong>Open to junior data, ML and AI engineering roles from mid-2027</strong></p>
+    </div>
+</section>
+
+<section id="experience">
+    <div class="section-head"><span class="section-num">02</span><h2>Experience</h2><p class="section-note">click a row for detail</p></div>
+    <details class="entry" id="data-intelligence-platform-intern-repsol" data-tracks="de ml"><summary><span class="entry-head"><span class="entry-title">Data Intelligence Platform Intern</span> <span class="entry-org">· Repsol</span></span><span class="entry-date">Sep 2026 – Mar 2027</span><span class="entry-meta">Internship</span><p class="entry-hook">Pipelines, orchestration and the infrastructure that keeps data moving across the platform.</p></summary></details><details class="entry" id="founder-president-asociación-datalab" data-tracks="de ml ai"><summary><span class="entry-head"><span class="entry-title">Founder &amp; President</span> <span class="entry-org">· Asociación Datalab</span></span><span class="entry-date">May 2025 – present</span><span class="entry-meta">Community</span><p class="entry-hook">Founded URJC's first data science student association. Legal registration, roadmap, workshops.</p></summary><div class="entry-body"><ul><li>Handled legal registration and defined the strategic roadmap from zero.</li><li>Organised technical workshops and coordinated the first collaborative data projects.</li></ul></div></details><details class="entry" id="mathematics-physics-tutor-self-employed"><summary><span class="entry-head"><span class="entry-title">Mathematics &amp; Physics Tutor</span> <span class="entry-org">· Self-employed</span></span><span class="entry-date">Sep 2021 – present</span><span class="entry-meta">Teaching · 5 yrs</span><p class="entry-hook">Five years, 100% pass rate, 90% of students up at least 3 grade points.</p></summary><div class="entry-body"><ul><li>100% pass rate over five years; 90% of students improved by at least three grade points.</li><li>Built individual study plans per student rather than a shared syllabus.</li></ul></div></details>
+</section>
+
+<section id="projects">
+    <div class="section-head"><span class="section-num">03</span><h2>Projects</h2><p class="section-note">closed rows carry the claim; open ones carry the evidence</p></div>
+    <div class="lens" role="group" aria-label="Filter by role"><span class="lens-label">Lens</span><button type="button" data-lens="all" aria-pressed="true">Everything</button><button type="button" data-lens="de" aria-pressed="false">Data engineering</button><button type="button" data-lens="ml" aria-pressed="false">ML engineering</button><button type="button" data-lens="ai" aria-pressed="false">AI engineering</button><span class="lens-count" id="lensCount"></span></div>
+    <details class="entry" id="tripadvisor-restaurants-pipeline" data-tracks="de ml"><summary><span class="entry-head"><span class="entry-title">TripAdvisor Restaurants Pipeline</span></span><span class="entry-date">Sep 2025 – Jan 2026</span><span class="entry-meta">Data Engineering / MLOps</span><p class="entry-hook">1M+ rows · auto-K KMeans (silhouette, K=10–80) · dual streaming paths · live SSE scoring</p></summary><div class="entry-body"><ul><li>Orchestrated a five-task Airflow DAG over 1M+ rows in 50k-row chunks — extract, clean, EDA, preprocess (normalisation, OHE or label encoding by cardinality, incremental PCA), stream to Kafka — so the pipeline stays memory-safe on a laptop.</li><li>Applied PySpark ML KMeans with automatic K selection via silhouette scoring (K = 10–80); every parameter (chunk size, thresholds, Kafka config) lives in one config.toml read at runtime.</li><li>Built two Spark Structured Streaming consumers — a fast filter path and an ML-scored path computing centroid distances — writing timestamped classifications in real time.</li><li>Shipped a FastAPI + React/Vite app: restaurant search by cosine similarity within clusters, plus a live scoring tab pushing classifications to the browser over Server-Sent Events.</li><li>Streamed to Kafka with a fault-tolerant producer (acks=all, sub-batch delivery).</li></ul><p class="keywords">Airflow · PySpark · Kafka · Spark Streaming · FastAPI · React · Docker · Python</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/Tripadvisor-restaurants-pipeline" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="stroke-risk-prediction" data-tracks="ml"><summary><span class="entry-head"><span class="entry-title">Stroke Risk Prediction</span></span><span class="entry-date">Feb 2025 – May 2025</span><span class="entry-meta">Applied ML · Imbalanced classification</span><p class="entry-hook">0.88 recall / 0.84 AUC on a 5% positive class — optimised for missed strokes, not accuracy</p></summary><div class="entry-body"><ul><li>Optimised for recall over accuracy and moved the decision threshold explicitly, since the clinical cost of a missed stroke dominates the cost of a false alarm.</li><li>Rebalanced with SMOTE and selected features with RFECV rather than hand-picking.</li><li>Benchmarked an MLP against a logistic-regression baseline (0.88 recall, 0.84 AUC); kept AUC-ROC and F1 as the reported metrics.</li></ul><p class="keywords">scikit-learn · TensorFlow · SMOTE · RFECV · SVM · imbalanced-learn</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/Predictive-stroke-analysis" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="real-time-hashtag-trending" data-tracks="de"><summary><span class="entry-head"><span class="entry-title">Real-Time Hashtag Trending</span></span><span class="entry-date">Oct 2025 – Dec 2025</span><span class="entry-meta">Streaming / Distributed</span><p class="entry-hook">Sliding window with invFunc — O(slide interval), not O(window size)</p></summary><div class="entry-body"><ul><li>Filtered to US-only tweets before aggregation to keep the ranking meaningful instead of dominated by non-English noise.</li><li>Implemented the window with a reduceByKeyAndWindow inverse function, so each slide costs the interval rather than the whole window.</li></ul><p class="keywords">PySpark · DStreams · Windowing · TCP sockets · Python</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/real-time-twitter-hashtag-analysis" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="hadoop-sentiment-analysis" data-tracks="de"><summary><span class="entry-head"><span class="entry-title">Hadoop Sentiment Analysis</span></span><span class="entry-date">Mar 2025 – Jun 2025</span><span class="entry-meta">Data Engineering</span><p class="entry-hook">314MB dataset · full Hadoop cluster in Docker Compose · automated deploy</p></summary><div class="entry-body"><ul><li>Stood up HDFS and YARN across containers with Docker Compose, including the deploy script, instead of using a pre-built image.</li><li>Wrote the MapReduce job to score each tweet against the AFINN-111 lexicon and aggregate by term.</li></ul><p class="keywords">Hadoop · MapReduce · HDFS · YARN · Docker Compose</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/Twitter-sentiment-analysis-hadoop" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="forest-fire-spread-prediction" data-tracks="ml"><summary><span class="entry-head"><span class="entry-title">Forest Fire Spread Prediction</span></span><span class="entry-date">Apr 2025 – Jun 2025</span><span class="entry-meta">Statistical Modeling</span><p class="entry-hook">GAMs caught non-linearities that OLS and GLMs missed on zero-inflated data</p></summary><div class="entry-body"><ul><li>Compared GLM and GAM fits by cross-validated RMSE; GAMs won because the covariate effects are not linear.</li><li>Handled high skew, missing values and near-zero-variance predictors with log transforms, imputation and feature selection before modelling.</li></ul><p class="keywords">R · mgcv · GAM · GLM · cross-validation</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/Forest-fires-prediction" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="bank-customer-churn" data-tracks="ml"><summary><span class="entry-head"><span class="entry-title">Bank Customer Churn</span></span><span class="entry-date">Nov 2024 – Jan 2025</span><span class="entry-meta">ML from first principles</span><p class="entry-hook">Hand-rolled Naive Bayes beat the library — 34.55% vs 23.24% recall</p></summary><div class="entry-body"><ul><li>Reimplemented each algorithm from its mathematical definition to check understanding, then compared against the off-the-shelf implementation.</li><li>The from-scratch Naive Bayes reached 34.55% recall against the library's 23.24% — the gap came from how smoothing was handled on rare categories.</li></ul><p class="keywords">R · Naive Bayes · AdaBoost · K-NN · PCA · K-Means</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz/Bank-customer-churn" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="cross-lingual-sentiment-study" data-tracks="ai ml"><summary><span class="entry-head"><span class="entry-title">Cross-Lingual Sentiment Study<span class="status">in progress</span></span></span><span class="entry-date">Sep 2026 – Jun 2027</span><span class="entry-meta">NLP Research</span><p class="entry-hook">XLM-R across Spanish and English — measuring where multilingual transfer actually degrades</p></summary><div class="entry-body"><ul><li>Building the evaluation harness first: per-language slices, label-distribution shifts and error analysis instead of a single aggregate score.</li><li>Fine-tuning on a 4GB-VRAM GPU, which forces explicit choices about batch size, gradient accumulation and fp16.</li></ul><p class="keywords">XLM-R · PyTorch · Hugging Face · Evaluation · Multilingual NLP</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener">Repository ↗</a></p></div></details><details class="entry" id="final-degree-thesis-ann-over-multimodal-data" data-tracks="ml ai"><summary><span class="entry-head"><span class="entry-title">Final Degree Thesis — ANN over multimodal data<span class="status">in progress</span></span></span><span class="entry-date">Sep 2026 – Jun 2027</span><span class="entry-meta">Thesis (TFG) · 15 ECTS</span><p class="entry-hook">Approximate nearest-neighbour search where vectors come from more than one modality</p></summary><div class="entry-body"><ul><li>First phase is a codebase audit and profiling of the existing implementation, not a rewrite.</li><li>Rebuilding parts of it in Polars, with MLflow for experiment tracking and Airflow for the benchmark runs.</li></ul><p class="keywords">Python · ANN · Multimodal · Benchmarking · Profiling</p><p class="keywords entry-link"><a href="https://github.com/gonzalo-cruz" target="_blank" rel="noopener">Repository ↗</a></p></div></details>
+    <ul class="also"><li data-tracks="ml"><span><span class="also-name">Time Series Analysis with SARIMA</span> — Four series forecast following Box-Jenkins — identify, estimate, diagnose, repeat — with grid search, Fourier terms and temporal windowing.</span><span class="also-date">Feb 2025 – Apr 2025</span></li><li data-tracks="ml"><span><span class="also-name">Whitehead Sample Size Analysis</span> — Minimum n to detect a deviation from p₀ = 0.003, comparing Score Test, exact binomial and Wilcoxon at the edge of their validity.</span><span class="also-date">May 2025 – Jun 2025</span></li><li><span><span class="also-name">Dual-Mode RC Robot</span> — STM32 Nucleo-L152RE vehicle with autonomous ultrasonic avoidance or manual Bluetooth control, on interrupt-driven firmware (TIM2 capture, TIM3 PWM).</span><span class="also-date">Sep 2024 – Dec 2024</span></li></ul>
+</section>
+
+<section id="education">
+    <div class="section-head"><span class="section-num">04</span><h2>Education</h2></div>
+    <details class="entry" id="b-s-data-science-engineering-universidad-rey-juan-carlos-urjc"><summary><span class="entry-head"><span class="entry-title">B.S. Data Science &amp; Engineering<span class="status">final year</span></span> <span class="entry-org">· Universidad Rey Juan Carlos (URJC)</span></span><span class="entry-date">Sep 2024 – Jun 2027</span><span class="entry-meta">Machine Learning · Distributed Systems · Deep Learning · HPC · Statistical Inference · Non-Relational Databases · Visualisation</span><p class="entry-hook">Final year, graduating June 2027. Completed two full academic years in one (2024–2025).</p></summary></details><details class="entry" id="b-s-telecommunications-engineering-universidad-carlos-iii-de-madrid-uc3m"><summary><span class="entry-head"><span class="entry-title">B.S. Telecommunications Engineering<span class="status">transferred</span></span> <span class="entry-org">· Universidad Carlos III de Madrid (UC3M)</span></span><span class="entry-date">Sep 2019 – Jun 2023</span><p class="entry-hook">120+ credits in networking, physics and signal processing. Transferred to specialise in data science.</p></summary></details>
+</section>
+
+<section id="skills">
+    <div class="section-head"><span class="section-num">05</span><h2>Technical skills</h2></div>
+    <div class="skill-row"><span class="skill-name">Programming</span><span class="skill-tags"><span class="tag">Python</span><span class="tag">R</span><span class="tag">SQL</span><span class="tag">C</span><span class="tag">Bash</span></span></div><div class="skill-row"><span class="skill-name">Data engineering</span><span class="skill-tags"><span class="tag">Airflow</span><span class="tag">Kafka</span><span class="tag">PySpark</span><span class="tag">Hadoop</span><span class="tag">Docker</span><span class="tag">Polars</span><span class="tag">DuckDB</span><span class="tag">FastAPI</span></span></div><div class="skill-row"><span class="skill-name">Modeling</span><span class="skill-tags"><span class="tag">PyTorch</span><span class="tag">scikit-learn</span><span class="tag">XGBoost</span><span class="tag">MLflow</span><span class="tag">mgcv</span><span class="tag">Hugging Face</span><span class="tag">LLM fine-tuning</span></span></div><div class="skill-row"><span class="skill-name">Tools</span><span class="skill-tags"><span class="tag">Git / GitHub</span><span class="tag">Linux</span><span class="tag">React / Vite</span><span class="tag">LaTeX</span><span class="tag">Claude Code (agentic)</span></span></div><div class="skill-row"><span class="skill-name">Spoken</span><span class="skill-tags"><span class="tag">Spanish — native</span><span class="tag">English — C2</span><span class="tag">German — B1</span><span class="tag">Chinese — HSK3</span></span></div>
+    <div class="skill-row"><span class="skill-name">Certification</span><span class="skill-tags"><span class="tag">Certificate of Advanced English (C2) — Cambridge Assessment, Jun 2019</span></span></div>
+</section>
+
+<footer>
+    <p>Generated from <code>cv.toml</code> — the Markdown and JSON views are rendered from the
+    same file, so they cannot disagree. Academic dates and the LaTeX PDF are hand-maintained.</p>
+    <p>
+        <a href="../CV.md">CV.md</a> ·
+        <a href="cv.json">cv.json</a> ·
+        <a href="../CV.pdf">CV.pdf</a> ·
+        <a href="../">portfolio</a>
+    </p>
+</footer>
+
+</main>
+</div>
+<script>
+(function () {
+  "use strict";
+
+  // Open every accordion before printing, so a browser print (Ctrl+P)
+  // never depends on whether the reader happened to expand a section.
+  function openAll() {
+    document.querySelectorAll("details").forEach(function (node) {
+      node.open = true;
+    });
+  }
+  window.addEventListener("beforeprint", openAll);
+
+  // Scroll-spy for the index rail.
+  var links = Array.prototype.slice.call(
+    document.querySelectorAll(".index a[href^='#']")
+  );
+  var sections = links
+    .map(function (link) { return document.getElementById(link.hash.slice(1)); })
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && sections.length) {
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (link) {
+            link.classList.toggle(
+              "is-active",
+              link.hash.slice(1) === entry.target.id
+            );
+          });
+        });
+      },
+      { rootMargin: "-15% 0px -70% 0px" }
+    );
+    sections.forEach(function (section) { observer.observe(section); });
+  }
+
+  // Role lens: dim entries that don't carry the selected track. Nothing is
+  // removed from the DOM, so scraping, find-in-page and print still see it.
+  var lensButtons = Array.prototype.slice.call(
+    document.querySelectorAll(".lens button")
+  );
+  var lensCount = document.getElementById("lensCount");
+  var entries = Array.prototype.slice.call(document.querySelectorAll("[data-tracks]"));
+
+  function applyLens(lens) {
+    var shown = 0;
+    entries.forEach(function (entry) {
+      var tracks = entry.getAttribute("data-tracks").split(" ");
+      var matches = lens === "all" || tracks.indexOf(lens) !== -1;
+      entry.classList.toggle("dimmed", !matches);
+      if (matches) shown += 1;
+    });
+    lensButtons.forEach(function (button) {
+      button.setAttribute(
+        "aria-pressed",
+        String(button.getAttribute("data-lens") === lens)
+      );
+    });
+    if (lensCount) {
+      lensCount.textContent =
+        lens === "all" ? "" : shown + " / " + entries.length + " entries";
+    }
+    try {
+      sessionStorage.setItem("cv_lens", lens);
+    } catch (e) { /* private mode */ }
+  }
+
+  lensButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      applyLens(button.getAttribute("data-lens"));
+    });
+  });
+
+  var saved = null;
+  try { saved = sessionStorage.getItem("cv_lens"); } catch (e) { /* ignore */ }
+  if (saved) applyLens(saved);
+})();
+</script>
+</body>
+</html>
