@@ -24,7 +24,7 @@
 
 % Custom \section formatting
 \titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{14pt}{10pt}
+\titlespacing{\section}{0pt}{10pt}{7pt}
 
 % SHORT job entry: Title | Date
 \newenvironment{jobshort}[2]
@@ -42,11 +42,11 @@
     \textbf{#1} & \hfill & \textit{\small #2} \\[3pt]
     \end{tabularx}
     \begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut,leftmargin=1em,itemsep=3pt,label=\textbullet]
+    \begin{itemize}[nosep,after=\strut,leftmargin=1em,itemsep=2pt,label=\textbullet]
     }
     {
     \end{itemize}
-    \end{minipage}\vspace{8pt}
+    \end{minipage}\vspace{6pt}
     }
 
 %----------------------------------------------------------------------------------------
@@ -67,15 +67,15 @@
 \end{center}
 
 \vspace{6pt}
-{\small Data Science \& Engineering undergraduate (final year, URJC) with a background in Telecommunications Engineering. Builds production-ready data systems: end-to-end ML pipelines, distributed computing, and deep learning. Founder of Asociación Datalab. Seeking an internship in data science or data engineering.}
+{\small Data Science \& Engineering undergraduate (URJC, graduating June 2027) with a background in Telecommunications Engineering. Builds data systems end to end: orchestration, streaming, and models that hold up on real data. Currently on Repsol's Data Intelligence Platform team; founder of Asociación Datalab.}
 
 %----------------------------------------------------------------------------------------
 %    EDUCATION
 %----------------------------------------------------------------------------------------
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X r@{}}
-\textbf{B.S. Data Science \& Engineering} & \textbf{URJC} & \textit{2024 -- Present} \\
-\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ \parbox[t]{0.93\linewidth}{\small Final year (expected graduation 2027). Completed two academic years in one (2024--2025). Coursework: ML, Distributed Systems, Deep Learning, HPC, Statistical Inference.}} \\[5pt]
+\textbf{B.S. Data Science \& Engineering} & \textbf{URJC} & \textit{2024 -- 2027} \\
+\multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ \parbox[t]{0.93\linewidth}{\small Final year (expected graduation June 2027). Completed two academic years in one (2024--2025). Coursework: ML, Distributed Systems, Deep Learning, HPC, Statistical Inference.}} \\[5pt]
 \textbf{B.S. Telecommunications Engineering} & \textbf{UC3M} & \textit{2019 -- 2023} \\
 \multicolumn{3}{@{}l@{}}{\small \quad $\bullet$ 120+ credits in Networking, Physics and Signal Processing. Transferred to specialize in Data Science.} \\[5pt]
 \textbf{Certificate of Advanced English (C2)} & Cambridge Assessment & \textit{2019}
@@ -110,11 +110,16 @@
 %----------------------------------------------------------------------------------------
 \section{Experience}
 
+\begin{jobshort}{Data Intelligence Platform Intern --- Repsol}{Sep 2026 -- Mar 2027}
+\small Talent Energy internship on the Data Intelligence Platform team, Madrid. Pipelines, orchestration and the infrastructure that keeps data moving.
+\end{jobshort}
+
+\vspace{6pt}
 \begin{jobshort}{Founder \& President --- Asociación Datalab}{May 2025 -- Present}
 \small Established the university's first Data Science student association: defined the strategic roadmap, handled legal registration, and organized technical workshops.
 \end{jobshort}
 
-\vspace{10pt}
+\vspace{6pt}
 \begin{jobshort}{Private Tutor --- Mathematics \& Physics}{Sep 2021 -- Present}
 \small Mentored high-school students over 5 years, achieving a \textbf{100\% pass rate} and helping 90\% of students improve by at least 3 grade points through personalized plans.
 \end{jobshort}
